@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_ecommerce?createDatabaseIfNotExist=true&severTimezone=UTC
+    username: root
+    password: root
+  hikari:
+    connectionTimeout: 30000 # Configuração opcional para o pool de conexões Hikari
+    maximumPoolSize: 5      # Configuração opcional para o pool de conexões Hikari
+  jpa:
+    hibernate:
+      ddl-auto: update     # Configuração opcional para a estratégia de criação de tabelas pelo Hibernate
+    show-sql: true         # Configuração opcional para exibir consultas SQL no console
