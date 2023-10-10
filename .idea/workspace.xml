@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/configuration/OpenApiConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V1__Create_database_ecommerce.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V2__Create_user_root.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V3__Create_table_products.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V4__Populate_table_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/MsOrdersApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/request/CancelOrderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/request/CreateOrderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/request/GetOrderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/request/UpdateOrderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/response/CancelOrderResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/response/CreateOrderResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/response/ListOrderResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/dto/response/OrderResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/exception/CustomException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/model/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/model/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/model/OrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/repository/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/CancelOrderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/CreateOrderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/GetOrderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/OrderControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/OrderServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/unitTests/UpdateOrderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/order/viacep/ViaCepService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/product/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/product/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/compassuol/sp/challenge/msorders/product/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/compassuol/sp/challenge/msorders/MsOrdersApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WXrMqKkzEiXjnRiTR6BWlyyJO1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "C:/Users/rianb/OneDrive/Área de Trabalho/SpringBoot_Challenge02_TEAM_D/ms-products",
+    "settings.editor.selected.configurable": "discord-project"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.compassuol.sp.challenge.msproducts.controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ms-products-8080" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.MsProductsApplication" />
+      <module name="ms-products" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="" />
+      <created>1696889722238</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696889722238</updated>
+    </task>
+    <servers />
+  </component>
+</project>

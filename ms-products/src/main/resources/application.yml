@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ms-products
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_ecommerce
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    open-in-view: true
+  flyway:
+    url: jdbc:mysql://localhost:3306/
+    schemas: ms_product_scheme
+    cleanOnValidationError: true
+    user: root
+    password: root
