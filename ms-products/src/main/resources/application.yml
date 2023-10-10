@@ -16,7 +16,8 @@ spring:
     open-in-view: true
   flyway:
     url: jdbc:mysql://localhost:3306/
-    schemas: ms_product_scheme
+    schemas: db_ecommerce
+    cleanDisabled: false
     cleanOnValidationError: true
     user: root
     password: root
