@@ -1,24 +1,46 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
+import com.compassuol.sp.challenge.msproducts.controller.exception.getbyidexceptions.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
+import com.compassuol.sp.challenge.msproducts.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 public class ProductController {
     private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductRepository productRepository, ProductService productService) {
         this.productRepository = productRepository;
+        this.productService = productService;
     }
 
     @GetMapping("/{productId}")
-    public Optional<ProductModel> getProductById(@PathVariable int productId) {
-        return productRepository.findById(productId);
+    public ResponseEntity<?> getProductById(@PathVariable Long productId) {
+        try {
+            Optional<ProductModel> product = productRepository.findById(productId);
+            if (product.isPresent()) {
+                return ResponseEntity.ok(product.get());
+            } else {
+                throw new ProductNotFoundException("Product not found with ID: " + productId);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error has occurred. Please try again later.");
+        }
+    }
+
+    @GetMapping
+    public List<ProductModel> getProducts() {
+        return productService.getAllProducts();
     }
 }

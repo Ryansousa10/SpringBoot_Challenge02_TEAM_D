@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: ms-products
+  description: Descrição da API
+  version: 1.0.0
+paths:
+  /products:
+    get: # O método HTTP para este endpoint
+      summary: Return all products
+      description: Product List - This endpoint return all products
+      responses:
+        200:
+          description: Sucess response
+        404:
+          description: Nenhum produto encontrado.
+        500:
+          description: Ocorreu um erro inesperado.
