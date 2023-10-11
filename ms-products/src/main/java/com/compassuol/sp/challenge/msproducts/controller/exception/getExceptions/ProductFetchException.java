@@ -1,6 +1,5 @@
 package com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.ArrayList;
