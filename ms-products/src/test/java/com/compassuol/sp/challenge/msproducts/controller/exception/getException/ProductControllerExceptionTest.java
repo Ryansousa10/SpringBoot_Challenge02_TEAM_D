@@ -1,4 +1,4 @@
-package com.compassuol.sp.challenge.msproducts.controller.exception;
+package com.compassuol.sp.challenge.msproducts.controller.exception.getException;
 
 import com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions.ErrorResponse;
 import com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions.MyRuntimeException;
@@ -86,6 +86,6 @@ public class ProductControllerExceptionTest {
         ErrorResponse errorResponse = response.getBody();
         assertEquals(500, errorResponse.getCode());
         assertEquals("INTERNAL SERVER ERROR", errorResponse.getStatus());
-        assertEquals("Erro genérico.", errorResponse.getMessage());
+        assertEquals("Ocorreu um erro inesperado.", errorResponse.getMessage());
     }
 }

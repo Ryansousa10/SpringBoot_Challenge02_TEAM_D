@@ -1,10 +1,11 @@
 package com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions;
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-@Data
+@Getter
 public class ProductFetchException extends RuntimeException {
 
     private final int code;

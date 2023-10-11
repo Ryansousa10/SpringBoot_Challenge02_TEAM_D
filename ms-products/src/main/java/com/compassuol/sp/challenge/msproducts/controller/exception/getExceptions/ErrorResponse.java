@@ -1,15 +1,17 @@
 package com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
-@Data
+@Getter
+
 public class ErrorResponse {
     private int code;
     private String status;
     private String message;
     private List<String> details;
-
     public ErrorResponse() {
     }
 

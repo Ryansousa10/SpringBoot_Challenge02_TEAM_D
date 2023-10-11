@@ -1,29 +1,63 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.compassuol.sp.challenge.msproducts.model.ProductModel;
+import com.compassuol.sp.challenge.msproducts.service.ProductService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.ArrayList;
+import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@WebMvcTest(ProductController.class)
+@AutoConfigureMockMvc
 public class ProductControllerTest {
 
-    @LocalServerPort
-    private int port;
-
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ProductService productService;
+
+    @BeforeEach
+    public void setUp() {
+        // Configurar o comportamento simulado do serviço
+        List<ProductModel> products = new ArrayList<>();
+        products.add(new ProductModel("Product 1", "Product 1", 10.0));
+        products.add(new ProductModel("Product 2", "Product 2", 20.0));
+
+        Mockito.when(productService.getAllProducts()).thenReturn(products);
+    }
 
     @Test
-    public void testGetProducts() {
-        ResponseEntity<String> response = restTemplate.getForEntity("/products", String.class);
-        assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
+    public void testGetProducts() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/products"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Product 1"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].value").value(10.0))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Product 2"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].value").value(20.0));
+    }
+
+    @Test
+    public void testGetProductsEmpty() throws Exception {
+        // Simular um serviço que retorna uma lista vazia
+        Mockito.when(productService.getAllProducts()).thenReturn(new ArrayList<>());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/products"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(404))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("NOT FOUND"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Nenhum produto encontrado."));
     }
 }

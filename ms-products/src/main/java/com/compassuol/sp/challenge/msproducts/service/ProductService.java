@@ -11,10 +11,10 @@ import java.util.List;
 public class ProductService {
 
 
-
     // GET METHOD SERVICE
     @Autowired
     private ProductRepository productRepository;
+
     public List<ProductModel> getAllProducts() {
         return productRepository.findAll();
     }
