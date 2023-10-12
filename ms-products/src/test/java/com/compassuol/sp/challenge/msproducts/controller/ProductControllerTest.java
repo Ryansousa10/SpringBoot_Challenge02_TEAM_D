@@ -69,11 +69,9 @@ public class ProductControllerTest {
         when(productService.getAllProducts()).thenReturn(new ArrayList<>());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products"))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(404))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("NOT FOUND"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Nenhum produto encontrado."));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(0));
     }
 
     @Test
