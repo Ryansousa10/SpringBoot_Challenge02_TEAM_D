@@ -1,5 +1,8 @@
 package com.compassuol.sp.challenge.msproducts.controller.exception;
 
+import lombok.Getter;
+
+@Getter
 public class ResponseErrorTemplate {
 
     private int code;
@@ -12,24 +15,12 @@ public class ResponseErrorTemplate {
         this.message = message;
     }
 
-    public int getCode() {
-        return code;
-    }
-
     public void setCode(int code) {
         this.code = code;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public void setMessage(String message) {
