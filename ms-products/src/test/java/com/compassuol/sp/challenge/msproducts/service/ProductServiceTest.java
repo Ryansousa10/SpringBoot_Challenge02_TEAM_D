@@ -6,13 +6,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class ProductServiceTest {
@@ -30,7 +35,7 @@ public class ProductServiceTest {
         products.add(new ProductModel("name1", "Product 1", 10.0));
         products.add(new ProductModel("name2", "Product 2", 20.0));
 
-        Mockito.when(productRepository.findAll()).thenReturn(products);
+        when(productRepository.findAll()).thenReturn(products);
     }
 
     @Test
@@ -45,5 +50,19 @@ public class ProductServiceTest {
         assertEquals(10.0, products.get(0).getValue());
         assertEquals("name2", products.get(1).getName());
         assertEquals(20.0, products.get(1).getValue());
+    }
+
+    @Test
+    public void updateProduct_withValidData_ReturnsProduct() {
+        when(productRepository.save(VALID_PRODUCT)).thenReturn(VALID_PRODUCT);
+        ProductModel product = productService.updateProductService(VALID_PRODUCT, VALID_PRODUCT_DTO);
+        assertEquals(VALID_PRODUCT, product);
+    }
+
+    @Test
+    public void updateProduct_withInvalidData_ReturnsNull() {
+        when(productRepository.save(INVALID_PRODUCT)).thenReturn(null);
+        ProductModel product = productService.updateProductService(INVALID_PRODUCT, INVALID_PRODUCT_DTO);
+        assertNull(product);
     }
 }

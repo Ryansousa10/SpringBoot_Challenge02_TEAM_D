@@ -24,7 +24,7 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Object> updateProduct(@PathVariable("id") long id,
                                                 @RequestBody @Valid ProductDTO productDTO) {
         var product = productService.findProductByIdService(id);
