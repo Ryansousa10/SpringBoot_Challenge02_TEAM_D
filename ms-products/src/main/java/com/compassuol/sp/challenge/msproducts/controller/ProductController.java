@@ -24,6 +24,12 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping
+    public List<ProductModel> getProducts() {
+        return productService.getAllProducts();
+    }
+
+
     @GetMapping("/{productId}")
     public ResponseEntity<?> getProductById(@PathVariable Long productId) {
         try {
@@ -33,14 +39,11 @@ public class ProductController {
             } else {
                 throw new ProductNotFoundException("Product not found with ID: " + productId);
             }
+        } catch (ProductNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An unexpected error has occurred. Please try again later.");
         }
-    }
-
-    @GetMapping
-    public List<ProductModel> getProducts() {
-        return productService.getAllProducts();
     }
 }
