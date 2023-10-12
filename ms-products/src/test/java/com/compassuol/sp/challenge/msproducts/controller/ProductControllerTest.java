@@ -1,6 +1,9 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,10 +21,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +88,7 @@ public class ProductControllerTest {
         mockMvc
                 .perform(put("/products/{id}", 1L).contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(VALID_PRODUCT_DTO)))
-                            .andExpect(status().isCreated());
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -93,8 +99,8 @@ public class ProductControllerTest {
         mockMvc
                 .perform(put("/products/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(VALID_PRODUCT_DTO)))
-                                .andExpect(status().isNotFound());
+                        .content(objectMapper.writeValueAsString(VALID_PRODUCT_DTO)))
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -105,9 +111,25 @@ public class ProductControllerTest {
         mockMvc
                 .perform(put("/products/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(INVALID_PRODUCT_DTO)))
-                                .andExpect(status().isBadRequest());
+                        .content(objectMapper.writeValueAsString(INVALID_PRODUCT_DTO)))
+                .andExpect(status().isBadRequest());
     }
 
+    @Test
+    public void deleteProduct_withInvalidId_ReturnsException() throws Exception {
+        when(productService.findProductByIdService(2L)).thenThrow(ProductNotFoundException.class);
+        ProductController productController = new ProductController(productService);
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+        mockMvc.perform(delete("/products/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON));
+    }
 
+    @Test
+    public void deleteProduct_withValidId_ReturnsNoContent() throws Exception {
+        when(productService.findProductByIdService(1L)).thenReturn(Optional.of(VALID_PRODUCT));
+        ProductController productController = new ProductController(productService);
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+        mockMvc.perform(delete("/products/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON));
+    }
 }
