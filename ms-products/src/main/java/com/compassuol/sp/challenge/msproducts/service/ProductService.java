@@ -3,19 +3,21 @@ package com.compassuol.sp.challenge.msproducts.service;
 import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
-    @Autowired
-    ProductRepository productRepository;
+    
+    private final ProductRepository productRepository;
 
-    public Optional<ProductModel> findProductByIdService(long id) {
-        return productRepository.findById(id);
+    public List<ProductModel> getAllProducts() {
+        return productRepository.findAll();
     }
 
     public ProductModel updateProductService(ProductModel productModel, ProductDTO productDTO) {
@@ -24,5 +26,9 @@ public class ProductService {
         productModel.setValue(productDTO.getValue());
 
         return productRepository.save(productModel);
+    }
+
+    public Optional<ProductModel> findProductByIdService(long id) {
+        return productRepository.findById(id);
     }
 }

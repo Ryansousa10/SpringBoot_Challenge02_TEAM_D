@@ -1,4 +1,4 @@
-package com.compassuol.sp.challenge.msproducts.controller.exception;
+package com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes;
 
 public class ProductNotFoundException extends RuntimeException{
     public ProductNotFoundException() {

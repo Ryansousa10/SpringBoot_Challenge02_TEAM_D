@@ -1,40 +1,24 @@
 package com.compassuol.sp.challenge.msproducts.dto;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
+
+@Getter
+@Setter
+@Validated
 @AllArgsConstructor
 public class ProductDTO {
 
-    @NotEmpty
+    @NotEmpty(message = "field 'name' is mandatory")
     String name;
-    @NotNull
+    @NotNull(message = "field 'description' cannot be null")
+    @Size(min = 10, message = "field 'description' must have at least 10 characters")
     String description;
-    @NotNull
+    @NotNull(message = "field 'value' cannot be null")
+    @Min(value = 0L, message = "field 'value' cannot negative")
     Double value;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
-    }
 }
