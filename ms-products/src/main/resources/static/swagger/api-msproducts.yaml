@@ -26,3 +26,69 @@ paths:
           description: Produto não encontrado com o ID especificado
         500:
           description: Ocorreu um erro inesperado.
+  /products/{id}:
+    put:
+      summary: Update product by id
+      description: Update products  - this endpoint update products in database
+      parameters:
+        - name: id
+          in: query
+          description: product id is needed for finding in database
+          required: true
+          schema:
+            type: long
+      responses:
+        201:
+          description: success updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: long
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  value:
+                    type: double
+        404:
+          description: product id not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  status:
+                    type: string
+                  message:
+                    type: string
+        400:
+          description: invalid data sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  status:
+                    type: string
+                  message:
+                    type: string
+        500:
+          description: occurred an unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  status:
+                    type: string
+                  message:
+                    type: string
