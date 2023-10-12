@@ -7,11 +7,22 @@ paths:
   /products:
     get: # O método HTTP para este endpoint
       summary: Return all products
-      description: Product List - This endpoint return all products
+      description: Product List - This endpoint returns all products
       responses:
         200:
           description: Sucess response
         404:
           description: Nenhum produto encontrado.
+        500:
+          description: Ocorreu um erro inesperado
+  /products/{productId}:
+    get:  # O método HTTP para este endpoint
+      summary: Buscar produto por ID
+      description: Este endpoint retorna detalhes de um produto com base no ID fornecido.
+      responses:
+        200:
+          description: Resposta bem-sucedida
+        404:
+          description: Produto não encontrado com o ID especificado
         500:
           description: Ocorreu um erro inesperado.
