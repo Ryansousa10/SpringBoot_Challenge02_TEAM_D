@@ -10,14 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 

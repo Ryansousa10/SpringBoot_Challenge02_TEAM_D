@@ -74,7 +74,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProductByIdSuccess() throws Exception {
-        Long productId = 1L;
+        long productId = 1L;
         ProductModel product = new ProductModel("Product 1", "Product 1 description", 10.0);
         // when(productRepository.findById(productId)).thenReturn(Optional.of(product));
         when(productService.findProductByIdService(productId)).thenReturn(Optional.of(product));
@@ -90,7 +90,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProductById_ProductNotFound() throws Exception {
-        Long productId = 999L; // Use um ID que não corresponda a um produto existente no seu banco de dados simulado
+        long productId = 999L; // Use um ID que não corresponda a um produto existente no seu banco de dados simulado
         when(productService.findProductByIdService(productId)).thenReturn(Optional.empty());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/{id}", productId)
