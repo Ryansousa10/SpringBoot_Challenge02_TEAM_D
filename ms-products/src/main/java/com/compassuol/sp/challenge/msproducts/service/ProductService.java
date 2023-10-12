@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.service;
 
+import com.compassuol.sp.challenge.msproducts.controller.exception.getExceptions.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,4 +17,10 @@ public class ProductService {
     public List<ProductModel> getAllProducts() {
         return productRepository.findAll();
     }
-}
+
+
+
+    }
+
+
+
