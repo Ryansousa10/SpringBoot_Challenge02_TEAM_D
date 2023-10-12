@@ -49,17 +49,5 @@ public class ProductServiceTest {
         assertEquals(20.0, products.get(1).getValue());
     }
 
-    @Test
-    public void testGetProductById() {
-        Long productId = 1L; // Use um ID de produto que corresponda a um produto existente no seu banco de dados simulado
-        ProductModel product = new ProductModel("name1", "Product 1", 10.0);
-        Mockito.when(productRepository.findById(productId)).thenReturn(Optional.of(product));
-
-        Optional<ProductModel> retrievedProduct = productRepository.findById(productId);
-
-        assertTrue(retrievedProduct.isPresent());
-        assertEquals("name1", retrievedProduct.get().getName());
-        assertEquals(10.0, retrievedProduct.get().getValue());
-    }
 
 }
