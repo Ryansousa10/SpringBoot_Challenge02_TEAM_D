@@ -41,4 +41,12 @@ public class ProductService {
         productRepository.delete(existingProduct.get());
     }
 
+
+    public boolean isProductExistsByName(String name) {
+        return productRepository.existsByName(name);
+    }
+
+    public ProductModel createProductService(ProductModel productModel) {
+        return productRepository.save(productModel);
+    }
 }

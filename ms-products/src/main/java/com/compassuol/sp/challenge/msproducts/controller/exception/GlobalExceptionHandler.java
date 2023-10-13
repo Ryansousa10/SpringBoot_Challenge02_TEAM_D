@@ -2,7 +2,6 @@ package com.compassuol.sp.challenge.msproducts.controller.exception;
 
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -48,7 +47,6 @@ public class GlobalExceptionHandler {
         var response = new ResponseErrorTemplate(error_code, status_code, message);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
-
 
     //exception for unexpected error
     @ExceptionHandler(RuntimeException.class)

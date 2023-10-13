@@ -17,8 +17,7 @@ import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -90,4 +89,36 @@ public class ProductServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(ProductNotFoundException.class, () -> {
         productService.deleteProductById(productId);});
     }
+
+    @Test
+    public void testIsProductExistsByName_Exists() {
+        String existingProductName = "ExistingProduct";
+        when(productRepository.existsByName(existingProductName)).thenReturn(true);
+
+        boolean result = productService.isProductExistsByName(existingProductName);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsProductExistsByName_NotExists() {
+        String nonExistingProductName = "NonExistingProduct";
+        when(productRepository.existsByName(nonExistingProductName)).thenReturn(false);
+
+        boolean result = productService.isProductExistsByName(nonExistingProductName);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testCreateProductService() {
+        ProductModel productModel = new ProductModel("New Product", "New Product Description", 10.0);
+        when(productRepository.save(productModel)).thenReturn(productModel);
+
+        ProductModel result = productService.createProductService(productModel);
+
+        // Verifique se o método de serviço retornou o produto esperado
+        assertEquals(productModel, result);
+    }
+
 }
