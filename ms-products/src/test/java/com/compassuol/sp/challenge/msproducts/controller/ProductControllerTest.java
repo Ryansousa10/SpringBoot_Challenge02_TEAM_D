@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -8,6 +9,7 @@ import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
 
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
+import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,8 +28,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
-
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -51,6 +51,8 @@ public class ProductControllerTest {
                         new ProductModel("Product 2", "Product 2 description", 20.0)
                 )
         );
+        when(productService.isProductExistsByName("ProdutoExistente")).thenReturn(true);
+        when(productService.isProductExistsByName("ProdutoNovo")).thenReturn(false);
     }
 
     @Test
@@ -78,9 +80,8 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProductByIdSuccess() throws Exception {
-        Long productId = 1L;
+        long productId = 1L;
         ProductModel product = new ProductModel("Product 1", "Product 1 description", 10.0);
-        // when(productRepository.findById(productId)).thenReturn(Optional.of(product));
         when(productService.findProductByIdService(productId)).thenReturn(Optional.of(product));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/{id}", productId)
@@ -94,7 +95,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProductById_ProductNotFound() throws Exception {
-        Long productId = 999L; // Use um ID que não corresponda a um produto existente no seu banco de dados simulado
+        long productId = 999L; // Use um ID que não corresponda a um produto existente no seu banco de dados simulado
         when(productService.findProductByIdService(productId)).thenReturn(Optional.empty());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/{id}", productId)
@@ -143,7 +144,7 @@ public class ProductControllerTest {
         mockMvc
                 .perform(delete("/products/{id}", 2L)
                         .contentType(MediaType.APPLICATION_JSON))
-                            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -153,5 +154,27 @@ public class ProductControllerTest {
                 .perform(delete("/products/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testCreateProduct_UniqueName() throws Exception {
+        ProductDTO productDTO = new ProductDTO("ProdutoNovo", "Descrição do Produto", 9.99);
+        mockMvc.perform(MockMvcRequestBuilders.post("/products")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(productDTO)))
+                .andExpect(status().isCreated());
+
+        verify(productService, times(1)).createProductService(any(ProductModel.class));
+    }
+
+    @Test
+    public void testCreateProduct_DuplicateName() throws Exception {
+        ProductDTO productDTO = new ProductDTO("ProdutoExistente", "Descrição do Produto", 9.99);
+        mockMvc.perform(MockMvcRequestBuilders.post("/products")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(productDTO)))
+                .andExpect(status().isBadRequest());
+
+        verify(productService, times(0)).createProductService(any(ProductModel.class));
     }
 }
