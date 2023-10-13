@@ -1,7 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
-import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
@@ -46,6 +45,7 @@ public class ProductController {
             throw new ProductNotFoundException("Product Not Found");
         }
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteProduct(@PathVariable("id") long id) {
         var findProducts = productService.findProductByIdService(id);
@@ -53,10 +53,9 @@ public class ProductController {
             productService.deleteProductById(id);
             return ResponseEntity.status(HttpStatus.OK).build();
         } else {
-            throw new ProductNotFoundException("Product not found " +id);
+            throw new ProductNotFoundException("Product not found " + id);
         }
-     }
-}
+    }
 
     @PostMapping
     public ResponseEntity<Object> createProduct(@RequestBody @Valid ProductDTO productDTO) {
