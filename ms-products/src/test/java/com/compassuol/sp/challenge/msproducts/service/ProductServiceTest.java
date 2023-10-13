@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
