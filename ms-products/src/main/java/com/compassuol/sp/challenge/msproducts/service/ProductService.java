@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.service;
 
+import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
@@ -31,6 +32,15 @@ public class ProductService {
     public Optional<ProductModel> findProductByIdService(long id) {
         return productRepository.findById(id);
     }
+
+    public void deleteProductById(long id) {
+        Optional<ProductModel> existingProduct = productRepository.findById(id);
+        if (existingProduct.isEmpty()) {
+            throw new ProductNotFoundException("Product not found " +id);
+        }
+        productRepository.delete(existingProduct.get());
+    }
+
 
     public boolean isProductExistsByName(String name) {
         return productRepository.existsByName(name);

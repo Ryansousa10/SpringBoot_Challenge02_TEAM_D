@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.service;
 
+import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,16 +11,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class ProductServiceTest {
@@ -66,5 +65,28 @@ public class ProductServiceTest {
         when(productRepository.save(INVALID_PRODUCT)).thenReturn(null);
         ProductModel product = productService.updateProductService(INVALID_PRODUCT, INVALID_PRODUCT_DTO);
         assertNull(product);
+    }
+
+    @Test
+    public void testDeleteProductById() {
+        long productId = 1;
+        ProductModel product = new ProductModel();
+        product.setId(productId);
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+
+        productService.deleteProductById(productId);
+
+        verify(productRepository, times(1)).findById(productId);
+        verify(productRepository, times(1)).delete(product);
+    }
+
+    @Test
+    public void testDeleteProductByIdNotFound() {
+        long productId = 1;
+        when(productRepository.findById(productId)).thenReturn(Optional.empty());
+
+        // Use uma expressão lambda para capturar a exceção lançada
+        org.junit.jupiter.api.Assertions.assertThrows(ProductNotFoundException.class, () -> {
+        productService.deleteProductById(productId);});
     }
 }

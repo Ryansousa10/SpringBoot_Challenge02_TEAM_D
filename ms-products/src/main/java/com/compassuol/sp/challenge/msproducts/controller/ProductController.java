@@ -1,6 +1,7 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
@@ -29,7 +30,7 @@ public class ProductController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Object> updateProduct(@PathVariable("id") long id, @RequestBody @Valid ProductDTO productDTO) {
         var product = productService.findProductByIdService(id);
-        if (product.isEmpty()) throw new ProductNotFoundException("product not found");
+        if (product.isEmpty()) throw new ProductNotFoundException("Product not found");
 
         var savedProduct = productService.updateProductService(product.get(), productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
@@ -45,6 +46,17 @@ public class ProductController {
             throw new ProductNotFoundException("Product Not Found");
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("id") long id) {
+        var findProducts = productService.findProductByIdService(id);
+        if (findProducts.isPresent()) {
+            productService.deleteProductById(id);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            throw new ProductNotFoundException("Product not found " +id);
+        }
+     }
+}
 
     @PostMapping
     public ResponseEntity<Object> createProduct(@RequestBody @Valid ProductDTO productDTO) {
