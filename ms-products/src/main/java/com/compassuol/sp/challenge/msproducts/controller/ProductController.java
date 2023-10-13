@@ -34,12 +34,13 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable("id") long id) {
-        try {
+    public ResponseEntity<Object> deleteProduct(@PathVariable("id") long id) {
+        var findProducts = productService.findProductByIdService(id);
+        if (findProducts.isPresent()) {
             productService.deleteProductById(id);
             return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (ProductNotFoundException ex) {
-            throw new ProductNotFoundException("Product not found" +id);
+        } else {
+            throw new ProductNotFoundException("Product not found " +id);
         }
-    }
+     }
 }

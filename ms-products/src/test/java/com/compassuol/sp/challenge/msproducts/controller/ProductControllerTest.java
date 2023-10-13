@@ -118,18 +118,18 @@ public class ProductControllerTest {
     @Test
     public void deleteProduct_withInvalidId_ReturnsException() throws Exception {
         when(productService.findProductByIdService(2L)).thenThrow(ProductNotFoundException.class);
-        ProductController productController = new ProductController(productService);
-        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
-        mockMvc.perform(delete("/products/{id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON));
+        mockMvc
+                .perform(delete("/products/{id}", 2L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound());
     }
 
     @Test
     public void deleteProduct_withValidId_ReturnsNoContent() throws Exception {
         when(productService.findProductByIdService(1L)).thenReturn(Optional.of(VALID_PRODUCT));
-        ProductController productController = new ProductController(productService);
-        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
-        mockMvc.perform(delete("/products/{id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON));
+        mockMvc
+                .perform(delete("/products/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }

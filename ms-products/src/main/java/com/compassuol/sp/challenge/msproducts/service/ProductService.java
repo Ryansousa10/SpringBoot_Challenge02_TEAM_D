@@ -32,11 +32,13 @@ public class ProductService {
     public Optional<ProductModel> findProductByIdService(long id) {
         return productRepository.findById(id);
     }
-    public void deleteProductById(long id) {
-        ProductModel existingProduct = productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
 
-        productRepository.delete(existingProduct);
+    public void deleteProductById(long id) {
+        Optional<ProductModel> existingProduct = productRepository.findById(id);
+        if (existingProduct.isEmpty()) {
+            throw new ProductNotFoundException("Product not found " +id);
+        }
+        productRepository.delete(existingProduct.get());
     }
 
 }
