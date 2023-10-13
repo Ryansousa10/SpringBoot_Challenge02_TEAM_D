@@ -29,7 +29,7 @@ public class ProductController {
     public ResponseEntity<Object> updateProduct(@PathVariable("id") long id,
                                                 @RequestBody @Valid ProductDTO productDTO) {
         var product = productService.findProductByIdService(id);
-        if (product.isEmpty()) throw new ProductNotFoundException("product not found");
+        if (product.isEmpty()) throw new ProductNotFoundException("Product not found");
 
         var savedProduct = productService.updateProductService(product.get(), productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
@@ -45,4 +45,14 @@ public class ProductController {
             throw new ProductNotFoundException("Product Not Found");
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("id") long id) {
+        var findProducts = productService.findProductByIdService(id);
+        if (findProducts.isPresent()) {
+            productService.deleteProductById(id);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            throw new ProductNotFoundException("Product not found " +id);
+        }
+     }
 }

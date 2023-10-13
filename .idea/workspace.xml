@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-products/src/test/java/com/compassuol/sp/challenge/msproducts/controller/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/test/java/com/compassuol/sp/challenge/msproducts/controller/ProductControllerTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,56 +38,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev-rian",
-    "last_opened_file_path": "C:/Users/rianb/OneDrive/Área de Trabalho/SpringBoot_Challenge02_TEAM_D/ms-products",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev-rian&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rianb/OneDrive/Área de Trabalho/SpringBoot_Challenge02_TEAM_D/ms-products&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.compassuol.sp.challenge.msproducts.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProductControllerTest.testGetProductsEmpty">
+  <component name="RunManager" selected="Application.ms-product">
     <configuration name="ms-product" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.MsProductsApplication" />
       <module name="ms-products" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.testGetProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-products" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.controller.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testGetProducts" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductControllerTest.testGetProductsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-products" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.controller.ProductControllerTest" />
-      <option name="METHOD_NAME" value="testGetProductsEmpty" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,17 +92,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductControllerTest.updateProduct_withValidData_ReturnsCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductServiceTest.testGetAllProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ms-products" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.controller.*" />
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.controller.ProductControllerTest" />
-      <option name="METHOD_NAME" value="updateProduct_withValidData_ReturnsCreated" />
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.service.ProductServiceTest" />
+      <option name="METHOD_NAME" value="testGetAllProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.updateProduct_withInvalidData_ReturnsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.service.ProductServiceTest" />
+      <option name="METHOD_NAME" value="updateProduct_withInvalidData_ReturnsNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.updateProduct_withValidData_ReturnsProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msproducts.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msproducts.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.service.ProductServiceTest" />
+      <option name="METHOD_NAME" value="updateProduct_withValidData_ReturnsProduct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductControllerTest.testGetProductsEmpty" />
-        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
-        <item itemvalue="JUnit.ProductControllerTest.updateProduct_withValidData_ReturnsCreated" />
-        <item itemvalue="JUnit.ProductControllerTest.updateProduct_withInvalidId_ReturnsException" />
+        <item itemvalue="JUnit.ProductServiceTest.updateProduct_withInvalidData_ReturnsNull" />
+        <item itemvalue="JUnit.ProductServiceTest.updateProduct_withValidData_ReturnsProduct" />
+        <item itemvalue="JUnit.ProductServiceTest.testGetAllProducts" />
         <item itemvalue="JUnit.ProductControllerTest.updateProduct_withInvalidData_returnsException" />
+        <item itemvalue="JUnit.ProductControllerTest.updateProduct_withInvalidId_ReturnsException" />
       </list>
     </recent_temporary>
   </component>

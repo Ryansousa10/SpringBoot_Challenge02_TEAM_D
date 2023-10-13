@@ -92,3 +92,43 @@ paths:
                     type: string
                   message:
                     type: string
+
+    delete:
+      summary: Delete product by id
+      description: Delete products  - this endpoint delete products in database
+      parameters:
+        - name: id
+          in: query
+          description: product id is needed for finding in database
+          required: true
+          schema:
+            type: long
+      responses:
+        200:
+          description: success updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: long
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  value:
+                    type: double
+        404:
+          description: product id not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  status:
+                    type: string
+                  message:
+                    type: string
