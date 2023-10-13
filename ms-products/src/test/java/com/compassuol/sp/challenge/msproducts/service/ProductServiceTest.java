@@ -18,7 +18,6 @@ import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT;
 import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
