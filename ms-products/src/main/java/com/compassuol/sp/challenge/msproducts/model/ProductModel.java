@@ -30,4 +30,20 @@ public class ProductModel {
         this.description = description;
         this.value = value;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 }

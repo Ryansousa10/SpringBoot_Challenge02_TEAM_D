@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -32,6 +33,17 @@ public class ProductController {
 
         var savedProduct = productService.updateProductService(product.get(), productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<Object> getProductById(@PathVariable Long productId) {
+
+        Optional<ProductModel> product = productService.findProductByIdService(productId);
+        if (product.isPresent()) {
+            return ResponseEntity.ok(product.get());
+        } else {
+            throw new ProductNotFoundException("Product Not Found");
+        }
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteProduct(@PathVariable("id") long id) {
