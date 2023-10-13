@@ -1,5 +1,12 @@
 package com.compassuol.sp.challenge.msproducts.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.VALID_PRODUCT_DTO;
+import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.INVALID_PRODUCT_DTO;
+
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
 import com.compassuol.sp.challenge.msproducts.service.ProductService;
@@ -20,10 +27,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
-import static com.compassuol.sp.challenge.msproducts.constants.ProductsConstants.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -131,5 +135,23 @@ public class ProductControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(INVALID_PRODUCT_DTO)))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void deleteProduct_withInvalidId_ReturnsException() throws Exception {
+        when(productService.findProductByIdService(2L)).thenThrow(ProductNotFoundException.class);
+        mockMvc
+                .perform(delete("/products/{id}", 2L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void deleteProduct_withValidId_ReturnsNoContent() throws Exception {
+        when(productService.findProductByIdService(1L)).thenReturn(Optional.of(VALID_PRODUCT));
+        mockMvc
+                .perform(delete("/products/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }
