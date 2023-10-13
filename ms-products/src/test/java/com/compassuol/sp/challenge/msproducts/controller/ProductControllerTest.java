@@ -76,7 +76,6 @@ public class ProductControllerTest {
     public void testGetProductByIdSuccess() throws Exception {
         Long productId = 1L;
         ProductModel product = new ProductModel("Product 1", "Product 1 description", 10.0);
-        // when(productRepository.findById(productId)).thenReturn(Optional.of(product));
         when(productService.findProductByIdService(productId)).thenReturn(Optional.of(product));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/products/{id}", productId)
