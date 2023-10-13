@@ -33,15 +33,10 @@ public class ProductService {
     }
 
     public boolean isProductExistsByName(String name) {
-        // Implemente a lógica para verificar se um produto com o mesmo nome já existe no banco de dados.
-        // Você pode usar o método findByNome do seu repositório, se ele existir, ou implementar sua própria lógica de verificação.
-        // Por exemplo:
         return productRepository.existsByName(name);
     }
 
     public ProductModel createProductService(ProductModel productModel) {
-        // Implemente a lógica para criar um novo produto no banco de dados.
-        // Por exemplo:
         return productRepository.save(productModel);
     }
 }
