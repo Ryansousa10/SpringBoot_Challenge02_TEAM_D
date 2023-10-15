@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class OrderModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @OneToMany(mappedBy = "orderModelRelation")
     private List<OrderProductsModel> products;
     @OneToOne(cascade = CascadeType.ALL)
@@ -36,17 +39,22 @@ public class OrderModel {
     private Date create_date;
     @Enumerated(EnumType.STRING)
     private StatusOrderEnum status;
-    private String cancel_reason = "";
+    private String cancel_reason;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date cancel_date;
 
     public OrderModel(List<OrderProductsModel> products, AddressModel address,
-                      PaymentTypeEnum payment_method, Double subtotal_value, StatusOrderEnum status) {
+                      PaymentTypeEnum payment_method, Double subtotal_value,
+                      StatusOrderEnum status, String cancel_reason) throws ParseException {
         this.products = products;
         this.address = address;
         this.payment_method = payment_method;
         this.subtotal_value = subtotal_value;
         this.status = status;
+        this.cancel_reason = cancel_reason;
+
+        if (!this.cancel_reason.isEmpty()) this.cancel_date = DateFormat.getDateInstance()
+                .parse(String.valueOf(LocalDateTime.now()));
 
         Double percentage;
 
