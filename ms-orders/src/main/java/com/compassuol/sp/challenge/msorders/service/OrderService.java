@@ -6,8 +6,12 @@ import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.Orde
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
+import com.compassuol.sp.challenge.msorders.model.OrderModel;
+import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -21,8 +25,9 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
-    public void getAllOrdersService() {
+    public List<OrderModel> getAllOrdersService() {
         //para implementer
+        return orderRepository.findAll();
     }
 
     public void getOrderByIdService() {
@@ -31,6 +36,7 @@ public class OrderService {
 
     public void createOrderService() {
         //para implementer
+        //lembrar de usar o feign pra buscar os products
     }
 
     public void updateOrderService() {
