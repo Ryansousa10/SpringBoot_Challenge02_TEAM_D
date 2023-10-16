@@ -55,11 +55,8 @@ public class OrderService {
             String object = restTemplate.getForObject(apiUrl, String.class);
             ObjectMapper objectMapper = new ObjectMapper();
             cepObject = objectMapper.readValue(object, ViaCepAddress.class);
-        } catch (BusinessErrorException ex) {
-            throw new BusinessErrorException("postalCode has an error");
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (BusinessErrorException | JsonProcessingException ex) {
+            throw new BusinessErrorException("postalCode has an error");}
         //set fields
         assert cepObject != null;
         AddressModel address = new AddressModel(request.getAddress().getStreet(),
