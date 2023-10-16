@@ -29,6 +29,8 @@ public class AddressModel {
     @NotEmpty
     private String postalCode;
 
+
+
     @Override
     public String toString() {
         return "AddressModel{" +
@@ -40,4 +42,17 @@ public class AddressModel {
                 ", postalCode='" + postalCode + '\'' +
                 '}';
     }
+    public AddressModel() {
+
+    }
+    public AddressModel(Long id, String street, Integer number, String complement, String city, String state, String postalCode) {
+        this.id = id;
+        this.street = street;
+        this.number = number;
+        this.complement = complement;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+    }
+
 }

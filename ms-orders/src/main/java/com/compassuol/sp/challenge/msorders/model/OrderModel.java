@@ -34,9 +34,13 @@ public class OrderModel {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date create_date;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date updatedAt;  // Novo campo para data de atualização
     @Enumerated(EnumType.STRING)
     private StatusOrderEnum status;
     private String cancel_reason = "";
+    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date cancel_date;
 
@@ -59,5 +63,14 @@ public class OrderModel {
         }
 
         this.total_value = percentage;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+    }
+
+    public void setUpdateDate(Date date) {
+    }
+
+    public void setUpdatedAt(String format) {
     }
 }

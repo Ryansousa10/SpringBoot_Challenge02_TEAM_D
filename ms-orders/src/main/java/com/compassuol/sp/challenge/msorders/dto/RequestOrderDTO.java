@@ -23,7 +23,7 @@ public class RequestOrderDTO {
     private List<OrderProductsModel> products;
     @NotNull(message = "address field cannot be null")
     @Valid
-    private AddressRequestDTO address;
+    private AddressDTO address;
     @NotNull(message = "payment method field cannot be null")
     @Enumerated(EnumType.STRING)
     private PaymentTypeEnum payment_method;

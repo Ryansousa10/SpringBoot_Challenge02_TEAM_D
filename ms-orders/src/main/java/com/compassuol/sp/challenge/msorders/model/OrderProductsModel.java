@@ -17,4 +17,10 @@ public class OrderProductsModel {
     @ManyToOne
     @JoinColumn(name = "principal_class_id") //foreign key
     private OrderModel orderModelRelation;
+
+    public OrderProductsModel() {
+    }
+
+    public void setName(String name) {
+    }
 }
