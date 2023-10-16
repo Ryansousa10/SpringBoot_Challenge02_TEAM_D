@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/ResponseErrorTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/BusinessErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/ProductNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/3_Create_populate_table_address.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/4_Create__populate_table_orders.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderProductsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderProductsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V1__Create_database_ecommerce.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/1_Create_database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V2__Create_user_root.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/2_Create_user_root.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V1__Create_database_ecommerce.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/1__Create_database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V2__Create_user_root.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/2__Create_user_root.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V3__Create_table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/3__Create_table_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/V4__Populate_table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/4__Populate_table_products.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WXrMqKkzEiXjnRiTR6BWlyyJO1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging dev-djoseffer",
+    "last_opened_file_path": "D:/idea/projects/Challenge2/SpringBoot_Challenge02_TEAM_D",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.compassuol.sp.challenge.msorders.dto" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.compassuol.sp.challenge.msproducts.controller" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.MsOrdersApplicationTests">
+    <configuration name="ms-order-8000" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.MsOrdersApplication" />
+      <module name="ms-orders" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ms-products-8080" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msproducts.MsProductsApplication" />
+      <module name="ms-products" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MsOrdersApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.MsOrdersApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MsOrdersApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ms-orders" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.compassuol.sp.challenge.msorders.MsOrdersApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MsProductsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ms-products" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.compassuol.sp.challenge.msproducts.MsProductsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ms-products-8080" />
+      <item itemvalue="Application.ms-order-8000" />
+      <item itemvalue="JUnit.MsOrdersApplicationTests" />
+      <item itemvalue="Spring Boot.MsOrdersApplication" />
+      <item itemvalue="Spring Boot.MsProductsApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MsOrdersApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="" />
+      <created>1696889722238</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696889722238</updated>
+      <workItem from="1697380646700" duration="17472000" />
+      <workItem from="1697405695079" duration="84000" />
+      <workItem from="1697405802228" duration="156000" />
+      <workItem from="1697406002648" duration="17533000" />
+      <workItem from="1697477727725" duration="16344000" />
+      <workItem from="1697494871394" duration="3911000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

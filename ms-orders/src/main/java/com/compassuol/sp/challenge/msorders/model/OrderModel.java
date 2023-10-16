@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class OrderModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @OneToMany(mappedBy = "orderModelRelation")
     private List<OrderProductsModel> products;
     @OneToOne(cascade = CascadeType.ALL)
@@ -33,24 +35,25 @@ public class OrderModel {
     private Double total_value;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date create_date;
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date updatedAt;  // Novo campo para data de atualização
+    private LocalDateTime create_date;
     @Enumerated(EnumType.STRING)
     private StatusOrderEnum status;
-    private String cancel_reason = "";
-    @Temporal(TemporalType.TIMESTAMP)
+    private String cancel_reason;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date cancel_date;
+    private LocalDateTime cancel_date;
 
     public OrderModel(List<OrderProductsModel> products, AddressModel address,
-                      PaymentTypeEnum payment_method, Double subtotal_value, StatusOrderEnum status) {
+                      PaymentTypeEnum payment_method, Double subtotal_value,
+                      StatusOrderEnum status, String cancel_reason) throws ParseException {
         this.products = products;
         this.address = address;
         this.payment_method = payment_method;
         this.subtotal_value = subtotal_value;
         this.status = status;
+        this.cancel_reason = cancel_reason;
+        this.create_date = LocalDateTime.now();
+
+        if (!this.cancel_reason.isEmpty()) this.cancel_date = LocalDateTime.now();
 
         Double percentage;
 
@@ -69,8 +72,5 @@ public class OrderModel {
     }
 
     public void setUpdateDate(Date date) {
-    }
-
-    public void setUpdatedAt(String format) {
     }
 }

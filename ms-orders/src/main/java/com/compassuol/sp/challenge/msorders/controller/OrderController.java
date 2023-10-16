@@ -60,7 +60,6 @@ public class OrderController {
         // Atualize a data de atualização com a data e hora atuais no formato ISO 8601.
         existingOrder.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
 
-
         // Etapa 4: Atualize o pedido chamando um método do serviço.
         OrderModel updatedOrder = orderService.updateOrder(existingOrder, updateOrderDTO);
 

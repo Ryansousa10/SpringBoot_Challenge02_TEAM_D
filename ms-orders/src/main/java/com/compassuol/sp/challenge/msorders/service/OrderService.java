@@ -26,6 +26,11 @@ public class OrderService {
                 .orElseThrow(() -> new EntityNotFoundException("Order not found"));
     }
 
+    public List<OrderModel> getAllOrdersService() {
+        // Implemente este método de acordo com suas necessidades.
+        return orderRepository.findAll();
+    }
+
     public OrderModel updateOrder(OrderModel order, @Valid RequestOrderUpdateDTO updateOrderDTO) {
         if (updateOrderDTO.getPaymentMethod() != null) {
             order.setPaymentMethod(updateOrderDTO.getPaymentMethod());

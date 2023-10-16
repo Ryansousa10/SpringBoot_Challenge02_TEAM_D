@@ -2,6 +2,7 @@ package com.compassuol.sp.challenge.msorders.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +12,12 @@ import lombok.Setter;
 @Builder
 @Entity
 @Table(name = "address_tb")
+@AllArgsConstructor
 public class AddressModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @NotEmpty
     private String street;
     @NotEmpty
@@ -29,7 +31,9 @@ public class AddressModel {
     @NotEmpty
     private String postalCode;
 
+    public AddressModel() {
 
+    }
 
     @Override
     public String toString() {
@@ -42,17 +46,4 @@ public class AddressModel {
                 ", postalCode='" + postalCode + '\'' +
                 '}';
     }
-    public AddressModel() {
-
-    }
-    public AddressModel(Long id, String street, Integer number, String complement, String city, String state, String postalCode) {
-        this.id = id;
-        this.street = street;
-        this.number = number;
-        this.complement = complement;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-    }
-
 }
