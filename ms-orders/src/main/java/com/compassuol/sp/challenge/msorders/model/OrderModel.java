@@ -11,6 +11,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.List;
 
@@ -36,12 +38,12 @@ public class OrderModel {
     private Double total_value;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date create_date;
+    private LocalDateTime create_date;
     @Enumerated(EnumType.STRING)
     private StatusOrderEnum status;
     private String cancel_reason;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date cancel_date;
+    private LocalDateTime cancel_date;
 
     public OrderModel(List<OrderProductsModel> products, AddressModel address,
                       PaymentTypeEnum payment_method, Double subtotal_value,
@@ -52,9 +54,9 @@ public class OrderModel {
         this.subtotal_value = subtotal_value;
         this.status = status;
         this.cancel_reason = cancel_reason;
+        this.create_date = LocalDateTime.now();
 
-        if (!this.cancel_reason.isEmpty()) this.cancel_date = DateFormat.getDateInstance()
-                .parse(String.valueOf(LocalDateTime.now()));
+        if (!this.cancel_reason.isEmpty()) this.cancel_date = LocalDateTime.now();
 
         Double percentage;
 
