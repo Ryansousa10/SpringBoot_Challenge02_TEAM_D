@@ -13,10 +13,8 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
-    public List<OrderModel> getAllOrdersService() {
-        //para implementer
-        return orderRepository.findAll();
-    }
+    public List<OrderModel> getAllOrdersService()
+    {return orderRepository.findAll();}
 
     public void getOrderByIdService() {
         //para implementer
