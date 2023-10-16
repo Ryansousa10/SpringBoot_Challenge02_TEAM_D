@@ -7,23 +7,30 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepository orderRepository;
+//
+//    public List<OrderModel> getAllOrdersService() {
+//
+//    }
 
+//    public void getAllOrdersService() {
+//        //para implementer
+//        return orderRepository.findAll();
+//    }
 
-
-    public void getAllOrdersService() {
-        //para implementer
-    }
-    public Optional<OrderModel> findby(Long id) {
-        return orderRepository.findById(id);
-    }
+//    public Optional<OrderModel> findby(Long id) {
+//        return orderRepository.findById(id);
+//    }
 
     public void createOrderService() {
         //para implementer
+        //lembrar de usar o feign pra buscar os products
     }
 
     public void updateOrderService() {
