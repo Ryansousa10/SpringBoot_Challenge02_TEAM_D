@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ccdd3806-b0d9-418e-bd8e-30fc8b6a7957" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +96,13 @@
     &quot;DatabaseDriversLRU&quot;: [
       &quot;mysql&quot;
     ]
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev-rian&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rianb/OneDrive/Área de Trabalho/SpringBoot_Challenge02_TEAM_D/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
