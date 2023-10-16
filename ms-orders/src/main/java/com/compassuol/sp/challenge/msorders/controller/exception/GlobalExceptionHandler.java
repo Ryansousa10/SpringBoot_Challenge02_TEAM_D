@@ -26,10 +26,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(OrderCancellationNotAllowedException.class)
-    public ResponseEntity<Object> handleOrderCancellationNotAllowedException(OrderCancellationNotAllowedException ex) {
+    public ResponseEntity<ResponseErrorTemplate> handleOrderCancellationNotAllowedException(OrderCancellationNotAllowedException ex) {
+        int errorCode = HttpStatus.BAD_REQUEST.value();
+        String statusCode = HttpStatus.BAD_REQUEST.toString();
+        String message = ex.getMessage();
 
-        int error_code = HttpStatus.BAD_REQUEST.value();
-        String status_code = HttpStatus.BAD_REQUEST.toString();
+        ResponseErrorTemplate errorResponse = new ResponseErrorTemplate(errorCode, statusCode, message);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
 
     //exception for validation error
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -65,5 +70,3 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-}
-

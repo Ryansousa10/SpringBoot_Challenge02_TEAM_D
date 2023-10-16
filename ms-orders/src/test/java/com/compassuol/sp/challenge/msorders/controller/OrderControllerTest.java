@@ -32,7 +32,7 @@ public class OrderControllerTest {
     public void testCancelOrder() throws Exception {
 
         OrderModel sampleOrder = new OrderModel();
-        sampleOrder.setId(1L);
+        sampleOrder.setId(1);
 
         CancelOrderRequestDTO cancelRequest = new CancelOrderRequestDTO();
         cancelRequest.setCancelReason("Cancel Reason");

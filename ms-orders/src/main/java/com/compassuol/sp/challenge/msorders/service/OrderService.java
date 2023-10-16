@@ -6,17 +6,14 @@ import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.Orde
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
-import com.compassuol.sp.challenge.msorders.model.OrderModel;
-import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,7 +41,7 @@ public class OrderService {
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
-        Optional<OrderModel> optionalOrder = orderRepository.findById(id);
+        Optional<OrderModel> optionalOrder = orderRepository.findById(Math.toIntExact(id));
 
         if (optionalOrder.isPresent()) {
             OrderModel order = optionalOrder.get();
@@ -53,11 +50,15 @@ public class OrderService {
                 throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois já foi enviado.");
             }
 
-            LocalDate currentDate = LocalDate.now();
+            LocalDateTime currentDateTime = LocalDateTime.now();
 
             if (order.getCreate_date() != null) {
-                LocalDate createDate = order.getCreate_date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                long daysBetween = ChronoUnit.DAYS.between(createDate, currentDate);
+                LocalDateTime createDateTime = order.getCreate_date()
+                        .toInstant(ZoneId.systemDefault().getRules().getOffset(Instant.now()))
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDateTime();
+
+                long daysBetween = ChronoUnit.DAYS.between(createDateTime, currentDateTime);
 
                 if (daysBetween > 90) {
                     throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.");
@@ -69,8 +70,7 @@ public class OrderService {
             order.setStatus(StatusOrderEnum.CANCELED);
             order.setCancel_reason(cancelOrderRequest.getCancelReason());
 
-            Date cancelDate = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            order.setCancel_date(cancelDate);
+            order.setCancel_date(currentDateTime);
 
             return orderRepository.save(order);
         } else {

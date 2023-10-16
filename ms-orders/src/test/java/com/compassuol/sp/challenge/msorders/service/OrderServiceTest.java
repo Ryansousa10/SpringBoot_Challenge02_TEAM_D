@@ -15,6 +15,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
@@ -34,7 +37,7 @@ public class OrderServiceTest {
 
     @Before
     public void setUp() {
-        when(orderRepository.findById(1L)).thenReturn(Optional.empty());
+        when(orderRepository.findById(1)).thenReturn(Optional.empty());
     }
 
     @Test
@@ -54,10 +57,10 @@ public class OrderServiceTest {
 
         Long orderId = 1L;
         OrderModel order = new OrderModel();
-        order.setId(orderId);
+        order.setId(Math.toIntExact(orderId));
         order.setStatus(StatusOrderEnum.SENT);
 
-        when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
+        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.of(order));
 
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
 
@@ -70,14 +73,15 @@ public class OrderServiceTest {
 
     @Test
     public void testCancelOrderByIdServiceOrderOver90Days() {
-
         Long orderId = 1L;
         OrderModel order = new OrderModel();
-        order.setId(orderId);
+        order.setId(Math.toIntExact(orderId));
         order.setStatus(StatusOrderEnum.CREATED);
-        order.setCreate_date(new Date(System.currentTimeMillis() - 91 * 24 * 60 * 60 * 1000));
 
-        when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
+        Instant instant = Instant.ofEpochMilli(System.currentTimeMillis() - 91L * 24L * 60L * 60L * 1000L);
+        order.setCreate_date(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
+
+        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.of(order));
 
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
 
@@ -93,10 +97,10 @@ public class OrderServiceTest {
 
         Long orderId = 1L;
         OrderModel order = new OrderModel();
-        order.setId(orderId);
+        order.setId(Math.toIntExact(orderId));
         order.setStatus(StatusOrderEnum.CREATED);
 
-        when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
+        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.of(order));
 
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
         cancelOrderRequest.setCancelReason("Motivo do cancelamento");
