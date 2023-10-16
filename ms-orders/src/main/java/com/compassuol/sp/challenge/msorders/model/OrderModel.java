@@ -26,7 +26,8 @@ public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(mappedBy = "orderModelRelation")
+    @ElementCollection
+    @CollectionTable(name = "order_products_tb", joinColumns = @JoinColumn(name = "principal_class_id"))
     private List<OrderProductsModel> products;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "foreign_address_id")
@@ -56,18 +57,20 @@ public class OrderModel {
         this.cancel_reason = cancel_reason;
         this.create_date = LocalDateTime.now();
 
-        if (!this.cancel_reason.isEmpty()) this.cancel_date = LocalDateTime.now();
+        if (!this.cancel_reason.isEmpty()) {
+            this.cancel_date = LocalDateTime.now();
+            this.status = StatusOrderEnum.CANCELED;
+        }
 
         Double percentage;
 
         if (this.getPayment_method() == PaymentTypeEnum.PIX) {
-            this.discount = 0.5;
-            percentage = ((this.discount*100)/this.subtotal_value);
+            this.discount = 0.05;
+            percentage = this.subtotal_value*this.discount;
+            this.total_value = subtotal_value - percentage;
         } else {
             this.discount = 0.0;
-            percentage = this.subtotal_value;
+            this.total_value = subtotal_value;
         }
-
-        this.total_value = percentage;
     }
 }

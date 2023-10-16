@@ -2,6 +2,7 @@ package com.compassuol.sp.challenge.msorders.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class AddressModel {
     private int id;
     @NotEmpty
     private String street;
-    @NotEmpty
+    @NotNull
     private Integer number;
     @NotEmpty
     private String complement;
@@ -32,6 +33,16 @@ public class AddressModel {
     private String postalCode;
 
     public AddressModel() {}
+
+    public AddressModel(String street, Integer number, String complement,
+                        String city, String state, String postalCode) {
+        this.street = street;
+        this.number = number;
+        this.complement = complement;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+    }
 
     @Override
     public String toString() {
