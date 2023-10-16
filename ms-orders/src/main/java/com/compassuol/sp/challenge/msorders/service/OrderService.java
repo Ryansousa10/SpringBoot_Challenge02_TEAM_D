@@ -46,8 +46,7 @@ public class OrderService {
         for (OrderProductsModel productsModel: request.getProducts()) {
             ProductModelDTO product = proxy.getProductById(Long.parseLong(
                     String.valueOf(productsModel.getProduct_id())));
-            subtotalValue += product.getValue();
-        }
+            subtotalValue += productsModel.getQuantity() * product.getValue();}
         //get full address
         try {
             String apiUrl = "http://viacep.com.br/ws/"+ request.getAddress().getPostalCode() + "/json/";

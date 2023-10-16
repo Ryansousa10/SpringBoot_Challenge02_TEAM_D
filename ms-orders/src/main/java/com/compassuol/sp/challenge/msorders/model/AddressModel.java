@@ -19,17 +19,14 @@ public class AddressModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotEmpty
+    @NotEmpty(message = "street cannot be empty")
     private String street;
-    @NotNull
+    @NotNull(message = "number cannot be null")
     private Integer number;
-    @NotEmpty
     private String complement;
-    @NotEmpty
     private String city;
-    @NotEmpty
     private String state;
-    @NotEmpty
+    @NotEmpty(message = "postalCode cannot be empty")
     private String postalCode;
 
     public AddressModel() {}
