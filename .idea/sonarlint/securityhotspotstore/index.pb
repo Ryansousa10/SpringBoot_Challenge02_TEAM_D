@@ -49,3 +49,7 @@ Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/MsOrdersApplicatio
 \ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/CancelOrderResponseDTO.java,8\1\8126c99a9b51fa39347c0745ff5fbc62d8df7077
 „
 Tms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java,b\6\b6f8e4527e7437979e29683007040e8debfe1761
+ˆ
+Xms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java,2\1\21aca9cc9e576f411e10cd9bc554aa618cd904b5
+‘
+ams-products/src/test/java/com/compassuol/sp/challenge/msproducts/constants/ProductsConstants.java,e\9\e911711959ba8f9410858d182e655d6d26d1939d

@@ -109,5 +109,5 @@ public class OrderServiceTest {
 
         assertEquals(StatusOrderEnum.CANCELED, canceledOrder.getStatus());
         assertEquals("Motivo do cancelamento", canceledOrder.getCancel_reason());
-    }
+    }sta
 }

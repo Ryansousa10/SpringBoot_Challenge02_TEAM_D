@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccdd3806-b0d9-418e-bd8e-30fc8b6a7957" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/controller/OrderControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/controller/OrderControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-products/src/test/java/com/compassuol/sp/challenge/msproducts/controller/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/test/java/com/compassuol/sp/challenge/msproducts/controller/ProductControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,29 +72,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev-ryan-POSTcancel",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev-ryan-POSTcancel&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.compassuol.sp.challenge.msorders.dto" />
@@ -270,7 +261,7 @@
       <workItem from="1697376793680" duration="3252000" />
       <workItem from="1697380064305" duration="5827000" />
       <workItem from="1697386022040" duration="1282000" />
-      <workItem from="1697471854321" duration="8591000" />
+      <workItem from="1697471854321" duration="9651000" />
     </task>
     <servers />
   </component>
@@ -284,7 +275,7 @@
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderControllerTest.ic" NAME="OrderControllerTest Coverage Results" MODIFIED="1697482447993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.compassuol.sp.challenge.msorders.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msorders_in_ms_orders.ic" NAME="msorders in ms-orders Coverage Results" MODIFIED="1697486106609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msorders_in_ms_orders.ic" NAME="msorders in ms-orders Coverage Results" MODIFIED="1697486256975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$msproducts_in_ms_products.ic" NAME="msproducts in ms-products Coverage Results" MODIFIED="1697483506710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
