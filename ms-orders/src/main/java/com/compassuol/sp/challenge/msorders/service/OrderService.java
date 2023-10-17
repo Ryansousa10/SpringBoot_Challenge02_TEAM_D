@@ -14,19 +14,15 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-//
-//    public List<OrderModel> getAllOrdersService() {
-//
-//    }
 
-//    public void getAllOrdersService() {
-//        //para implementer
-//        return orderRepository.findAll();
-//    }
+   public List<OrderModel> getAllOrdersService() {
+       //para implementer
+       return orderRepository.findAll();
+   }
 
-//    public Optional<OrderModel> findby(Long id) {
-//        return orderRepository.findById(id);
-//    }
+   public Optional<OrderModel> findBy(Long id) {
+       return orderRepository.findById(id);
+   }
 
     public void createOrderService() {
         //para implementer

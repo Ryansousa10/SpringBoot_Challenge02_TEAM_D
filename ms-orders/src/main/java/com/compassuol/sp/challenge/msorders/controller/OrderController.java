@@ -29,7 +29,7 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable Long id) {
-        Optional<OrderModel> order = orderService.findby(id);
+        Optional<OrderModel> order = orderService.findBy(id);
         if (order.isPresent()) {
             return ResponseEntity.ok(order.get());
         } else {
