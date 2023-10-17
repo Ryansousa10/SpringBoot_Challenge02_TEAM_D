@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: ms-orders
+  description: Descrição da API
+  version: 1.0.0
+paths:
+  /orders:
+    post:
+      summary: post orders
+      description: receive json payload with products order and save in database
+      requestBody:
+        required: true
+      response:
+        201:
+          description: successfully operation
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: received data don't be compatible
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+  /orders/{id}/cancel:
+    post:
+      summary: Cancel an order by ID
+      description: This endpoint allows you to cancel an order by its ID.
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the order to be canceled.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelOrderRequestDTO'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              example:
+                products:
+                  - product_id: 1
+                    quantity: 2
+                  - product_id: 2
+                    quantity: 2
+                address:
+                  street: Street name
+                  number: 10
+                  complement: details
+                  city: City name
+                  state: State name
+                  postal_code: 31333333
+                payment_method: PIX
+                subtotal_value: 100.00
+                discount: 0.5
+                total_value: 95.00
+                created_date: "2023-07-20T12:00:00Z"
+                status: CANCELED
+                cancel_reason: "Cancel reason"
+                cancel_date: "2023-07-20T12:00:00Z"
+        400:
+          description: Invalid data sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        404:
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        500:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+
+components:
+  schemas:
+    CancelOrderRequestDTO:
+      type: object
+      properties:
+        cancelReason:
+          type: string
+          description: The reason for canceling the order.
+
+    OrderModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the canceled order.
+
+    ErrorModel:
+      type: object
+      properties:
+        code:
+          type: integer
+        status:
+          type: string
+        message:
+          type: string

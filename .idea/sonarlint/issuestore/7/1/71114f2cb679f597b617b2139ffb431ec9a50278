@@ -1,0 +1,10 @@
+
+r	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ïæØúÿÿÿÿ8ã…ÓÌ³1
+r	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ïæØúÿÿÿÿ8ä…ÓÌ³1
+r	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Â‡Ûúÿÿÿÿ8å…ÓÌ³1
+n	java:S116"YRename this field "payment_method" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²È¯Ï
+s	java:S116 "YRename this field "subtotal_value" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÒ‰ëûÿÿÿÿ
+p	java:S116""VRename this field "total_value" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºÖ©úÿÿÿÿ
+r	java:S116%"VRename this field "create_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†øœù8î…ÓÌ³1
+t	java:S116("XRename this field "cancel_reason" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’”²†8î…ÓÌ³1
+r	java:S116*"VRename this field "cancel_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›‰¶˜8î…ÓÌ³1
