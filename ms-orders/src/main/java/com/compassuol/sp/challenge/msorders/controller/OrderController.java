@@ -29,6 +29,10 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable Long id) {
+        if (id <= 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de pedido inválido.");
+        }
+
         Optional<OrderModel> order = orderService.findBy(id);
         if (order.isPresent()) {
             return ResponseEntity.ok(order.get());
@@ -37,6 +41,11 @@ public class OrderController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
     }
+
+
+
+
+
 
 
     @PostMapping

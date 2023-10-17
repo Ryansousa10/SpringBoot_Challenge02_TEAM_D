@@ -7,11 +7,11 @@ paths:
   /orders/{id}:
     get:
       summary: Get an order by ID
-      description: This endpoint allows you to view an order by its ID.
+      description: This endpoint allows a get order by its ID.
       parameters:
         - name: id
           in: path
-          description: The ID of the order to view.
+          description: The ID of the order to get.
           required: true
           schema:
             type: integer
