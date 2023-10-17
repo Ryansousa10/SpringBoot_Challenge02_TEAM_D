@@ -1,7 +1,9 @@
 package com.compassuol.sp.challenge.msorders.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,21 +19,29 @@ public class AddressModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
-    @NotEmpty
+    @NotEmpty(message = "street cannot be empty")
     private String street;
-    @NotEmpty
+    @NotNull(message = "number cannot be null")
     private Integer number;
-    @NotEmpty
     private String complement;
-    @NotEmpty
     private String city;
-    @NotEmpty
     private String state;
-    @NotEmpty
+    @NotEmpty(message = "postalCode cannot be empty")
     private String postalCode;
 
     public AddressModel() {}
+
+    public AddressModel(String street, Integer number, String complement,
+                        String city, String state, String postalCode) {
+        this.street = street;
+        this.number = number;
+        this.complement = complement;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+    }
 
     @Override
     public String toString() {

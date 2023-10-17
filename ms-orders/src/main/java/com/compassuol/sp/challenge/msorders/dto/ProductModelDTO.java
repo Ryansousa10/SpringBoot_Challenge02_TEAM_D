@@ -12,5 +12,5 @@ public class ProductModelDTO {
     private Long id;
     private String name;
     private String description;
-    private Boolean value;
+    private Double value;
 }
