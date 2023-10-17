@@ -48,6 +48,17 @@ public class OrderServiceTests {
         verify(orderRepository, times(1)).findById(orderId);
     }
     @Test
+    public void testFindByIdWithInvalidId() {
+        Long invalidId = -1L;
+
+        when(orderRepository.findById(invalidId)).thenReturn(Optional.empty());
+
+        Optional<OrderModel> result = orderService.findBy(invalidId);
+
+        assertFalse(result.isPresent()); // Deve retornar Optional.empty() para um ID inválido
+    }
+
+    @Test
     public void getTestFindByIdNotFound() {
         Long orderId = 2L;
         when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
