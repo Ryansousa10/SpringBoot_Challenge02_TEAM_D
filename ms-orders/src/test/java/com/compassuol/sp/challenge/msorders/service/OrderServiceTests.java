@@ -13,15 +13,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.VIA_CEP_ADDRESS;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.REQUEST_ORDER_DTO;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.PRODUCT_MODEL_DTO;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.VIA_CEP;
+import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
@@ -35,6 +35,28 @@ public class OrderServiceTests {
 
     @Mock
     private ProductsProxy proxy;
+    @Test
+    public void getTestFindById() {
+        Long orderId = 1L;
+        OrderModel mockOrder = new OrderModel();
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(mockOrder));
+
+        Optional<OrderModel> result = orderService.findBy(orderId);
+
+        assertTrue(result.isPresent());
+        assertEquals(mockOrder, result.get());
+        verify(orderRepository, times(1)).findById(orderId);
+    }
+    @Test
+    public void getTestFindByIdNotFound() {
+        Long orderId = 2L;
+        when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
+
+        Optional<OrderModel> result = orderService.findBy(orderId);
+
+        assertFalse(result.isPresent());
+        verify(orderRepository, times(1)).findById(orderId);
+    }
 
     @Test
     public void CreateOrder_withInvalidData_ReturnsNull() throws ParseException, JsonProcessingException {
