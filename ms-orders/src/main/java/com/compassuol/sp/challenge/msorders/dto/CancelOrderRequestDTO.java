@@ -1,5 +1,7 @@
 package com.compassuol.sp.challenge.msorders.dto;
 
+import java.util.List;
+
 public class CancelOrderRequestDTO {
     private String cancelReason;
 
