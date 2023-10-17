@@ -62,7 +62,8 @@ public class ProductController {
         if (productService.isProductExistsByName(productDTO.getName())) {
             throw new BusinessErrorException("Produto com o mesmo nome já existe.");
         }
-        ProductModel newProduct = new ProductModel(productDTO.getName(), productDTO.getDescription(), productDTO.getValue());
+        ProductModel newProduct = new ProductModel(productDTO.getName(),
+                productDTO.getDescription(), productDTO.getValue());
         ProductModel savedProduct = productService.createProductService(newProduct);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
