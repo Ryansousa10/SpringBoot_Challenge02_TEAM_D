@@ -53,3 +53,13 @@ Tms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel
 Xms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java,2\1\21aca9cc9e576f411e10cd9bc554aa618cd904b5
 ‘
 ams-products/src/test/java/com/compassuol/sp/challenge/msproducts/constants/ProductsConstants.java,e\9\e911711959ba8f9410858d182e655d6d26d1939d
+Š
+Zms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderProductsModel.java,a\1\a1a7bc32bd99000525b3cfc786d2c551d7ad275c
+ƒ
+Sms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ViaCepAddress.java,e\d\ed70e3f50a85813251657f3932a67fb1b6ab240d
+Š
+Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/constants/ConstantOrders.java,1\2\128319043422e6bd863a0eb844a9415058acee2d
+…
+Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ProductModelDTO.java,d\c\dcf2538744cfbc7e6ae918ace5ab21e7d753f46d
+‡
+Wms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java,6\c\6c769ff73330eca85963e72462e2c4dd707b2774
