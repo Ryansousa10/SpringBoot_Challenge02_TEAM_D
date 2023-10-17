@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: ms-orders
+  description: Descrição da API
+  version: 1.0.0
+paths:
+  /orders:
+    post:
+      summary: post orders
+      description: receive json payload with products order and save in database
+      requestBody:
+        required: true
+      response:
+        201:
+          description: successfully operation
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: received data don't be compatible
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object

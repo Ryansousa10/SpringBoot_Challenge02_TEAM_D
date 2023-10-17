@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61ac43e3-81d8-4df3-8fdb-94a92e33e0dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/constants/ConstantOrders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/static/swagger/api-msorder.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/static/swagger/api-msorder.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
       <recent name="com.compassuol.sp.challenge.msproducts.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ms-order-8000">
+  <component name="RunManager" selected="Application.ms-products-8080">
     <configuration name="ms-order-8000" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.MsOrdersApplication" />
       <module name="ms-orders" />
@@ -79,10 +80,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTests" />
+      <option name="METHOD_NAME" value="CreateOrder_withInvalidData_ReturnsNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTests.CreateOrder_withValidData_ReturnsCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTests" />
+      <option name="METHOD_NAME" value="CreateOrder_withValidData_ReturnsCreated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTests.CreateOrder_withValidData_ReturnsObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTests" />
+      <option name="METHOD_NAME" value="CreateOrder_withValidData_ReturnsObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTests.testCreateOrderService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTests" />
+      <option name="METHOD_NAME" value="testCreateOrderService" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.ms-products-8080" />
       <item itemvalue="Application.ms-order-8000" />
+      <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull" />
+      <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withValidData_ReturnsCreated" />
+      <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withValidData_ReturnsObject" />
+      <item itemvalue="JUnit.OrderServiceTests.testCreateOrderService" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull" />
+        <item itemvalue="JUnit.OrderServiceTests.testCreateOrderService" />
+        <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withValidData_ReturnsObject" />
+        <item itemvalue="JUnit.OrderServiceTests.CreateOrder_withValidData_ReturnsCreated" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -94,5 +171,10 @@
       <updated>1696889722238</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTests_CreateOrder_withInvalidData_ReturnsNull.ic" NAME="OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull Coverage Results" MODIFIED="1697502969581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.compassuol.sp.challenge.msorders.service.*</FILTER>
+    </SUITE>
   </component>
 </project>
