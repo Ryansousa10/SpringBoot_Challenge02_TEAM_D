@@ -7,49 +7,30 @@ paths:
   /orders/{id}:
     get:
       summary: Get an order by ID
-      description: This endpoint allows a get order by its ID.
+      description: Retrieves an order by its unique ID.
       parameters:
-        - name: id
-          in: path
-          description: The ID of the order to get.
+        - in: path
+          name: id
           required: true
           schema:
             type: integer
+          description: Order ID to get.
       responses:
-        200:
-          description: Successful response
+        '200':
+          description: Operation carried out successfully
           content:
             application/json:
-              example:
-                order_id: 1
-                products:
-                  - product_id: 1
-                    quantity: 2
-                  - product_id: 2
-                    quantity: 2
-                address:
-                  street: Street name
-                  number: 10
-                  complement: details
-                  city: City name
-                  state: State name
-                  postal_code: 31333333
-                payment_method: PIX
-                subtotal_value: 100.00
-                discount: 0.5
-                total_value: 95.00
-                created_date: "2023-07-20T12:00:00Z"
-                status: COMPLETED
-        404:
+              schema:
+                type: object
+        '400':
+          description: Invalid order ID.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
           description: Order not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorModel'
-components:
-  schemas:
-    ErrorModel:
-      type: object
-      properties:
-        message:
-          type: string
+                type: object
