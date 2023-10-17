@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: ms-order
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_ecommerce?currentSchema=microservice2
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    open-in-view: true
