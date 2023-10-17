@@ -104,9 +104,8 @@ public class OrderService {
 
             order.setStatus(StatusOrderEnum.CANCELED);
             order.setCancel_reason(cancelOrderRequest.getCancelReason());
-
             order.setCancel_date(currentDateTime);
-
+            order.setSubtotal_value(order.getSubtotal_value());
             return orderRepository.save(order);
         } else {
             throw new OrderNotFoundException("Pedido não encontrado");
