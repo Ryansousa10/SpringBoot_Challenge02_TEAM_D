@@ -14,10 +14,3 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: true
-  flyway:
-    url: jdbc:mysql://localhost:3306/
-    schemas: db_ecommerce
-    cleanDisabled: false
-    cleanOnValidationError: true
-    user: root
-    password: root

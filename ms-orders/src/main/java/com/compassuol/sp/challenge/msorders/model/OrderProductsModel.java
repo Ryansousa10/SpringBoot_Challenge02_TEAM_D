@@ -8,13 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity
-@Table(name = "order_products_tb")
+@Embeddable
 public class OrderProductsModel {
-    @Id
-    private Long product_id;
+    private int product_id;
     private int quantity;
-    @ManyToOne
-    @JoinColumn(name = "principal_class_id") //foreign key
-    private OrderModel orderModelRelation;
+
+    public OrderProductsModel() {}
 }
