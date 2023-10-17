@@ -8,12 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -34,8 +31,10 @@ public class OrderModel {
     private AddressModel address;
     @Enumerated(EnumType.STRING)
     private PaymentTypeEnum payment_method;
+    @Column(precision = 10, scale = 2)
     private Double subtotal_value;
     private Double discount;
+    @Column(precision = 10, scale = 2)
     private Double total_value;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -52,7 +51,9 @@ public class OrderModel {
         this.products = products;
         this.address = address;
         this.payment_method = payment_method;
-        this.subtotal_value = subtotal_value;
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String stringDouble = decimalFormat.format(subtotal_value);
+        this.subtotal_value = decimalFormat.parse(stringDouble).doubleValue();
         this.status = status;
         this.cancel_reason = cancel_reason;
         this.create_date = LocalDateTime.now();
@@ -62,15 +63,15 @@ public class OrderModel {
             this.status = StatusOrderEnum.CANCELED;
         }
 
-        Double percentage;
+        double percentage;
 
         if (this.getPayment_method() == PaymentTypeEnum.PIX) {
             this.discount = 0.05;
             percentage = this.subtotal_value*this.discount;
-            this.total_value = subtotal_value - percentage;
+            this.total_value = decimalFormat.parse(stringDouble).doubleValue() - percentage;
         } else {
             this.discount = 0.0;
-            this.total_value = subtotal_value;
+            this.total_value = decimalFormat.parse(stringDouble).doubleValue();
         }
     }
 }

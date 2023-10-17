@@ -1,6 +1,7 @@
 package com.compassuol.sp.challenge.msorders.controller.exception;
 
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,16 @@ public class GlobalExceptionHandler {
 
         var response = new ResponseErrorTemplate(error_code, status_code, message);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(OrderCancellationNotAllowedException.class)
+    public ResponseEntity<ResponseErrorTemplate> handleOrderCancellationNotAllowedException(OrderCancellationNotAllowedException ex) {
+        int errorCode = HttpStatus.BAD_REQUEST.value();
+        String statusCode = HttpStatus.BAD_REQUEST.toString();
+        String message = ex.getMessage();
+
+        ResponseErrorTemplate errorResponse = new ResponseErrorTemplate(errorCode, statusCode, message);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
 
