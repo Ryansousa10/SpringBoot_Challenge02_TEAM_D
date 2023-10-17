@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msorders.controller;
 
+import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.Objects;
 
 
 @RestController
@@ -45,7 +45,8 @@ public class OrderController {
     }
 
     @PostMapping("/{id}/cancel")
-    public void cancelOrderById() {
-        //para implementer
+    public ResponseEntity<OrderModel> cancelOrderById(@PathVariable Long id, @RequestBody CancelOrderRequestDTO cancelOrderRequest) {
+        OrderModel canceledOrder = orderService.cancelOrderByIdService(id, cancelOrderRequest);
+        return ResponseEntity.ok(canceledOrder);
     }
 }
