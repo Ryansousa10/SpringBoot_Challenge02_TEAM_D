@@ -2,6 +2,8 @@ package com.compassuol.sp.challenge.msorders.model;
 
 import com.compassuol.sp.challenge.msorders.constant.PaymentTypeEnum;
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,7 @@ public class OrderModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @ElementCollection
     @CollectionTable(name = "order_products_tb", joinColumns = @JoinColumn(name = "principal_class_id"))
     private List<OrderProductsModel> products;
@@ -43,6 +45,7 @@ public class OrderModel {
     private StatusOrderEnum status;
     private String cancel_reason;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonProperty("cancel_date")
     private LocalDateTime cancel_date;
 
     public OrderModel(List<OrderProductsModel> products, AddressModel address,

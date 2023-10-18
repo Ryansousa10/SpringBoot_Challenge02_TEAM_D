@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS feedback_tb (
-    id INT PRIMARY KEY AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     scale VARCHAR(255),
     comment VARCHAR(255),
-    order_id INT UNSIGNED,
+    order_id BIGINT,
     FOREIGN KEY (order_id) REFERENCES order_tb (id)
 );
 

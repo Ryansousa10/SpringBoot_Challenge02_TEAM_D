@@ -37,7 +37,7 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public Optional<OrderModel> findBy(int id) {
+    public Optional<OrderModel> findBy(Long id) {
         return orderRepository.findById(id);
     }
 
@@ -46,8 +46,7 @@ public class OrderService {
         double subtotalValue = 0.0;
         //sum products value per id
         for (OrderProductsModel productsModel : request.getProducts()) {
-            ProductModelDTO product = proxy.getProductById(Long.parseLong(
-                    String.valueOf(productsModel.getProduct_id())));
+            ProductModelDTO product = proxy.getProductById(productsModel.getProduct_id());
             subtotalValue += productsModel.getQuantity() * product.getValue();
         }
         //get full address
@@ -62,9 +61,8 @@ public class OrderService {
         }
         //set fields
         assert cepObject != null;
-        AddressModel address = new AddressModel(request.getAddress().getStreet(),
-                request.getAddress().getNumber(), cepObject.getComplemento(),
-                cepObject.getLocalidade(), cepObject.getUf(), cepObject.getCep());
+        AddressModel address = getAddressModel(request, cepObject);
+
         //send to database
         OrderModel order = new OrderModel(request.getProducts(), address, request.getPayment_method(), subtotalValue,
                 StatusOrderEnum.CONFIRMED, "");
@@ -76,7 +74,7 @@ public class OrderService {
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
-        OrderModel order = orderRepository.findById(Math.toIntExact(id))
+        OrderModel order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
 
         if (order.getStatus() == StatusOrderEnum.SENT) {
@@ -101,5 +99,16 @@ public class OrderService {
         order.setSubtotal_value(order.getSubtotal_value());
 
         return orderRepository.save(order);
+    }
+
+    private AddressModel getAddressModel(RequestOrderDTO request, ViaCepAddress cepObject) {
+        return AddressModel.builder()
+                .number(request.getAddress().getNumber())
+                .complement(cepObject.getComplemento())
+                .city(cepObject.getLocalidade())
+                .state(cepObject.getUf())
+                .postalCode(cepObject.getCep())
+                .street(request.getAddress().getStreet())
+                .build();
     }
 }
