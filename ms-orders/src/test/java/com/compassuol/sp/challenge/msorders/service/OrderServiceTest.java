@@ -46,7 +46,7 @@ public class OrderServiceTest {
 
     @Before
     public void setUp() {
-        when(orderRepository.findById(1)).thenReturn(Optional.empty());
+        when(orderRepository.findById(1L)).thenReturn(Optional.empty());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class OrderServiceTest {
         long orderId = 1L;
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
 
-        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.empty());
+        when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
 
         try {
             orderService.cancelOrderByIdService(orderId, cancelOrderRequest);
@@ -76,10 +76,10 @@ public class OrderServiceTest {
 
         long orderId = 1L;
         OrderModel order = new OrderModel();
-        order.setId(Math.toIntExact(orderId));
+        order.setId(orderId);
         order.setStatus(StatusOrderEnum.SENT);
 
-        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.of(order));
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
 
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
 
@@ -94,13 +94,13 @@ public class OrderServiceTest {
     public void testCancelOrderByIdServiceOrderOver90Days() {
         long orderId = 1L;
         OrderModel order = new OrderModel();
-        order.setId(Math.toIntExact(orderId));
+        order.setId(orderId);
         order.setStatus(StatusOrderEnum.CREATED);
 
         Instant instant = Instant.ofEpochMilli(System.currentTimeMillis() - 91L * 24L * 60L * 60L * 1000L);
         order.setCreate_date(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
 
-        when(orderRepository.findById(Math.toIntExact(orderId))).thenReturn(Optional.of(order));
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
 
         CancelOrderRequestDTO cancelOrderRequest = new CancelOrderRequestDTO();
 
@@ -112,7 +112,7 @@ public class OrderServiceTest {
     }
     @Test
     public void getTestFindByIdNotFound() {
-        int orderId = 2;
+        long orderId = 2;
         when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
 
         Optional<OrderModel> result = orderService.findBy(orderId);
@@ -122,7 +122,7 @@ public class OrderServiceTest {
     }
     @Test
     public void getTestFindById() {
-        int orderId = 1;
+        long orderId = 1;
         OrderModel mockOrder = new OrderModel();
         when(orderRepository.findById(orderId)).thenReturn(Optional.of(mockOrder));
 
@@ -134,7 +134,7 @@ public class OrderServiceTest {
     }
     @Test
     public void testFindByIdWithInvalidId() {
-        int invalidId = -1;
+        long invalidId = -1;
 
         when(orderRepository.findById(invalidId)).thenReturn(Optional.empty());
 

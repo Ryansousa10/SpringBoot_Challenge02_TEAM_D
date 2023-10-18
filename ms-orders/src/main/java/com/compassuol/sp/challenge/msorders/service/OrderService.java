@@ -74,31 +74,27 @@ public class OrderService {
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
-        OrderModel order = orderRepository.findById(id)
+        return orderRepository.findById(id)
+                .map(order -> {
+                    if (order.getStatus() == StatusOrderEnum.SENT) {
+                        throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois já foi enviado.");
+                    }
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+                    if (order.getCreate_date() != null) {
+                        long daysBetween = ChronoUnit.DAYS.between(order.getCreate_date().toLocalDate(), currentDateTime);
+                        if (daysBetween > 90) {
+                            throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.");
+                        }
+                    } else {
+                        throw new OrderCancellationNotAllowedException("A data de criação do pedido é nula.");
+                    }
+                    order.setStatus(StatusOrderEnum.CANCELED);
+                    order.setCancel_reason(cancelOrderRequest.getCancelReason());
+                    order.setCancel_date(currentDateTime);
+                    order.setSubtotal_value(order.getSubtotal_value());
+                    return orderRepository.save(order);
+                })
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
-
-        if (order.getStatus() == StatusOrderEnum.SENT) {
-            throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois já foi enviado.");
-        }
-
-        LocalDateTime currentDateTime = LocalDateTime.now();
-
-        if (order.getCreate_date() != null){
-            long daysBetween = ChronoUnit.DAYS.between(order.getCreate_date().toLocalDate(), currentDateTime);
-
-            if (daysBetween > 90) {
-                throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.");
-            }
-        } else {
-            throw new OrderCancellationNotAllowedException("A data de criação do pedido é nula.");
-        }
-
-        order.setStatus(StatusOrderEnum.CANCELED);
-        order.setCancel_reason(cancelOrderRequest.getCancelReason());
-        order.setCancel_date(currentDateTime);
-        order.setSubtotal_value(order.getSubtotal_value());
-
-        return orderRepository.save(order);
     }
 
     private AddressModel getAddressModel(RequestOrderDTO request, ViaCepAddress cepObject) {
