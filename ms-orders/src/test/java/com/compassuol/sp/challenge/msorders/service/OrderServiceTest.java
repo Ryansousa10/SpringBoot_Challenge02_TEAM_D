@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.PRODUCT_MODEL_DTO;
@@ -142,5 +143,10 @@ public class OrderServiceTest {
 
         assertFalse(result.isPresent());
     }
+    @Test
+    public void testGetAllOrders() {
+        List<OrderModel> orders = orderService.getAllOrdersService();
 
+        assertNotNull(orders);
+    }
 }
