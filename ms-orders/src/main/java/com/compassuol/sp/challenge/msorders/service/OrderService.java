@@ -1,9 +1,9 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.BusinessErrorException;
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderCancellationNotAllowedException;
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderNotFoundException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.ProductModelDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

@@ -1,8 +1,8 @@
-package com.compassuol.sp.challenge.msorders.exception;
+package com.compassuol.sp.challenge.msorders.controller.exception;
 
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.BusinessErrorException;
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderCancellationNotAllowedException;
-import com.compassuol.sp.challenge.msorders.exception.errorTypes.ProductNotFoundException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

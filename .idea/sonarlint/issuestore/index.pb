@@ -53,3 +53,5 @@ Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/constants/Constant
 Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ProductModelDTO.java,d\c\dcf2538744cfbc7e6ae918ace5ab21e7d753f46d
 á
 Wms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java,6\c\6c769ff73330eca85963e72462e2c4dd707b2774
+ù
+mms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java,e\8\e82f893bc951d9b14b23458764d358a5f4960b40
