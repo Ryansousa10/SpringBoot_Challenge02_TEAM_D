@@ -15,7 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ms-orders" options="-parameters" />
-      <module name="ms-products" options="-parameters" />
+      <module name="ms-products" options="" />
     </option>
   </component>
 </project>
