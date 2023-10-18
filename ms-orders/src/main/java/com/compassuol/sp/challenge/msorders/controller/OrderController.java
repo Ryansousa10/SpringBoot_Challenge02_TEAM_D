@@ -23,7 +23,6 @@ import java.util.Optional;
 public class OrderController {
 
     private final OrderService orderService;
-    private final ProductsProxy proxy;
 
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders() {
