@@ -9,6 +9,7 @@ import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,9 +26,9 @@ import java.util.Optional;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.PRODUCT_MODEL_DTO;
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.REQUEST_ORDER_DTO;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
@@ -109,6 +110,37 @@ public class OrderServiceTest {
             assertEquals("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.", e.getMessage());
         }
     }
+    @Test
+    public void getTestFindByIdNotFound() {
+        int orderId = 2;
+        when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
 
+        Optional<OrderModel> result = orderService.findBy(orderId);
+
+        assertFalse(result.isPresent());
+        verify(orderRepository, times(1)).findById(orderId);
+    }
+    @Test
+    public void getTestFindById() {
+        int orderId = 1;
+        OrderModel mockOrder = new OrderModel();
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(mockOrder));
+
+        Optional<OrderModel> result = orderService.findBy(orderId);
+
+        assertTrue(result.isPresent());
+        Assertions.assertEquals(mockOrder, result.get());
+        verify(orderRepository, times(1)).findById(orderId);
+    }
+    @Test
+    public void testFindByIdWithInvalidId() {
+        int invalidId = -1;
+
+        when(orderRepository.findById(invalidId)).thenReturn(Optional.empty());
+
+        Optional<OrderModel> result = orderService.findBy(invalidId);
+
+        assertFalse(result.isPresent());
+    }
 
 }
