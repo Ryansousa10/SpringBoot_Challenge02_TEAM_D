@@ -36,8 +36,8 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public void getOrderByIdService() {
-        //para implementer
+    public Optional<OrderModel> findBy(int id) {
+        return orderRepository.findById(id);
     }
 
     public OrderModel createOrderService(RequestOrderDTO request) throws ParseException {

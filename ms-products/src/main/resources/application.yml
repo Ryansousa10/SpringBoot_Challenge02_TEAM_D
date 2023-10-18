@@ -5,7 +5,7 @@ spring:
     name: ms-products
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_ecommerce
+    url: jdbc:mysql://localhost:3306/db_ecommerce?createDatabaseIfNotExist=true&severTimezone=UTC
     username: root
     password: root
   jpa:
