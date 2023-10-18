@@ -15,10 +15,6 @@ Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/RequestOrderDT
 pms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/exception/ResponseErrorTemplate.java,7\d\7d8fdc563f6ea7ad6319b947bf8c0496f09b3569
 Ç
 Rms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderModel.java,7\1\71114f2cb679f597b617b2139ffb431ec9a50278
-∑
-Üms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/OrderCancellationNotAllowedException.java,1\c\1ce2c6eafe784430a6282f11106962845174778b
-®
-xms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/OrderNotFoundException.java,e\0\e0e32594d086038fccdc0352feca549f089ab4d4
 °
 qms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/exception/GlobalExceptionHandler.java,6\d\6defded7239d1be6b4d3fb65b6fc90efb15d5966
 Ü
@@ -27,10 +23,6 @@ Vms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderServi
 [ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/CancelOrderRequestDTO.java,7\c\7c74a32c0bc2f417c7968f5c9bed88bbad829487
 ä
 Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java,4\8\48039ea41d9e24837d2b24d857b4987ca7e74cda
-ú
-lms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/ResponseErrorTemplate.java,a\7\a7595410fc71040bf7b382a1822fe4f7dde23260
-ù
-mms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java,e\8\e82f893bc951d9b14b23458764d358a5f4960b40
 Ö
 Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/MsOrdersApplication.java,7\8\78b283b608e59d74cf25a73d34a41609750210c7
 ñ
@@ -39,8 +31,6 @@ A
 ms-orders/pom.xml,3\1\31d3e7402fd214b5e2dc8bd78c4cd19b4f6dac1d
 å
 \ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java,9\f\9fef2234790ea94aa80edf0609ca89da9d3d5332
-ê
-`ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/controller/OrderControllerTest.java,c\9\c9646adf579e0c75d64dd5280896e2fdbf3d34e7
 ê
 `ms-products/src/test/java/com/compassuol/sp/challenge/msproducts/service/ProductServiceTest.java,8\1\813c03d3bb2a08d81c2fe5bce478efd49025b816
 ä
@@ -53,3 +43,15 @@ Tms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/AddressModel
 Xms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductModel.java,2\1\21aca9cc9e576f411e10cd9bc554aa618cd904b5
 ë
 ams-products/src/test/java/com/compassuol/sp/challenge/msproducts/constants/ProductsConstants.java,e\9\e911711959ba8f9410858d182e655d6d26d1939d
+ä
+Zms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderProductsModel.java,a\1\a1a7bc32bd99000525b3cfc786d2c551d7ad275c
+É
+Sms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ViaCepAddress.java,e\d\ed70e3f50a85813251657f3932a67fb1b6ab240d
+ä
+Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/constants/ConstantOrders.java,1\2\128319043422e6bd863a0eb844a9415058acee2d
+Ö
+Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ProductModelDTO.java,d\c\dcf2538744cfbc7e6ae918ace5ab21e7d753f46d
+á
+Wms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java,6\c\6c769ff73330eca85963e72462e2c4dd707b2774
+ù
+mms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java,e\8\e82f893bc951d9b14b23458764d358a5f4960b40
