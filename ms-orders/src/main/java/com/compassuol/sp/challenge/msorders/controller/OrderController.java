@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msorders.controller;
 
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
@@ -40,8 +41,7 @@ public class OrderController {
         if (order.isPresent()) {
             return ResponseEntity.ok(order.get());
         } else {
-            String errorMessage = "Pedido com ID " + id + " não encontrado.";
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+            throw new ProductNotFoundException("Pedido com ID " + id + " não encontrado.");
         }
     }
 
