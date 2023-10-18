@@ -5,7 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccdd3806-b0d9-418e-bd8e-30fc8b6a7957" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1ce2c6eafe784430a6282f11106962845174778b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7595410fc71040bf7b382a1822fe4f7dde23260" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9646adf579e0c75d64dd5280896e2fdbf3d34e7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0e32594d086038fccdc0352feca549f089ab4d4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e82f893bc951d9b14b23458764d358a5f4960b40" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/c/1ce2c6eafe784430a6282f11106962845174778b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/7/a7595410fc71040bf7b382a1822fe4f7dde23260" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/9/c9646adf579e0c75d64dd5280896e2fdbf3d34e7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/0/e0e32594d086038fccdc0352feca549f089ab4d4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/8/e82f893bc951d9b14b23458764d358a5f4960b40" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/ResponseErrorTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/ResponseErrorTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/BusinessErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/errorTypes/BusinessErrorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/OrderCancellationNotAllowedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/errorTypes/OrderCancellationNotAllowedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/OrderNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/errorTypes/OrderNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/errorTypes/ProductNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/exception/errorTypes/ProductNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/1_Create_database.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/2_Create_user_root.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/3_Create_populate_table_address.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V3__Create_populate_table_address.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/4_Create__populate_table_orders.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V4__Create__populate_table_orders.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/5_Create_table_orders_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V5__Create_table_orders_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-products/src/main/java/com/compassuol/sp/challenge/msproducts/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/1__Create_database.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/2__Create_user_root.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/3__Create_table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V1__Create_table_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/4__Populate_table_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V2__Populate_table_products.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +141,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rianb\OneDrive\Área de Trabalho\SpringBoot_Challenge02_TEAM_D\ms-orders\src\main\java\com\compassuol\sp\challenge\msorders\controller" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projetos\SpringBoot_Challenge02_TEAM_D\ms-orders\src\main\resources\db\migration" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.compassuol.sp.challenge.msorders.service" />
       <recent name="com.compassuol.sp.challenge.msorders.controller" />
@@ -136,7 +173,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OrderControllerTest">
+  <component name="RunManager" selected="Spring Boot.MsOrdersApplication">
     <configuration name="ms-order-8000" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.MsOrdersApplication" />
       <module name="ms-orders" />
@@ -153,6 +190,11 @@
     </configuration>
     <configuration name="1__Create_database.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/ms-products/src/main/resources/db/migration/1__Create_database.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <configuration name="V4__Create__populate_table_orders.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/ms-orders/src/main/resources/db/migration/V4__Create__populate_table_orders.sql" />
       <script-mode>FILE</script-mode>
       <method v="2" />
     </configuration>
@@ -182,22 +224,6 @@
       <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
       <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderServiceTest.testCancelOrderByIdServiceOrderNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.service" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.service.OrderServiceTest" />
-      <option name="METHOD_NAME" value="testCancelOrderByIdServiceOrderNotFound" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,9 +272,9 @@
       <item itemvalue="Application.ms-products-8080" />
       <item itemvalue="Application.ms-order-8000" />
       <item itemvalue="Database Script.1__Create_database.sql" />
+      <item itemvalue="Database Script.V4__Create__populate_table_orders.sql" />
       <item itemvalue="JUnit.OrderControllerTest" />
       <item itemvalue="JUnit.OrderServiceTest" />
-      <item itemvalue="JUnit.OrderServiceTest.testCancelOrderByIdServiceOrderNotFound" />
       <item itemvalue="JUnit.OrderServiceTest.testCancelOrderByIdServiceOrderSent" />
       <item itemvalue="JUnit.msorders in ms-orders" />
       <item itemvalue="Spring Boot.MsOrdersApplication" />
@@ -256,11 +282,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.V4__Create__populate_table_orders.sql" />
         <item itemvalue="JUnit.OrderControllerTest" />
         <item itemvalue="JUnit.OrderServiceTest" />
         <item itemvalue="JUnit.msorders in ms-orders" />
         <item itemvalue="JUnit.OrderServiceTest.testCancelOrderByIdServiceOrderSent" />
-        <item itemvalue="JUnit.OrderServiceTest.testCancelOrderByIdServiceOrderNotFound" />
       </list>
     </recent_temporary>
   </component>
@@ -279,11 +305,25 @@
       <workItem from="1697543349391" duration="155000" />
       <workItem from="1697550055077" duration="1213000" />
       <workItem from="1697557512452" duration="355000" />
+      <workItem from="1697567235437" duration="673000" />
+      <workItem from="1697570003988" duration="4684000" />
+      <workItem from="1697582880643" duration="1215000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTest_testCancelOrderByIdServiceOrderSent.ic" NAME="OrderServiceTest.testCancelOrderByIdServiceOrderSent Coverage Results" MODIFIED="1697549446054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

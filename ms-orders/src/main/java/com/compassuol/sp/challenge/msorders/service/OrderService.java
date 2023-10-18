@@ -1,9 +1,9 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
+import com.compassuol.sp.challenge.msorders.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderCancellationNotAllowedException;
+import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.ProductModelDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
@@ -20,12 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,19 +44,21 @@ public class OrderService {
         ViaCepAddress cepObject;
         double subtotalValue = 0.0;
         //sum products value per id
-        for (OrderProductsModel productsModel: request.getProducts()) {
+        for (OrderProductsModel productsModel : request.getProducts()) {
             ProductModelDTO product = proxy.getProductById(Long.parseLong(
                     String.valueOf(productsModel.getProduct_id())));
-            subtotalValue += productsModel.getQuantity() * product.getValue();}
+            subtotalValue += productsModel.getQuantity() * product.getValue();
+        }
         //get full address
         try {
-            String apiUrl = "http://viacep.com.br/ws/"+ request.getAddress().getPostalCode() + "/json/";
+            String apiUrl = "http://viacep.com.br/ws/" + request.getAddress().getPostalCode() + "/json/";
             RestTemplate restTemplate = new RestTemplate();
             String object = restTemplate.getForObject(apiUrl, String.class);
             ObjectMapper objectMapper = new ObjectMapper();
             cepObject = objectMapper.readValue(object, ViaCepAddress.class);
         } catch (BusinessErrorException | JsonProcessingException ex) {
-            throw new BusinessErrorException("postalCode has an error");}
+            throw new BusinessErrorException("postalCode has an error");
+        }
         //set fields
         assert cepObject != null;
         AddressModel address = new AddressModel(request.getAddress().getStreet(),
@@ -76,39 +75,30 @@ public class OrderService {
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
-        Optional<OrderModel> optionalOrder = orderRepository.findById(Math.toIntExact(id));
+        OrderModel order = orderRepository.findById(Math.toIntExact(id))
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
 
-        if (optionalOrder.isPresent()) {
-            OrderModel order = optionalOrder.get();
-
-            if (order.getStatus() == StatusOrderEnum.SENT) {
-                throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois já foi enviado.");
-            }
-
-            LocalDateTime currentDateTime = LocalDateTime.now();
-
-            if (order.getCreate_date() != null) {
-                LocalDateTime createDateTime = order.getCreate_date()
-                        .toInstant(ZoneId.systemDefault().getRules().getOffset(Instant.now()))
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDateTime();
-
-                long daysBetween = ChronoUnit.DAYS.between(createDateTime, currentDateTime);
-
-                if (daysBetween > 90) {
-                    throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.");
-                }
-            } else {
-                throw new OrderCancellationNotAllowedException("A data de criação do pedido é nula.");
-            }
-
-            order.setStatus(StatusOrderEnum.CANCELED);
-            order.setCancel_reason(cancelOrderRequest.getCancelReason());
-            order.setCancel_date(currentDateTime);
-            order.setSubtotal_value(order.getSubtotal_value());
-            return orderRepository.save(order);
-        } else {
-            throw new OrderNotFoundException("Pedido não encontrado");
+        if (order.getStatus() == StatusOrderEnum.SENT) {
+            throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois já foi enviado.");
         }
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        if (order.getCreate_date() != null) {
+            long daysBetween = ChronoUnit.DAYS.between(order.getCreate_date().toLocalDate(), currentDateTime);
+
+            if (daysBetween > 90) {
+                throw new OrderCancellationNotAllowedException("O pedido não pode ser cancelado, pois tem mais de 90 dias de criação.");
+            }
+        } else {
+            throw new OrderCancellationNotAllowedException("A data de criação do pedido é nula.");
+        }
+
+        order.setStatus(StatusOrderEnum.CANCELED);
+        order.setCancel_reason(cancelOrderRequest.getCancelReason());
+        order.setCancel_date(currentDateTime);
+        order.setSubtotal_value(order.getSubtotal_value());
+
+        return orderRepository.save(order);
     }
 }

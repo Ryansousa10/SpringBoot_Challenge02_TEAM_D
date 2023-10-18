@@ -1,8 +1,8 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
+import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderCancellationNotAllowedException;
+import com.compassuol.sp.challenge.msorders.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;

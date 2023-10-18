@@ -1,4 +1,4 @@
-package com.compassuol.sp.challenge.msorders.controller.exception;
+package com.compassuol.sp.challenge.msorders.exception;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.compassuol.sp.challenge.msorders.controller.exception.errorTypes;
+package com.compassuol.sp.challenge.msorders.exception.errorTypes;
 
 public class BusinessErrorException extends RuntimeException{
     public BusinessErrorException() {
