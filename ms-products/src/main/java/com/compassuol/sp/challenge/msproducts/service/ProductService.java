@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msproducts.service;
 
+import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msproducts.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msproducts.dto.ProductDTO;
 import com.compassuol.sp.challenge.msproducts.model.ProductModel;
@@ -48,5 +49,11 @@ public class ProductService {
 
     public ProductModel createProductService(ProductModel productModel) {
         return productRepository.save(productModel);
+    }
+
+    public void checkIfProductExistsByName(String productName) {
+        if (productRepository.existsByName(productName)) {
+            throw new BusinessErrorException("Produto com o mesmo nome já existe.");
+        }
     }
 }

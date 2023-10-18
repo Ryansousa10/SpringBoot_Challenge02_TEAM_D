@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msorders.controller;
 
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -27,8 +29,17 @@ public class OrderController {
     public ResponseEntity<List<OrderModel>> getAllOrders() {return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersService());}
 
     @GetMapping("/{id}")
-    public void getOrderById() {
-        //para implementer
+    public ResponseEntity<?> getOrderById(@PathVariable int id) {
+        if (id <= 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de pedido inválido.");
+        }
+
+        Optional<OrderModel> order = orderService.findBy(id);
+        if (order.isPresent()) {
+            return ResponseEntity.ok(order.get());
+        } else {
+            throw new ProductNotFoundException("Pedido com ID " + id + " não encontrado.");
+        }
     }
 
     @PostMapping
