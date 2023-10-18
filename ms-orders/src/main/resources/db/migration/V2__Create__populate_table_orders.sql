@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS order_tb (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    foreign_address_id INT UNSIGNED NOT NULL,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    foreign_address_id BIGINT NOT NULL,
     payment_method VARCHAR(255),
     subtotal_value DOUBLE,
     discount DOUBLE,
