@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -30,8 +31,18 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public void getOrderById() {
-        //para implementer
+    public ResponseEntity<?> getOrderById(@PathVariable int id) {
+        if (id <= 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de pedido inválido.");
+        }
+
+        Optional<OrderModel> order = orderService.findBy(id);
+        if (order.isPresent()) {
+            return ResponseEntity.ok(order.get());
+        } else {
+            String errorMessage = "Pedido com ID " + id + " não encontrado.";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
     }
 
     @PostMapping

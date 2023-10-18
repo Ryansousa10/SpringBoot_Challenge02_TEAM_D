@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.compassuol.sp.challenge.msorders.MsOrdersApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.003 s - in com.compassuol.sp.challenge.msorders.MsOrdersApplicationTests
