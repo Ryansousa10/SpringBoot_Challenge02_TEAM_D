@@ -12,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "feedback_tb")
 @NoArgsConstructor
+@AllArgsConstructor
 public class FeedbackModel {
 
     @Id
