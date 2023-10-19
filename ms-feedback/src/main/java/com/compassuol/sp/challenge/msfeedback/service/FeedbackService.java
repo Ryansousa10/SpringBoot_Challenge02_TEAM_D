@@ -25,7 +25,6 @@ public class FeedbackService {
     public FeedbackModel createFeedbackService(FeedbackRequestDTO request) {
         try {
             OrderResponseDTO feedbackResponse = proxy.getOrderById(request.getOrder_id());
-            System.out.println(feedbackResponse.getStatus());
             if (feedbackResponse.getStatus().equalsIgnoreCase("canceled"))
                 throw new BusinessErrorException("cannot create feedbacks for canceled orders");
         } catch (FeignException ex) {
@@ -37,7 +36,6 @@ public class FeedbackService {
     public void updateFeedbackService() {}
 
     public void deleteFeedbackService() {}
-
 
     public FeedbackModel getFeedback(FeedbackRequestDTO request) {
         return new FeedbackModel(request.getScale(), request.getComment(),
