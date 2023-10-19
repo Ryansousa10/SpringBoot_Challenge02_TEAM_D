@@ -13,10 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FeedbackRequestDTO {
     @Enumerated(EnumType.STRING)
-    @NotEmpty(message = "scale field cannot be null or empty")
+    @NotNull(message = "scale field cannot be null")
     private ScaleEnum scale;
     @NotEmpty(message = "comment field cannot be null or empty")
     private String comment;
     @NotNull(message = "order_id field cannot be null")
-    private int order_id;
+    private Long order_id;
 }
