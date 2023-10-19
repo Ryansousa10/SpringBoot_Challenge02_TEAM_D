@@ -1,8 +1,12 @@
 package com.compassuol.sp.challenge.msfeedback.controller;
 
+import com.compassuol.sp.challenge.msfeedback.model.FeedbackModel;
 import com.compassuol.sp.challenge.msfeedback.service.FeedbackService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "feedbacks")
@@ -15,7 +19,14 @@ public class FeedbackController {
     public void getAllFeedbacks() {}
 
     @GetMapping("/{id}")
-    public void getFeedbackById() {}
+    public ResponseEntity<FeedbackModel> getFeedbackById(@PathVariable("id") int id) {
+        Optional<FeedbackModel> feedback = feedbackService.getFeedbackById(id);
+        return feedback.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
+
 
     @PostMapping
     public void createFeedback() {}
