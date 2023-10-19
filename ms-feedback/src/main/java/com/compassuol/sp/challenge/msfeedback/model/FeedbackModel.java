@@ -17,10 +17,16 @@ public class FeedbackModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Enumerated(EnumType.STRING)
     private ScaleEnum scale;
     private String comment;
     @Column(nullable = false)
-    private int order_id;
+    private Long order_id;
+
+    public FeedbackModel(ScaleEnum scale, String comment, Long order_id) {
+        this.scale = scale;
+        this.comment = comment;
+        this.order_id = order_id;
+    }
 }

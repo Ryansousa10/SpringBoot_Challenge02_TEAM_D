@@ -19,6 +19,34 @@ paths:
                   $ref: '#/components/schemas/FeedbackModel'
         '500':
           description: Erro interno do servidor.
+    post:
+      summary: create feedbacks
+      description: create feedbacks if order id exists in database and order isn't canceled
+      responses:
+        201:
+          description: feedback created
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: order canceled status
+          content:
+            application/json:
+              schema:
+                type: object
+        404:
+          description: order_id doesn't exists
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          description: any other error
+          content:
+            application/json:
+              schema:
+                type: object
 
 components:
   schemas:
