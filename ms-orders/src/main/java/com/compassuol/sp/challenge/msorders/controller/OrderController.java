@@ -3,6 +3,8 @@ package com.compassuol.sp.challenge.msorders.controller;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
+import com.compassuol.sp.challenge.msorders.dto.UpdateOrderRequestDTO;
+import com.compassuol.sp.challenge.msorders.dto.UpdateOrderResponseDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.service.OrderService;
 import jakarta.validation.Valid;
@@ -49,12 +51,10 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody RequestOrderDTO updateOrderRequest) {
-        // Chame o serviço para atualizar o pedido com as informações fornecidas
-        OrderModel updatedOrder = orderService.updateOrderService(id, updateOrderRequest);
-        return ResponseEntity.ok(updatedOrder);
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody @Valid RequestOrderDTO request) {
+        var response = orderService.updateOrderService(id, request);
+        return ResponseEntity.ok(response);
     }
-
 
     @PostMapping("/{id}/cancel")
     public ResponseEntity<OrderModel> cancelOrderById(@PathVariable Long id, @RequestBody CancelOrderRequestDTO cancelOrderRequest) {
