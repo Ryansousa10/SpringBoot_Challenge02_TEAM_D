@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: ms-feedbacks
+  description: Descrição da API
+  version: 1.0.0
+paths:
+  /feedbacks:
+    get:
+      summary: Recuperar todos os feedbacks
+      description: Retorna todos os feedbacks disponíveis.
+      responses:
+        '200':
+          description: Sucesso. Retorna uma lista de feedbacks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeedbackModel'
+        '500':
+          description: Erro interno do servidor.
+
+components:
+  schemas:
+    FeedbackModel:
+      type: object
+      properties:
+        id:
+          type: integer
+        scale:
+          type: string
+        comment:
+          type: string
+        order_id:
+          type: integer
