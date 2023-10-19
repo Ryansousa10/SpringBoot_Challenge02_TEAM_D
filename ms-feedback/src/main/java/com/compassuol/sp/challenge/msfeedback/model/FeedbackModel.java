@@ -2,14 +2,15 @@ package com.compassuol.sp.challenge.msfeedback.model;
 
 import com.compassuol.sp.challenge.msfeedback.dto.ScaleEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "feedback_tb")
+@NoArgsConstructor
 public class FeedbackModel {
 
     @Id
