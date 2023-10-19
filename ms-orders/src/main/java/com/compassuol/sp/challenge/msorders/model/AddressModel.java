@@ -8,8 +8,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@Builder
 @Entity
+@Builder
 @Table(name = "address_tb")
 @NoArgsConstructor
 @AllArgsConstructor

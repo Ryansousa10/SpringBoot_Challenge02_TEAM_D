@@ -3,9 +3,7 @@ package com.compassuol.sp.challenge.msorders.controller;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
-import com.compassuol.sp.challenge.msorders.dto.UpdateOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
-import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +49,7 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody UpdateOrderRequestDTO updateOrderRequest) {
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody RequestOrderDTO updateOrderRequest) {
         // Chame o serviço para atualizar o pedido com as informações fornecidas
         OrderModel updatedOrder = orderService.updateOrderService(id, updateOrderRequest);
         return ResponseEntity.ok(updatedOrder);
