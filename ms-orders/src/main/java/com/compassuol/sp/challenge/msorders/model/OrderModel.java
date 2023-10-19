@@ -76,5 +76,9 @@ public class OrderModel {
             this.discount = 0.0;
             this.total_value = decimalFormat.parse(stringDouble).doubleValue();
         }
+
+    }
+
+    public void setDeliveryDate(LocalDateTime newDeliveryDateTime) {
     }
 }

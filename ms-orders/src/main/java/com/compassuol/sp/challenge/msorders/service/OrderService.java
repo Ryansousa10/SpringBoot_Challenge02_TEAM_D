@@ -4,10 +4,7 @@ import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
-import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
-import com.compassuol.sp.challenge.msorders.dto.ProductModelDTO;
-import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
-import com.compassuol.sp.challenge.msorders.dto.ViaCepAddress;
+import com.compassuol.sp.challenge.msorders.dto.*;
 import com.compassuol.sp.challenge.msorders.model.AddressModel;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.model.OrderProductsModel;
@@ -21,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -110,5 +108,56 @@ public class OrderService {
                 .postalCode(cepObject.getCep())
                 .street(request.getAddress().getStreet())
                 .build();
+    }
+
+    public OrderModel updateOrderService(Long id, UpdateOrderRequestDTO updateOrderRequest) {
+        OrderModel order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
+
+        // Valida se a atualização é permitida
+        validateUpdateAllowed(order, updateOrderRequest);
+
+        // Atualize as informações do pedido conforme necessário
+        if (updateOrderRequest.getStatus() != null) {
+            order.setStatus(StatusOrderEnum.valueOf(updateOrderRequest.getStatus()));
+        }
+
+        if (updateOrderRequest.getDeliveryDate() != null) {
+            // Valide e atualize a nova data de entrega, se fornecida
+            validateAndUpdateDeliveryDate(order, updateOrderRequest.getDeliveryDate());
+        }
+
+        // Salve o pedido atualizado no repositório
+        return orderRepository.save(order);
+    }
+
+    private void validateUpdateAllowed(OrderModel order, UpdateOrderRequestDTO updateOrderRequest) {
+        // Implemente suas regras de validação aqui
+        if (order.getStatus() == StatusOrderEnum.CANCELED) {
+            throw new BusinessErrorException("Não é permitido atualizar um pedido cancelado.");
+        }
+
+        if (updateOrderRequest.getStatus() != null) {
+            // Outras validações com base no novo status, se necessário
+        }
+    }
+
+    private void validateAndUpdateDeliveryDate(OrderModel order, String newDeliveryDate) {
+        // Valide a nova data de entrega e atualize o pedido
+        // Certifique-se de que a data esteja no formato ISO 8601 e seja posterior à data atual
+        // Implemente as regras de validação apropriadas
+        try {
+            LocalDateTime newDeliveryDateTime = LocalDateTime.parse(newDeliveryDate);
+            LocalDateTime currentDateTime = LocalDateTime.now();
+
+            if (newDeliveryDateTime.isBefore(currentDateTime)) {
+                throw new BusinessErrorException("A nova data de entrega deve ser posterior à data atual.");
+            }
+
+            // Atualize a data de entrega
+            order.setDeliveryDate(newDeliveryDateTime);
+        } catch (DateTimeParseException e) {
+            throw new BusinessErrorException("A nova data de entrega deve estar no formato ISO 8601.");
+        }
     }
 }

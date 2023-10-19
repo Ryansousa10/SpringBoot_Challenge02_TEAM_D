@@ -25,7 +25,7 @@ public class ConstantOrders {
                   "siafi": "7107"
                 }
             """;
-    public static List<OrderProductsModel> orderProductsModel = List.of(new OrderProductsModel(1, 2));
+    public static List<OrderProductsModel> orderProductsModel = List.of(new OrderProductsModel(1L, 2L));
     public static AddressRequestDTO addressRequestDTO = new AddressRequestDTO("street", 1
             , "01001-000");
     public static final RequestOrderDTO REQUEST_ORDER_DTO = new RequestOrderDTO(orderProductsModel, addressRequestDTO,
