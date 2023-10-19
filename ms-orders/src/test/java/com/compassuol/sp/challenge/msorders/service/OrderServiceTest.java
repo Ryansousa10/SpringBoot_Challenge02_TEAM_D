@@ -6,6 +6,7 @@ import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.Orde
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
+import com.compassuol.sp.challenge.msorders.proxy.ViaCepProxy;
 import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,8 +24,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Optional;
 
-import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.PRODUCT_MODEL_DTO;
-import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.REQUEST_ORDER_DTO;
+import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -44,6 +44,9 @@ public class OrderServiceTest {
     @Mock
     private ProductsProxy proxy;
 
+    @Mock
+    private ViaCepProxy viaCepProxy;
+
     @Before
     public void setUp() {
         when(orderRepository.findById(1L)).thenReturn(Optional.empty());
@@ -52,9 +55,10 @@ public class OrderServiceTest {
     @Test
     public void CreateOrder_withInvalidData_ReturnsNull() throws ParseException {
         when(proxy.getProductById(anyLong())).thenReturn(PRODUCT_MODEL_DTO);
+        when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
 
-        OrderModel result = orderService.createOrderService(REQUEST_ORDER_DTO);
-        assertNull(result);
+        OrderModel order = orderService.createOrderService(REQUEST_ORDER_DTO);
+        assertNull(order);
     }
 
     @Test
