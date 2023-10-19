@@ -23,7 +23,6 @@ import java.util.Optional;
 public class OrderController {
 
     private final OrderService orderService;
-    private final ProductsProxy proxy;
 
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders() {
@@ -32,7 +31,7 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOrderById(@PathVariable int id) {
+    public ResponseEntity<?> getOrderById(@PathVariable Long id) {
         if (id <= 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de pedido inválido.");
         }
