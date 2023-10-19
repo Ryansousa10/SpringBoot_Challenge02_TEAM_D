@@ -19,7 +19,6 @@ paths:
                   $ref: '#/components/schemas/FeedbackModel'
         '500':
           description: Erro interno do servidor.
-
     post:
       summary: create feedbacks
       description: create feedbacks if order id exists in database and order isn't canceled

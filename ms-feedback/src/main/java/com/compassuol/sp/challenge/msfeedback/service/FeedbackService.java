@@ -19,7 +19,6 @@ public class FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final OrdersProxy proxy;
-
     public void getFeedbacksByIdService() {}
 
     public FeedbackModel createFeedbackService(FeedbackRequestDTO request) {
