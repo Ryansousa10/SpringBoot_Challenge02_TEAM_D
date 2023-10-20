@@ -30,10 +30,8 @@ public class OrderService {
     private final ProductsProxy proxy;
     private final ViaCepProxy viaCepProxy;
 
-    public List<OrderModel> getAllOrdersService() {
-        //para implementer
-        return orderRepository.findAll();
-    }
+    public List<OrderModel> getAllOrdersService()
+    {return orderRepository.findAll();}
 
     public Optional<OrderModel> findBy(Long id) {
         return orderRepository.findById(id);

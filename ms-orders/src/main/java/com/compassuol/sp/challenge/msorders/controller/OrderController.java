@@ -24,10 +24,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping
-    public ResponseEntity<List<OrderModel>> getAllOrders() {
-        //para implementer
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersService());
-    }
+    public ResponseEntity<List<OrderModel>> getAllOrders() {return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersService());}
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable Long id) {
