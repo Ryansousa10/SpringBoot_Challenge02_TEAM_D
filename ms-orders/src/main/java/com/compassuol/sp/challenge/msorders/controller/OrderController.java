@@ -5,12 +5,7 @@ import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.CreateOrderResponseDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
-import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.service.OrderService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -51,7 +46,9 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Object> createOrder(@RequestBody @Valid RequestOrderDTO request) throws ParseException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrderService(request));
+        OrderModel order = orderService.createOrderService(request);
+        CreateOrderResponseDTO response = new CreateOrderResponseDTO(order);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")

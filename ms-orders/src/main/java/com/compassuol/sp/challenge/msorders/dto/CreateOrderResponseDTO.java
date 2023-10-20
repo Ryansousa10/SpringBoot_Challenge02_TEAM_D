@@ -6,12 +6,15 @@ import com.compassuol.sp.challenge.msorders.model.AddressModel;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.model.OrderProductsModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateOrderResponseDTO {
@@ -23,7 +26,8 @@ public class CreateOrderResponseDTO {
     private Double discount;
     private Double total_value;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime create_date;
+    @JsonProperty("create_date")
+    private LocalDateTime createDateTime;
     private StatusOrderEnum status;
 
     public CreateOrderResponseDTO(OrderModel order) {
@@ -34,7 +38,7 @@ public class CreateOrderResponseDTO {
         this.subtotal_value = order.getSubtotal_value();
         this.discount = order.getDiscount();
         this.total_value = order.getTotal_value();
-        this.create_date = order.getCreate_date();
+        this.createDateTime = LocalDateTime.now();
         this.status = order.getStatus();
     }
 }
