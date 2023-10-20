@@ -26,7 +26,6 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<OrderModel>> getAllOrders() {
-        //para implementer
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersService());
     }
 
@@ -52,8 +51,9 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public void updateOrder() {
-        //para implementer
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody @Valid RequestOrderDTO request) {
+        var response = orderService.updateOrderService(id, request);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/{id}/cancel")

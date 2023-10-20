@@ -1,6 +1,7 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
@@ -31,7 +32,6 @@ public class OrderService {
     private final ViaCepProxy viaCepProxy;
 
     public List<OrderModel> getAllOrdersService() {
-        //para implementer
         return orderRepository.findAll();
     }
 
@@ -50,10 +50,6 @@ public class OrderService {
         AddressModel address = getAddressModel(request, cep);
         OrderModel order = getOrderModel(request, address, subtotalValue);
         return orderRepository.save(order);
-    }
-
-    public void updateOrderService() {
-        //para implementer
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
@@ -80,6 +76,19 @@ public class OrderService {
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
     }
 
+    public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
+        OrderModel order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
+
+        if (order.getStatus() == StatusOrderEnum.CANCELED)
+            throw new BusinessErrorException("pedido com status de cancelado não pode ser atualizado.");
+
+        ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
+        OrderModel updateOrder = setOrderUpdates(order,request,cep);
+        updateOrder.setStatus(StatusOrderEnum.SENT);
+        return updateOrder;
+    }
+
     private AddressModel getAddressModel(RequestOrderDTO request, ViaCepAddressDTO cep) {
         return AddressModel.builder()
                 .number(request.getAddress().getNumber())
@@ -95,5 +104,13 @@ public class OrderService {
             throws ParseException {
         return new OrderModel(request.getProducts(), address, request.getPayment_method(),
                 subtotal, StatusOrderEnum.CONFIRMED, "");
+    }
+
+    private OrderModel setOrderUpdates(OrderModel order,RequestOrderDTO request,ViaCepAddressDTO cep){
+        order.setPayment_method(request.getPayment_method());
+        AddressModel address = getAddressModel(request, cep);
+        order.setAddress(address);
+        order.setProducts(request.getProducts());
+        return order;
     }
 }
