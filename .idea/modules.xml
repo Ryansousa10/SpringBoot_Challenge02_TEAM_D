@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoot_Challenge02_TEAM_D.iml" filepath="$PROJECT_DIR$/.idea/SpringBoot_Challenge02_TEAM_D.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-feedback/ms-feedback.iml" filepath="$PROJECT_DIR$/ms-feedback/ms-feedback.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-orders/ms-orders.iml" filepath="$PROJECT_DIR$/ms-orders/ms-orders.iml" />
     </modules>
   </component>

@@ -45,8 +45,6 @@ Xms-products/src/main/java/com/compassuol/sp/challenge/msproducts/model/ProductM
 ams-products/src/test/java/com/compassuol/sp/challenge/msproducts/constants/ProductsConstants.java,e\9\e911711959ba8f9410858d182e655d6d26d1939d
 ä
 Zms-orders/src/main/java/com/compassuol/sp/challenge/msorders/model/OrderProductsModel.java,a\1\a1a7bc32bd99000525b3cfc786d2c551d7ad275c
-É
-Sms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ViaCepAddress.java,e\d\ed70e3f50a85813251657f3932a67fb1b6ab240d
 ä
 Zms-orders/src/test/java/com/compassuol/sp/challenge/msorders/constants/ConstantOrders.java,1\2\128319043422e6bd863a0eb844a9415058acee2d
 Ö
@@ -55,3 +53,15 @@ Ums-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/ProductModelDT
 Wms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java,6\c\6c769ff73330eca85963e72462e2c4dd707b2774
 ù
 mms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/exception/GlobalExceptionHandler.java,e\8\e82f893bc951d9b14b23458764d358a5f4960b40
+G
+ms-orders/ms-orders.iml,4\5\45510f733932dfd6a03297294d1d0da6b2d31a9f
+í
+bms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackServiceTests.java,7\f\7f3dedf5c9b549d8c023b1e0d2e14902d43f5968
+â
+Yms-feedback/src/main/java/com/compassuol/sp/challenge/msfeedback/model/FeedbackModel.java,3\e\3e7ac55c71aa2432aec56155e8eae80b8d3129eb
+ì
+cms-feedback/src/main/java/com/compassuol/sp/challenge/msfeedback/controller/FeedbackController.java,d\e\dec783b90a3992493c7c5a2678aa210f82042643
+C
+ms-feedback/pom.xml,4\4\44d9b43168f7f94cd3b69296bdb422be992fb273
+ç
+]ms-feedback/src/main/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackService.java,3\7\37764bc1394a531b0fbc7e1f3402f606d6f45485

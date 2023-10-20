@@ -1,8 +1,8 @@
 package com.compassuol.sp.challenge.msfeedback.controller.exception;
 
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.BusinessErrorException;
+import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.FeedbackNotFoundException;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.OrderCancellationNotAllowedException;
-import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,8 +15,8 @@ import java.util.Objects;
 public class GlobalExceptionHandler {
 
     //exception for product not found
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Object> notFoundProductErrors(ProductNotFoundException ex) {
+    @ExceptionHandler(FeedbackNotFoundException.class)
+    public ResponseEntity<Object> notFoundProductErrors(FeedbackNotFoundException ex) {
         final int error_code = HttpStatus.NOT_FOUND.value();
         final String status_code = HttpStatus.NOT_FOUND.toString();
         String message = ex.getMessage();
