@@ -1,11 +1,10 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
-import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
-import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.proxy.ViaCepProxy;
@@ -14,13 +13,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.text.ParseException;
 import java.time.Instant;
@@ -31,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -86,12 +85,15 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void CreateOrder_withInvalidData_ReturnsNull() throws ParseException {
+    public void CreateOrder_withValidData_ReturnsNotNull() throws ParseException {
+        var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
         when(proxy.getProductById(anyLong())).thenReturn(PRODUCT_MODEL_DTO);
         when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
 
+        when(orderRepository.save(orderModelCaptor.capture())).thenReturn(ORDER_RESPONSE);
+
         OrderModel order = orderService.createOrderService(REQUEST_ORDER_DTO);
-        assertNull(order);
+        assertNotNull(order);
     }
 
     @Test
@@ -180,4 +182,31 @@ public class OrderServiceTest {
         assertFalse(result.isPresent());
     }
 
+    @Test
+    public void UpdateOrder_withValidData_ReturnsOrder() {
+        //var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
+        when(orderRepository.findById(anyLong())).thenReturn(Optional.of(ORDER_RESPONSE));
+        when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
+
+        OrderModel response = orderService.updateOrderService(2L, REQUEST_ORDER_DTO);
+        assertNotNull(response);
+    }
+
+    @Test
+    public void UpdateOrder_withInvalidStatus_returnsException() {
+        OrderModel order = ORDER_RESPONSE;
+        order.setStatus(StatusOrderEnum.CANCELED);
+        when(orderRepository.findById(anyLong())).thenReturn(Optional.of(order));
+
+        assertThatThrownBy(() -> orderService.updateOrderService(1L, REQUEST_ORDER_DTO))
+                .isInstanceOf(BusinessErrorException.class);
+    }
+
+    @Test
+    public void UpdateOrder_withInvalidId_returnsException() {
+        when(orderRepository.findById(1L)).thenThrow(OrderNotFoundException.class);
+
+        assertThatThrownBy(() -> orderService.updateOrderService(1L, REQUEST_ORDER_DTO))
+                .isInstanceOf(OrderNotFoundException.class);
+    }
 }

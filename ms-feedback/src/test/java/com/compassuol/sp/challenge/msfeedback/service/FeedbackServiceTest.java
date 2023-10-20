@@ -34,6 +34,10 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class FeedbackServiceTest {
 
+    public static FeedbackRequestDTO feedbackRequestDTO;
+    public static OrderResponseDTO orderResponseDTO;
+    public static FeedbackModel feedbackModel;
+
     @InjectMocks
     FeedbackService feedbackService;
 
@@ -44,7 +48,20 @@ public class FeedbackServiceTest {
     OrdersProxy proxy;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        feedbackRequestDTO = new FeedbackRequestDTO();
+        feedbackRequestDTO.setComment("test");
+        feedbackRequestDTO.setOrder_id(1L);
+        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
+
+        orderResponseDTO = new OrderResponseDTO();
+        orderResponseDTO.setStatus("CONFIRMED");
+
+        feedbackModel = new FeedbackModel();
+        feedbackModel.setScale(ScaleEnum.SATISFIED);
+        feedbackModel.setOrder_id(1L);
+        feedbackModel.setComment("comment");
+        feedbackModel.setId(12L);
         feedbackRepository = Mockito.mock(FeedbackRepository.class);
         feedbackService = new FeedbackService(feedbackRepository, proxy);
     }
@@ -72,22 +89,6 @@ public class FeedbackServiceTest {
 
     @Test
     public void CreateFeedback_withValidData_returnsFeedback() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
-        feedbackRequestDTO.setComment("test");
-        feedbackRequestDTO.setOrder_id(1L);
-        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
-
-        var orderResponseDTO = new OrderResponseDTO();
-        orderResponseDTO.setStatus("CONFIRMED");
-
-        var feedbackModel = new FeedbackModel();
-        feedbackModel.setScale(ScaleEnum.SATISFIED);
-        feedbackModel.setOrder_id(1L);
-        feedbackModel.setComment("comment");
-        feedbackModel.setId(12L);
-
-
-
         var feedbackModelCaptor = ArgumentCaptor.forClass(FeedbackModel.class);
 
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
@@ -100,11 +101,6 @@ public class FeedbackServiceTest {
 
     @Test
     public void CreateFeedback_withInvalidId_returnsException() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
-        feedbackRequestDTO.setComment("test");
-        feedbackRequestDTO.setOrder_id(1L);
-        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
-
         when(proxy.getOrderById(1L)).thenThrow(FeedbackNotFoundException.class);
 
         assertThatThrownBy(() -> feedbackService.createFeedbackService(feedbackRequestDTO))
@@ -113,12 +109,6 @@ public class FeedbackServiceTest {
 
     @Test
     public void CreateFeedback_withInvalidStatus_returnsException() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
-        feedbackRequestDTO.setComment("test");
-        feedbackRequestDTO.setOrder_id(1L);
-        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
-
-        var orderResponseDTO = new OrderResponseDTO();
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
         orderResponseDTO.setStatus("CANCELED");
 
@@ -135,10 +125,8 @@ public class FeedbackServiceTest {
         simulatedFeedback.setComment("Comment here");
         simulatedFeedback.setOrder_id(1L);
 
-        // Simular a busca pelo feedback a ser excluído
         when(feedbackRepository.findById(any())).thenReturn(Optional.of(simulatedFeedback));
 
-        // Verificar a chamada do método com um argumento correspondente
         FeedbackResponseDTO responseDTO = feedbackService.deleteFeedbackService(1L);
         assertThat(responseDTO.getId()).isEqualTo(1L);
         assertThat(responseDTO.getScale()).isEqualTo(ScaleEnum.SATISFIED);
@@ -148,10 +136,8 @@ public class FeedbackServiceTest {
 
     @Test
     void testDeleteFeedbackServiceWithFeedbackNotFound() {
-        // Simular a busca pelo feedback que não foi encontrado (retorno vazio)
         when(feedbackRepository.findById(any())).thenReturn(Optional.empty());
 
-        // Agora, chame o método que você está testando e verifique o comportamento esperado
         assertThatThrownBy(() -> feedbackService.deleteFeedbackService(1L))
                 .isInstanceOf(FeedbackNotFoundException.class);
     }
