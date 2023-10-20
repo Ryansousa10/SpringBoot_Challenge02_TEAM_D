@@ -3,6 +3,8 @@ info:
   title: ms-products
   description: Descrição da API
   version: 1.0.0
+servers:
+  - url: http://localhost:8080
 paths:
   /products/{productId}:
     get:

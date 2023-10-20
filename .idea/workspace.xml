@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccdd3806-b0d9-418e-bd8e-30fc8b6a7957" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/AddressRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/RequestOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/dto/RequestOrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/main/java/com/compassuol/sp/challenge/msorders/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-orders/src/test/java/com/compassuol/sp/challenge/msorders/service/OrderServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/src/main/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/src/main/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/controller/FeedbackControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/controller/FeedbackControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback/service/FeedbackServiceTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/target/classes/com/compassuol/sp/challenge/msfeedback/controller/FeedbackController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/target/classes/com/compassuol/sp/challenge/msfeedback/controller/FeedbackController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/target/classes/com/compassuol/sp/challenge/msfeedback/service/FeedbackService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/target/classes/com/compassuol/sp/challenge/msfeedback/service/FeedbackService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-feedback/target/classes/static/swagger/api-msfeedback.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-feedback/target/classes/static/swagger/api-msfeedback.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,11 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_11_FeedbackService.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_7_FeedbackService.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_8_FeedbackService.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="KubernetesApiProvider">{
         &quot;isMigrated&quot;: true
         }</component>
@@ -86,35 +88,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev-djoseffer-put&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/idea/projects/novo-put-orders/SpringBoot_Challenge02_TEAM_D/ms-feedback&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev-ryan",
+    "last_opened_file_path": "D:/Projetos/SpringBoot_Challenge02_TEAM_D/ms-feedback",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.compassuol.sp.challenge.msfeedback.controller.exception" />
       <recent name="com.compassuol.sp.challenge.msorders.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -124,8 +128,9 @@
       <recent name="E:\Projetos\SpringBoot_Challenge02_TEAM_D\ms-orders\src\main\resources\db\migration" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.compassuol.sp.challenge.msorders.controller" />
+      <recent name="com.compassuol.sp.challenge.msfeedback.service" />
       <recent name="com.compassuol.sp.challenge.msorders.service" />
+      <recent name="com.compassuol.sp.challenge.msorders.controller" />
       <recent name="com.compassuol.sp.challenge.msorders" />
       <recent name="com.compassuol.sp.challenge.msproducts.controller" />
     </key>
@@ -140,9 +145,9 @@
       <command value="mvn -Dtest=OrderServiceTest test" />
       <command value="mvn clean compile" />
       <command value="mvn -Dtest=OrderControllerTest test" />
-      <command value="mvn clean install" />
       <command value="mvn test" />
       <command value="mvn clean test" />
+      <command value="mvn clean install" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -152,7 +157,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ms-products-8080">
+  <component name="RunManager" selected="JUnit.java in ms-feedback">
     <configuration name="ms-order-8000" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.MsOrdersApplication" />
       <module name="ms-orders" />
@@ -172,81 +177,64 @@
       <script-mode>FILE</script-mode>
       <method v="2" />
     </configuration>
-    <configuration name="OrderControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
+    <configuration name="FeedbackControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-feedback" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.controller.*" />
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msfeedback.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.controller.OrderControllerTest" />
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msfeedback.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msfeedback.controller.FeedbackControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderControllerTest.testUpdateOrderInvalidId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
+    <configuration name="FeedbackControllerTest.testGetAllFeedbacksEndpoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-feedback" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.controller.*" />
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msfeedback.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.controller.OrderControllerTest" />
-      <option name="METHOD_NAME" value="testUpdateOrderInvalidId" />
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msfeedback.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msfeedback.controller.FeedbackControllerTest" />
+      <option name="METHOD_NAME" value="testGetAllFeedbacksEndpoint" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderControllerTest.testUpdateOrderNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
+    <configuration name="FeedbackServiceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-feedback" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.controller.*" />
+          <option name="PATTERN" value="com.compassuol.sp.challenge.msfeedback.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.controller.OrderControllerTest" />
-      <option name="METHOD_NAME" value="testUpdateOrderNotFound" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msfeedback.service" />
+      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msfeedback.service.FeedbackServiceTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderControllerTest.testUpdateOrderService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.controller.OrderControllerTest" />
-      <option name="METHOD_NAME" value="testUpdateOrderService" />
-      <option name="TEST_OBJECT" value="method" />
+    <configuration name="java in ms-feedback" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-feedback" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/ms-feedback/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderControllerTest.testUpdateOrderServiceOrderNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ms-orders" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compassuol.sp.challenge.msorders.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.compassuol.sp.challenge.msorders.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.compassuol.sp.challenge.msorders.controller.OrderControllerTest" />
-      <option name="METHOD_NAME" value="testUpdateOrderServiceOrderNotFound" />
-      <option name="TEST_OBJECT" value="method" />
+    <configuration name="msfeedback in ms-feedback" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-feedback" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/ms-feedback/src/test/java/com/compassuol/sp/challenge/msfeedback" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -279,22 +267,22 @@
       <item itemvalue="Application.ms-products-8080" />
       <item itemvalue="Application.ms-order-8000" />
       <item itemvalue="Database Script.1__Create_database.sql" />
-      <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderInvalidId" />
-      <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderNotFound" />
-      <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderService" />
-      <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderServiceOrderNotFound" />
-      <item itemvalue="JUnit.OrderControllerTest" />
+      <item itemvalue="JUnit.FeedbackControllerTest" />
+      <item itemvalue="JUnit.FeedbackControllerTest.testGetAllFeedbacksEndpoint" />
+      <item itemvalue="JUnit.FeedbackServiceTests" />
+      <item itemvalue="JUnit.java in ms-feedback" />
+      <item itemvalue="JUnit.msfeedback in ms-feedback" />
       <item itemvalue="Spring Boot.MsFeedbackApplication" />
       <item itemvalue="Spring Boot.MsOrdersApplication" />
       <item itemvalue="Spring Boot.MsProductsApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderControllerTest" />
-        <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderServiceOrderNotFound" />
-        <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderService" />
-        <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderInvalidId" />
-        <item itemvalue="JUnit.OrderControllerTest.testUpdateOrderNotFound" />
+        <item itemvalue="JUnit.java in ms-feedback" />
+        <item itemvalue="JUnit.FeedbackControllerTest" />
+        <item itemvalue="JUnit.FeedbackControllerTest.testGetAllFeedbacksEndpoint" />
+        <item itemvalue="JUnit.msfeedback in ms-feedback" />
+        <item itemvalue="JUnit.FeedbackServiceTests" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +305,7 @@
       <workItem from="1697570003988" duration="4684000" />
       <workItem from="1697582880643" duration="1215000" />
       <workItem from="1697597544665" duration="633000" />
-      <workItem from="1697760617727" duration="10833000" />
+      <workItem from="1697739794618" duration="9380000" />
     </task>
     <servers />
   </component>
@@ -335,22 +323,34 @@
       </map>
     </option>
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTest_testCancelOrderByIdServiceOrderSent.ic" NAME="OrderServiceTest.testCancelOrderByIdServiceOrderSent Coverage Results" MODIFIED="1697549446054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.compassuol.sp.challenge.msorders.service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msorders_in_ms_orders.ic" NAME="msorders in ms-orders Coverage Results" MODIFIED="1697486256975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$controller_in_ms_orders.ic" NAME="controller in ms-orders Coverage Results" MODIFIED="1697549026664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTest.ic" NAME="OrderServiceTest Coverage Results" MODIFIED="1697484258157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.compassuol.sp.challenge.msorders.service.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msproducts_in_ms_products.ic" NAME="msproducts in ms-products Coverage Results" MODIFIED="1697483506710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$service_in_ms_orders.ic" NAME="service in ms-orders Coverage Results" MODIFIED="1697549040508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTests_CreateOrder_withInvalidData_ReturnsNull.ic" NAME="OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull Coverage Results" MODIFIED="1697502969581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.compassuol.sp.challenge.msorders.service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderControllerTest.ic" NAME="OrderControllerTest Coverage Results" MODIFIED="1697482447993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.compassuol.sp.challenge.msorders.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$FeedbackServiceTest.ic" NAME="FeedbackServiceTest Coverage Results" MODIFIED="1697745804918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.compassuol.sp.challenge.msfeedback.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$controller_in_ms_orders.ic" NAME="controller in ms-orders Coverage Results" MODIFIED="1697549026664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msorders_in_ms_orders.ic" NAME="msorders in ms-orders Coverage Results" MODIFIED="1697486256975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msproducts_in_ms_products.ic" NAME="msproducts in ms-products Coverage Results" MODIFIED="1697483506710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$com_compassuol_sp_challenge_msfeedback_in_ms_feedback.ic" NAME="com.compassuol.sp.challenge.msfeedback in ms-feedback Coverage Results" MODIFIED="1697742470509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.compassuol.sp.challenge.msfeedback.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$service_in_ms_orders.ic" NAME="service in ms-orders Coverage Results" MODIFIED="1697549040508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$java_in_ms_feedback.ic" NAME="java in ms-feedback Coverage Results" MODIFIED="1697745172566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$msfeedback_in_ms_feedback.ic" NAME="msfeedback in ms-feedback Coverage Results" MODIFIED="1697747445064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MsProductsApplication_java$OrderServiceTests_CreateOrder_withInvalidData_ReturnsNull.ic" NAME="OrderServiceTests.CreateOrder_withInvalidData_ReturnsNull Coverage Results" MODIFIED="1697502969581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.compassuol.sp.challenge.msorders.service.*</FILTER>
     </SUITE>
   </component>
 </project>

@@ -3,6 +3,8 @@ info:
   title: ms-orders
   description: Descrição da API
   version: 1.0.0
+servers:
+    - url: http://localhost:8000
 paths:
   /orders/{id}:
     get:
@@ -110,6 +112,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorModel'
   /orders:
+    get:
+      summary: Recuperar Lista de Pedidos
+      description: Obtém uma lista de pedidos no sistema.
+      responses:
+        '200':
+          description: Operação bem-sucedida
+          content:
+            application/json:
+              example:
+                - id: 1
+                  products:
+                    - product_id: 5
+                      quantity: 4
+                    - product_id: 7
+                      quantity: 6
+                  address:
+                    street: "123 Main St"
+                    number: "10"
+                    complement: "Apt 3B"
+                    city: "Cityville"
+                    state: "CA"
+                    postalCode: "12345"
+                  payment_method: "CREDIT_CARD"
+                  subtotal_value: 100.0
+                  discount: 10.0
+                  total_value: 90.0
+                  create_date: "2023-10-14T07:30:00"
+                  status: "CANCELED"
+                  cancel_reason: "Out of stock"
+                  cancel_date: "2023-10-15T06:00:00"
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderModel'
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
     post:
       summary: Create a new order
       description: Create a new order with a JSON payload of products and order details.

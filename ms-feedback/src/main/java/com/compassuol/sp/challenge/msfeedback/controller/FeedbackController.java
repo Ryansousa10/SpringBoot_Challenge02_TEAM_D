@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "feedbacks")
 @RequiredArgsConstructor
@@ -19,7 +21,9 @@ public class FeedbackController {
     private final FeedbackService feedbackService;
 
     @GetMapping
-    public void getAllFeedbacks() {}
+    public List<FeedbackModel> getAllFeedbacks() {
+        return feedbackService.getAllFeedbacksService();
+    }
 
     @GetMapping("/{id}")
     public void getFeedbackById() {}
@@ -34,7 +38,10 @@ public class FeedbackController {
     public void updateFeedback() {}
 
     @DeleteMapping("/{id}")
-    public void deleteFeedback() {}
+    public ResponseEntity<FeedbackResponseDTO> deleteFeedback(@PathVariable Long id) {
+        FeedbackResponseDTO responseDTO = feedbackService.deleteFeedbackService(id);
+        return ResponseEntity.ok(responseDTO);
+    }
 
     private FeedbackResponseDTO ParseModelToDTO(FeedbackModel feedbackModel) {
         ObjectMapper objectMapper = new ObjectMapper();

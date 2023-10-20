@@ -1,8 +1,9 @@
 package com.compassuol.sp.challenge.msfeedback.service;
 
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.BusinessErrorException;
-import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.ProductNotFoundException;
+import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.FeedbackNotFoundException;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackRequestDTO;
+import com.compassuol.sp.challenge.msfeedback.dto.FeedbackResponseDTO;
 import com.compassuol.sp.challenge.msfeedback.dto.OrderResponseDTO;
 import com.compassuol.sp.challenge.msfeedback.dto.ScaleEnum;
 import com.compassuol.sp.challenge.msfeedback.model.FeedbackModel;
@@ -14,11 +15,20 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,6 +62,29 @@ public class FeedbackServiceTest {
         feedbackModel.setOrder_id(1L);
         feedbackModel.setComment("comment");
         feedbackModel.setId(12L);
+        feedbackRepository = Mockito.mock(FeedbackRepository.class);
+        feedbackService = new FeedbackService(feedbackRepository, proxy);
+    }
+
+    @Test
+    void testGetAllFeedbacksServiceWithException() {
+        doThrow(new FeedbackNotFoundException("Feedbacks not found")).when(feedbackRepository).findAll();
+
+        try {
+            feedbackService.getAllFeedbacksService();
+        } catch (FeedbackNotFoundException e) {
+            assertEquals("Feedbacks not found", e.getMessage());
+        }
+    }
+
+    @Test
+    void testGetAllFeedbacksServiceWithSuccess() {
+        List<FeedbackModel> feedbacks = new ArrayList<>();
+        when(feedbackRepository.findAll()).thenReturn(feedbacks);
+
+        List<FeedbackModel> result = feedbackService.getAllFeedbacksService();
+
+        assertEquals(feedbacks, result);
     }
 
     @Test
@@ -68,10 +101,10 @@ public class FeedbackServiceTest {
 
     @Test
     public void CreateFeedback_withInvalidId_returnsException() {
-        when(proxy.getOrderById(1L)).thenThrow(ProductNotFoundException.class);
+        when(proxy.getOrderById(1L)).thenThrow(FeedbackNotFoundException.class);
 
         assertThatThrownBy(() -> feedbackService.createFeedbackService(feedbackRequestDTO))
-                .isInstanceOf(ProductNotFoundException.class);
+                .isInstanceOf(FeedbackNotFoundException.class);
     }
 
     @Test
@@ -81,5 +114,46 @@ public class FeedbackServiceTest {
 
         assertThatThrownBy(() -> feedbackService.createFeedbackService(feedbackRequestDTO))
                 .isInstanceOf(BusinessErrorException.class);
+    }
+
+    @Test
+    void testDeleteFeedbackService() {
+        FeedbackModel simulatedFeedback = new FeedbackModel();
+        simulatedFeedback.setId(1L);
+        simulatedFeedback.setScale(ScaleEnum.SATISFIED);
+        simulatedFeedback.setComment("Comment here");
+        simulatedFeedback.setOrder_id(1L);
+
+        when(feedbackRepository.findById(any())).thenReturn(Optional.of(simulatedFeedback));
+
+        FeedbackResponseDTO responseDTO = feedbackService.deleteFeedbackService(1L);
+        assertThat(responseDTO.getId()).isEqualTo(1L);
+        assertThat(responseDTO.getScale()).isEqualTo(ScaleEnum.SATISFIED);
+        assertThat(responseDTO.getComment()).isEqualTo("Comment here");
+        assertThat(responseDTO.getOrder_id()).isEqualTo(1L);
+    }
+
+    @Test
+    void testDeleteFeedbackServiceWithFeedbackNotFound() {
+        when(feedbackRepository.findById(any())).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> feedbackService.deleteFeedbackService(1L))
+                .isInstanceOf(FeedbackNotFoundException.class);
+    }
+
+    @Test
+    void testMapToResponseDTO() {
+        FeedbackModel simulatedFeedback = new FeedbackModel();
+        simulatedFeedback.setId(1L);
+        simulatedFeedback.setScale(ScaleEnum.SATISFIED);
+        simulatedFeedback.setComment("Comment here");
+        simulatedFeedback.setOrder_id(1L);
+
+        FeedbackResponseDTO responseDTO = feedbackService.mapToResponseDTO(simulatedFeedback);
+
+        assertThat(responseDTO.getId()).isEqualTo(1L);
+        assertThat(responseDTO.getScale()).isEqualTo(ScaleEnum.SATISFIED);
+        assertThat(responseDTO.getComment()).isEqualTo("Comment here");
+        assertThat(responseDTO.getOrder_id()).isEqualTo(1L);
     }
 }
