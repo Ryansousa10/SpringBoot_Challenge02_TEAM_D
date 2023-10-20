@@ -3,8 +3,6 @@ package com.compassuol.sp.challenge.msorders.controller;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
-import com.compassuol.sp.challenge.msorders.dto.UpdateOrderRequestDTO;
-import com.compassuol.sp.challenge.msorders.dto.UpdateOrderResponseDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.service.OrderService;
 import jakarta.validation.Valid;

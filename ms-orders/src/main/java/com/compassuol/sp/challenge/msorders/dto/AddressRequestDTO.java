@@ -1,6 +1,5 @@
 package com.compassuol.sp.challenge.msorders.dto;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
