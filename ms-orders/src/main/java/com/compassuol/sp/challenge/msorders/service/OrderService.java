@@ -87,7 +87,6 @@ public class OrderService {
                 .build();
     }
 
-
     public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
         OrderModel order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
