@@ -31,7 +31,11 @@ public class FeedbackController {
     }
 
     @PutMapping("/{id}")
-    public void updateFeedback() {}
+    public ResponseEntity<Object> updateFeedback(@PathVariable("id") Long id, @RequestBody @Valid FeedbackRequestDTO requestDTO) {
+        var response = feedbackService.updateFeedbackService(id, requestDTO);
+        var responseDTO = new FeedbackResponseDTO(response);
+        return ResponseEntity.ok(responseDTO);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteFeedback() {}

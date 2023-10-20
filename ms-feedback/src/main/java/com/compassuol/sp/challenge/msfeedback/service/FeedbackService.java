@@ -33,12 +33,30 @@ public class FeedbackService {
         return feedbackRepository.save(getFeedback(request));
     }
 
-    public void updateFeedbackService() {}
+    public FeedbackModel updateFeedbackService(Long id, FeedbackRequestDTO dto) {
+        FeedbackModel model = feedbackRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("feedback not found"));
+        try {
+            proxy.getOrderById(dto.getOrder_id());
+        } catch (FeignException ex) {
+            throw new ProductNotFoundException("order_id doesn't exists");
+        }
+
+        FeedbackModel updatedFeedback = updateFeedbackModel(model, dto);
+        return feedbackRepository.save(updatedFeedback);
+    }
 
     public void deleteFeedbackService() {}
 
-    public FeedbackModel getFeedback(FeedbackRequestDTO request) {
+    private FeedbackModel getFeedback(FeedbackRequestDTO request) {
         return new FeedbackModel(request.getScale(), request.getComment(),
                 request.getOrder_id());
+    }
+
+    private FeedbackModel updateFeedbackModel(FeedbackModel model, FeedbackRequestDTO dto) {
+        model.setOrder_id(dto.getOrder_id());
+        model.setScale(dto.getScale());
+        model.setComment(dto.getComment());
+        return model;
     }
 }
