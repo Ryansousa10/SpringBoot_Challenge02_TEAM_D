@@ -31,7 +31,6 @@ public class OrderService {
     private final ViaCepProxy viaCepProxy;
 
     public List<OrderModel> getAllOrdersService() {
-        //para implementer
         return orderRepository.findAll();
     }
 

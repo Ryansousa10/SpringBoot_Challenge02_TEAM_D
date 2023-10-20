@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -53,12 +54,15 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void CreateOrder_withInvalidData_ReturnsNull() throws ParseException {
+    public void CreateOrder_withValidData_ReturnsNotNull() throws ParseException {
+        var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
         when(proxy.getProductById(anyLong())).thenReturn(PRODUCT_MODEL_DTO);
         when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
 
+        when(orderRepository.save(orderModelCaptor.capture())).thenReturn(ORDER_RESPONSE);
+
         OrderModel order = orderService.createOrderService(REQUEST_ORDER_DTO);
-        assertNull(order);
+        assertNotNull(order);
     }
 
     @Test
