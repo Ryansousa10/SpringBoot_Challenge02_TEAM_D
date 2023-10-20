@@ -8,6 +8,7 @@ import com.compassuol.sp.challenge.msfeedback.dto.ScaleEnum;
 import com.compassuol.sp.challenge.msfeedback.model.FeedbackModel;
 import com.compassuol.sp.challenge.msfeedback.proxy.OrdersProxy;
 import com.compassuol.sp.challenge.msfeedback.repository.FeedbackRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -21,7 +22,11 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FeedbackServiceTests {
+public class FeedbackServiceTest {
+
+    public static FeedbackRequestDTO feedbackRequestDTO;
+    public static OrderResponseDTO orderResponseDTO;
+    public static FeedbackModel feedbackModel;
 
     @InjectMocks
     FeedbackService feedbackService;
@@ -32,24 +37,25 @@ public class FeedbackServiceTests {
     @Mock
     OrdersProxy proxy;
 
-    @Test
-    public void CreateFeedback_withValidData_returnsFeedback() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
+    @BeforeEach
+    public void setUp() {
+        feedbackRequestDTO = new FeedbackRequestDTO();
         feedbackRequestDTO.setComment("test");
         feedbackRequestDTO.setOrder_id(1L);
         feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
 
-        var orderResponseDTO = new OrderResponseDTO();
+        orderResponseDTO = new OrderResponseDTO();
         orderResponseDTO.setStatus("CONFIRMED");
 
-        var feedbackModel = new FeedbackModel();
+        feedbackModel = new FeedbackModel();
         feedbackModel.setScale(ScaleEnum.SATISFIED);
         feedbackModel.setOrder_id(1L);
         feedbackModel.setComment("comment");
         feedbackModel.setId(12L);
+    }
 
-
-
+    @Test
+    public void CreateFeedback_withValidData_returnsFeedback() {
         var feedbackModelCaptor = ArgumentCaptor.forClass(FeedbackModel.class);
 
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
@@ -62,11 +68,6 @@ public class FeedbackServiceTests {
 
     @Test
     public void CreateFeedback_withInvalidId_returnsException() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
-        feedbackRequestDTO.setComment("test");
-        feedbackRequestDTO.setOrder_id(1L);
-        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
-
         when(proxy.getOrderById(1L)).thenThrow(ProductNotFoundException.class);
 
         assertThatThrownBy(() -> feedbackService.createFeedbackService(feedbackRequestDTO))
@@ -75,12 +76,6 @@ public class FeedbackServiceTests {
 
     @Test
     public void CreateFeedback_withInvalidStatus_returnsException() {
-        var feedbackRequestDTO = new FeedbackRequestDTO();
-        feedbackRequestDTO.setComment("test");
-        feedbackRequestDTO.setOrder_id(1L);
-        feedbackRequestDTO.setScale(ScaleEnum.SATISFIED);
-
-        var orderResponseDTO = new OrderResponseDTO();
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
         orderResponseDTO.setStatus("CANCELED");
 
