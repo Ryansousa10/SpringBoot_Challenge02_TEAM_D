@@ -1,6 +1,7 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
@@ -26,6 +27,7 @@ import java.time.ZoneId;
 import java.util.Optional;
 
 import static com.compassuol.sp.challenge.msorders.constants.ConstantOrders.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -149,5 +151,33 @@ public class OrderServiceTest {
         Optional<OrderModel> result = orderService.findBy(invalidId);
 
         assertFalse(result.isPresent());
+    }
+
+    @Test
+    public void UpdateOrder_withValidData_ReturnsOrder() {
+        //var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
+        when(orderRepository.findById(anyLong())).thenReturn(Optional.of(ORDER_RESPONSE));
+        when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
+
+        OrderModel response = orderService.updateOrderService(2L, REQUEST_ORDER_DTO);
+        assertNotNull(response);
+    }
+
+    @Test
+    public void UpdateOrder_withInvalidStatus_returnsException() {
+        OrderModel order = ORDER_RESPONSE;
+        order.setStatus(StatusOrderEnum.CANCELED);
+        when(orderRepository.findById(anyLong())).thenReturn(Optional.of(order));
+
+        assertThatThrownBy(() -> orderService.updateOrderService(1L, REQUEST_ORDER_DTO))
+                .isInstanceOf(BusinessErrorException.class);
+    }
+
+    @Test
+    public void UpdateOrder_withInvalidId_returnsException() {
+        when(orderRepository.findById(1L)).thenThrow(OrderNotFoundException.class);
+
+        assertThatThrownBy(() -> orderService.updateOrderService(1L, REQUEST_ORDER_DTO))
+                .isInstanceOf(OrderNotFoundException.class);
     }
 }

@@ -1,6 +1,7 @@
 package com.compassuol.sp.challenge.msorders.service;
 
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
+import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
@@ -78,6 +79,9 @@ public class OrderService {
     public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
         OrderModel order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
+
+        if (order.getStatus() == StatusOrderEnum.CANCELED)
+            throw new BusinessErrorException("pedido com status de cancelado não pode ser atualizado.");
 
         ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
         OrderModel updateOrder = setOrderUpdates(order,request,cep);
