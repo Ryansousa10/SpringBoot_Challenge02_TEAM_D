@@ -21,6 +21,14 @@ public class FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final OrdersProxy proxy;
+
+    public List<FeedbackModel> getAllFeedbacksService() {
+        try {
+            return feedbackRepository.findAll();
+        } catch (Exception e) {
+            throw new FeedbackNotFoundException("Feedbacks not found", e);
+        }
+    }
     public void getFeedbacksByIdService() {}
 
     public FeedbackModel createFeedbackService(FeedbackRequestDTO request) {
@@ -34,21 +42,14 @@ public class FeedbackService {
         return feedbackRepository.save(getFeedback(request));
     }
 
-    public List<FeedbackModel> getAllFeedbacksService() {
-        try {
-            return feedbackRepository.findAll();
-        } catch (Exception e) {
-            throw new FeedbackNotFoundException("Feedbacks not found", e);
-        }
-    }
     public void updateFeedbackService() {}
 
     public FeedbackResponseDTO deleteFeedbackService(Long id) {
-        FeedbackModel feedback = feedbackRepository.findById(Math.toIntExact(id))
+        FeedbackModel feedback = feedbackRepository.findById(id)
                 .orElseThrow(() -> new FeedbackNotFoundException("Feedback não encontrado"));
 
         FeedbackResponseDTO responseDTO = mapToResponseDTO(feedback);
-        feedbackRepository.deleteById(Math.toIntExact(id));
+        feedbackRepository.deleteById(id);
 
         return responseDTO;
     }

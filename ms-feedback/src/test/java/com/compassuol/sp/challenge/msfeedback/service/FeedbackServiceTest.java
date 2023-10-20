@@ -118,7 +118,6 @@ public class FeedbackServiceTest {
 
     @Test
     void testDeleteFeedbackService() {
-        // Configurar feedback simulado para exclusão
         FeedbackModel simulatedFeedback = new FeedbackModel();
         simulatedFeedback.setId(1L);
         simulatedFeedback.setScale(ScaleEnum.SATISFIED);
