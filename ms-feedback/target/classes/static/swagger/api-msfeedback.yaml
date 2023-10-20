@@ -6,6 +6,30 @@ info:
 servers:
   - url: http://localhost:8100
 paths:
+  /feedbacks/{id}:
+    get:
+      summary: Get an feedback by ID
+      description: Retrieves an feedback by its unique ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Feedback ID to get.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Feedback not found
+          content:
+            application/json:
+              schema:
+                type: object
   /feedbacks:
     get:
       summary: Retrieve all feedbacks
