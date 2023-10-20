@@ -4,6 +4,7 @@ import com.compassuol.sp.challenge.msorders.constant.PaymentTypeEnum;
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
 import com.compassuol.sp.challenge.msorders.service.OrderDataConstraints;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "order_tb")
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderModel {
 
     @Id
