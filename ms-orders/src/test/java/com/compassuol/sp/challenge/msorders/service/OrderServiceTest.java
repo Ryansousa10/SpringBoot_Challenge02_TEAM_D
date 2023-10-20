@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,33 @@ public class OrderServiceTest {
     @Before
     public void setUp() {
         when(orderRepository.findById(1L)).thenReturn(Optional.empty());
+    }
+
+    @Test
+    public void testGetOrdersByStatusSortedByDateWithNullStatus() {
+        List<OrderModel> expectedOrders = new ArrayList<>();
+        when(orderRepository.findOrdersByCreateDateDesc()).thenReturn(expectedOrders);
+
+        List<OrderModel> result = orderService.getOrdersByStatusSortedByDate(null);
+
+        verify(orderRepository, times(1)).findOrdersByCreateDateDesc();
+        verify(orderRepository, times(0)).findOrdersByStatusAndCreateDateDesc(any(StatusOrderEnum.class));
+
+        assertEquals(expectedOrders, result);
+    }
+
+    @Test
+    public void testGetOrdersByStatusSortedByDateWithNonNullStatus() {
+        List<OrderModel> expectedOrders = new ArrayList<>();
+        StatusOrderEnum status = StatusOrderEnum.CONFIRMED;
+        when(orderRepository.findOrdersByStatusAndCreateDateDesc(status)).thenReturn(expectedOrders);
+
+        List<OrderModel> result = orderService.getOrdersByStatusSortedByDate(status);
+
+        verify(orderRepository, times(0)).findOrdersByCreateDateDesc();
+        verify(orderRepository, times(1)).findOrdersByStatusAndCreateDateDesc(status);
+
+        assertEquals(expectedOrders, result);
     }
 
     @Test
@@ -152,10 +180,4 @@ public class OrderServiceTest {
         assertFalse(result.isPresent());
     }
 
-    @Test
-    public void testGetAllOrders() {
-        List<OrderModel> orders = orderService.getAllOrdersService();
-
-        assertNotNull(orders);
-    }
 }

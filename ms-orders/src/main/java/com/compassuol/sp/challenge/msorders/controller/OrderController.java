@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msorders.controller;
 
+import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
@@ -23,8 +24,12 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    // http://localhost:8000/orders?status=CONFIRMED
     @GetMapping
-    public ResponseEntity<List<OrderModel>> getAllOrders() {return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersService());}
+    public ResponseEntity<List<OrderModel>> getOrdersByStatusAndSort(
+            @RequestParam(name = "status", required = false) StatusOrderEnum status) {
+        return ResponseEntity.ok(orderService.getOrdersByStatusSortedByDate(status));
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOrderById(@PathVariable Long id) {

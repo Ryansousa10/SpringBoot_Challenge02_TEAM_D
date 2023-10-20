@@ -3,6 +3,8 @@ info:
   title: ms-feedbacks
   description: API Description
   version: 1.0.0
+servers:
+  - url: http://localhost:8100
 paths:
   /feedbacks:
     get:

@@ -37,6 +37,7 @@ public class OrderModel {
     private Double total_value;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "create_date")
     private LocalDateTime create_date;
     @Enumerated(EnumType.STRING)
     private StatusOrderEnum status;

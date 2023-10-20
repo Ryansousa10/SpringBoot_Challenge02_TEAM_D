@@ -30,8 +30,11 @@ public class OrderService {
     private final ProductsProxy proxy;
     private final ViaCepProxy viaCepProxy;
 
-    public List<OrderModel> getAllOrdersService() {
-        return orderRepository.findAll();
+    public List<OrderModel> getOrdersByStatusSortedByDate(StatusOrderEnum status) {
+        if (status == null) {
+            return orderRepository.findOrdersByCreateDateDesc();
+        }
+        return orderRepository.findOrdersByStatusAndCreateDateDesc(status);
     }
 
     public Optional<OrderModel> findBy(Long id) {

@@ -5,7 +5,7 @@ spring:
     name: ms-order
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_ecommerce?createDatabaseIfNotExist=true&severTimezone=UTC
+    url: jdbc:mysql://localhost:3306/db_ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: root
   jpa:
