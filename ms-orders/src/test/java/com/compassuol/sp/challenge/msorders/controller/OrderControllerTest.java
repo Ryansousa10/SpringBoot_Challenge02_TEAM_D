@@ -16,7 +16,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -52,7 +54,7 @@ class OrderControllerTest {
     }
 
     @Test
-    public void testUpdateOrderService() {
+    void testUpdateOrderService() {
         // Mocking data
         Long orderId = 1L;
         RequestOrderDTO requestDTO = new RequestOrderDTO();
@@ -67,7 +69,7 @@ class OrderControllerTest {
     }
 
     @Test
-    public void testUpdateOrderServiceOrderNotFound() {
+    void testUpdateOrderServiceOrderNotFound() {
 
         Long orderId = 1L;
         RequestOrderDTO requestDTO = new RequestOrderDTO();

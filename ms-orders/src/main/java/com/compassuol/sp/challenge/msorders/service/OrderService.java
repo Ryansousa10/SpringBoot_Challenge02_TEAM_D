@@ -30,8 +30,9 @@ public class OrderService {
     private final ProductsProxy proxy;
     private final ViaCepProxy viaCepProxy;
 
-    public List<OrderModel> getAllOrdersService()
-    {return orderRepository.findAll();}
+    public List<OrderModel> getAllOrdersService() {
+        return orderRepository.findAll();
+    }
 
     public Optional<OrderModel> findBy(Long id) {
         return orderRepository.findById(id);
@@ -90,7 +91,7 @@ public class OrderService {
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
 
         ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
-        OrderModel updateOrder = setOrderUpdates(order,request,cep);
+        OrderModel updateOrder = setOrderUpdates(order, request, cep);
         updateOrder.setStatus(StatusOrderEnum.SENT);
         return updateOrder;
     }
@@ -101,7 +102,7 @@ public class OrderService {
                 subtotal, StatusOrderEnum.CONFIRMED, "");
     }
 
-    private OrderModel setOrderUpdates(OrderModel order,RequestOrderDTO request,ViaCepAddressDTO cep){
+    private OrderModel setOrderUpdates(OrderModel order, RequestOrderDTO request, ViaCepAddressDTO cep) {
         order.setPayment_method(request.getPayment_method());
         AddressModel address = getAddressModel(request, cep);
         order.setAddress(address);

@@ -38,7 +38,10 @@ public class FeedbackController {
     public void updateFeedback() {}
 
     @DeleteMapping("/{id}")
-    public void deleteFeedback() {}
+    public ResponseEntity<FeedbackResponseDTO> deleteFeedback(@PathVariable Long id) {
+        FeedbackResponseDTO responseDTO = feedbackService.deleteFeedbackService(id);
+        return ResponseEntity.ok(responseDTO);
+    }
 
     private FeedbackResponseDTO ParseModelToDTO(FeedbackModel feedbackModel) {
         ObjectMapper objectMapper = new ObjectMapper();

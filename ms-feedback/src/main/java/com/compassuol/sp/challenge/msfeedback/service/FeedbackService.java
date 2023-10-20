@@ -3,7 +3,9 @@ package com.compassuol.sp.challenge.msfeedback.service;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.FeedbackNotFoundException;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackRequestDTO;
+import com.compassuol.sp.challenge.msfeedback.dto.FeedbackResponseDTO;
 import com.compassuol.sp.challenge.msfeedback.dto.OrderResponseDTO;
+import com.compassuol.sp.challenge.msfeedback.dto.ScaleEnum;
 import com.compassuol.sp.challenge.msfeedback.model.FeedbackModel;
 import com.compassuol.sp.challenge.msfeedback.proxy.OrdersProxy;
 import com.compassuol.sp.challenge.msfeedback.repository.FeedbackRepository;
@@ -41,7 +43,24 @@ public class FeedbackService {
     }
     public void updateFeedbackService() {}
 
-    public void deleteFeedbackService() {}
+    public FeedbackResponseDTO deleteFeedbackService(Long id) {
+        FeedbackModel feedback = feedbackRepository.findById(Math.toIntExact(id))
+                .orElseThrow(() -> new FeedbackNotFoundException("Feedback não encontrado"));
+
+        FeedbackResponseDTO responseDTO = mapToResponseDTO(feedback);
+        feedbackRepository.deleteById(Math.toIntExact(id));
+
+        return responseDTO;
+    }
+
+    FeedbackResponseDTO mapToResponseDTO(FeedbackModel feedbackModel) {
+        FeedbackResponseDTO responseDTO = new FeedbackResponseDTO();
+        responseDTO.setId(feedbackModel.getId());
+        responseDTO.setScale(ScaleEnum.valueOf(feedbackModel.getScale().toString()));
+        responseDTO.setComment(feedbackModel.getComment());
+        responseDTO.setOrder_id(feedbackModel.getOrder_id());
+        return responseDTO;
+    }
 
     public FeedbackModel getFeedback(FeedbackRequestDTO request) {
         return new FeedbackModel(request.getScale(), request.getComment(),
