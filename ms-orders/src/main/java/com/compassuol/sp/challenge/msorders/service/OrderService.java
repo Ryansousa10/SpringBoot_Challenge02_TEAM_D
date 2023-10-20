@@ -52,10 +52,6 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public void updateOrderService() {
-        //para implementer
-    }
-
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
         return orderRepository.findById(id)
                 .map(order -> {
@@ -91,9 +87,28 @@ public class OrderService {
                 .build();
     }
 
+
+    public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
+        OrderModel order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
+
+        ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
+        OrderModel updateOrder = setOrderUpdates(order,request,cep);
+        updateOrder.setStatus(StatusOrderEnum.SENT);
+        return updateOrder;
+    }
+
     private OrderModel getOrderModel(RequestOrderDTO request, AddressModel address, double subtotal)
             throws ParseException {
         return new OrderModel(request.getProducts(), address, request.getPayment_method(),
                 subtotal, StatusOrderEnum.CONFIRMED, "");
+    }
+
+    private OrderModel setOrderUpdates(OrderModel order,RequestOrderDTO request,ViaCepAddressDTO cep){
+        order.setPayment_method(request.getPayment_method());
+        AddressModel address = getAddressModel(request, cep);
+        order.setAddress(address);
+        order.setProducts(request.getProducts());
+        return order;
     }
 }

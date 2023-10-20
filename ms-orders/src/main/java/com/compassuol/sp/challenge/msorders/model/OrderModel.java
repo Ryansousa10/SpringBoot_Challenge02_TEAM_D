@@ -63,4 +63,7 @@ public class OrderModel {
             this.status = StatusOrderEnum.CANCELED;
         }
     }
+
+    public void setDeliveryDate(LocalDateTime newDeliveryDateTime) {
+    }
 }

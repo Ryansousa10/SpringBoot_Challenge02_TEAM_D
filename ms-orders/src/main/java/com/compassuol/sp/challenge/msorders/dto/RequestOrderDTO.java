@@ -28,4 +28,7 @@ public class RequestOrderDTO {
     @NotNull(message = "payment method field cannot be null")
     @Enumerated(EnumType.STRING)
     private PaymentTypeEnum payment_method;
+    public RequestOrderDTO() {
+
+    }
 }

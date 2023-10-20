@@ -4,7 +4,6 @@ import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.Prod
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
 import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
-import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -50,8 +49,9 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public void updateOrder() {
-        //para implementer
+    public ResponseEntity<OrderModel> updateOrder(@PathVariable Long id, @RequestBody @Valid RequestOrderDTO request) {
+        var response = orderService.updateOrderService(id, request);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/{id}/cancel")
