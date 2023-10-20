@@ -19,14 +19,9 @@ public class FeedbackController {
     public void getAllFeedbacks() {}
 
     @GetMapping("/{id}")
-    public ResponseEntity<FeedbackModel> getFeedbackById(@PathVariable("id") int id) {
-        Optional<FeedbackModel> feedback = feedbackService.getFeedbackById(id);
-        return feedback.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<FeedbackModel> getFeedbackById(@PathVariable int id) {
+        return feedbackService.getFeedbackById(id);
     }
-
-
-
 
     @PostMapping
     public void createFeedback() {}

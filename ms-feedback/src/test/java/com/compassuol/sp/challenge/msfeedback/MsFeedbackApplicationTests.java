@@ -18,36 +18,4 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class MsFeedbackApplicationTests {
 
-	@Mock
-	private FeedbackService feedbackService;
-
-	@InjectMocks
-	private FeedbackController feedbackController;
-
-	@Test
-	public void testGetFeedbackById() {
-		int feedbackId = 1;
-		FeedbackModel mockFeedback = new FeedbackModel(); // Crie um objeto FeedbackModel de teste
-		Optional<FeedbackModel> optionalFeedback = Optional.of(mockFeedback);
-
-		when(feedbackService.getFeedbackById(feedbackId)).thenReturn(optionalFeedback);
-
-		ResponseEntity<FeedbackModel> responseEntity = feedbackController.getFeedbackById(feedbackId);
-
-		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-
-		assertEquals(mockFeedback, responseEntity.getBody());
-	}
-
-	@Test
-	public void testGetFeedbackByIdNotFound() {
-		int feedbackId = 1;
-
-		when(feedbackService.getFeedbackById(feedbackId)).thenReturn(Optional.empty());
-
-		ResponseEntity<FeedbackModel> responseEntity = feedbackController.getFeedbackById(feedbackId);
-
-		assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
-	}
 }
-

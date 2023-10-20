@@ -17,18 +17,27 @@ public class FeedbackService {
     private final FeedbackRepository feedbackRepository;
     private final OrdersProxy proxy;
 
-    public void getAllFeedbacksService() {}
-
-    public Optional<FeedbackModel> getFeedbackById(int id) {
-        return feedbackRepository.findById(id);
+    public void getAllFeedbacksService() {
     }
 
+    public ResponseEntity<FeedbackModel> getFeedbackById(int id) {
+        Optional<FeedbackModel> feedbackOptional = feedbackRepository.findById(id);
 
+        if (feedbackOptional.isPresent()) {
+            FeedbackModel feedback = feedbackOptional.get();
+            return ResponseEntity.status(HttpStatus.OK).body(feedback);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
+    public void createFeedbackService () {
+        }
 
-    public void createFeedbackService() {}
+        public void updateFeedbackService () {
+        }
 
-    public void updateFeedbackService() {}
+        public void deleteFeedbackService () {
+        }
+    }
 
-    public void deleteFeedbackService() {}
-}
