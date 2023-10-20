@@ -76,6 +76,16 @@ public class OrderService {
                 .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
     }
 
+    public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
+        OrderModel order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
+
+        ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
+        OrderModel updateOrder = setOrderUpdates(order,request,cep);
+        updateOrder.setStatus(StatusOrderEnum.SENT);
+        return updateOrder;
+    }
+
     private AddressModel getAddressModel(RequestOrderDTO request, ViaCepAddressDTO cep) {
         return AddressModel.builder()
                 .number(request.getAddress().getNumber())
@@ -85,17 +95,6 @@ public class OrderService {
                 .postalCode(cep.getCep())
                 .street(request.getAddress().getStreet())
                 .build();
-    }
-
-
-    public OrderModel updateOrderService(Long id, RequestOrderDTO request) {
-        OrderModel order = orderRepository.findById(id)
-                .orElseThrow(() -> new OrderNotFoundException("Pedido não encontrado"));
-
-        ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
-        OrderModel updateOrder = setOrderUpdates(order,request,cep);
-        updateOrder.setStatus(StatusOrderEnum.SENT);
-        return updateOrder;
     }
 
     private OrderModel getOrderModel(RequestOrderDTO request, AddressModel address, double subtotal)
