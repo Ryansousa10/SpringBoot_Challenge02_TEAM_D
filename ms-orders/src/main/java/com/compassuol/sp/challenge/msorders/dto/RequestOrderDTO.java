@@ -20,6 +20,7 @@ public class RequestOrderDTO {
 
     @NotNull(message = "products field cannot be null")
     @Size(min = 1, message = "you have to put one or more products")
+    @Valid
     private List<OrderProductsModel> products;
     @NotNull(message = "address field cannot be null")
     @Valid
@@ -27,4 +28,7 @@ public class RequestOrderDTO {
     @NotNull(message = "payment method field cannot be null")
     @Enumerated(EnumType.STRING)
     private PaymentTypeEnum payment_method;
+    public RequestOrderDTO() {
+
+    }
 }

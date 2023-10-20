@@ -58,13 +58,10 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createProduct(@RequestBody @Valid ProductDTO productDTO) {
-        if (productService.isProductExistsByName(productDTO.getName())) {
-            throw new BusinessErrorException("Produto com o mesmo nome já existe.");
-        }
-        ProductModel newProduct = new ProductModel(productDTO.getName(),
-                productDTO.getDescription(), productDTO.getValue());
-        ProductModel savedProduct = productService.createProductService(newProduct);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProductModel createProduct(@RequestBody @Valid ProductDTO productDTO) {
+        productService.checkIfProductExistsByName(productDTO.getName());
+        ProductModel newProduct = new ProductModel(productDTO.getName(), productDTO.getDescription(), productDTO.getValue());
+        return productService.createProductService(newProduct);
     }
 }

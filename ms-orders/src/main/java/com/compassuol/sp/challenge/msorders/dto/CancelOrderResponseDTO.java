@@ -1,6 +1,5 @@
 package com.compassuol.sp.challenge.msorders.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.List;

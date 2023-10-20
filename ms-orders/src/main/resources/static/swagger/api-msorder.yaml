@@ -3,6 +3,8 @@ info:
   title: ms-orders
   description: Descrição da API
   version: 1.0.0
+servers:
+    - url: http://localhost:8000
 paths:
   /orders/{id}:
     get:
@@ -34,31 +36,215 @@ paths:
             application/json:
               schema:
                 type: object
-  /orders:
-    post:
-      summary: post orders
-      description: receive json payload with products order and save in database
+    put:
+      summary: Update an order by ID
+      description: Updates an existing order by its unique ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Order ID to update.
       requestBody:
         required: true
-      response:
-        201:
-          description: successfully operation
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product_id:
+                        type: integer
+                      quantity:
+                        type: integer
+                address:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                    number:
+                      type: string
+                    postal_code:
+                      type: string
+                payment_method:
+                  type: string
+      responses:
+        200:
+          description: Operation carried out successfully
           content:
             application/json:
-              schema:
-                type: object
+              example:
+                products:
+                  - product_id: 1
+                    quantity: 2
+                  - product_id: 2
+                    quantity: 2
+                address:
+                  street: Street name
+                  number: 10
+                  complement: details
+                  city: City name
+                  state: State name
+                  postal_code: 31333333
+                payment_method: PIX
+                subtotal_value: 100.00
+                discount: 0.5
+                total_value: 95.00
+                created_date: "2023-07-20T12:00:00Z"
+                status: CANCELED
+                cancel_reason: "Cancel reason"
+                cancel_date: "2023-07-20T12:00:00Z"
         400:
-          description: received data don't be compatible
+          description: Invalid order data or ID.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+        404:
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+  /orders:
+    get:
+      summary: Recuperar Lista de Pedidos
+      description: Obtém uma lista de pedidos no sistema.
+      responses:
+        '200':
+          description: Operação bem-sucedida
+          content:
+            application/json:
+              example:
+                - id: 1
+                  products:
+                    - product_id: 5
+                      quantity: 4
+                    - product_id: 7
+                      quantity: 6
+                  address:
+                    street: "123 Main St"
+                    number: "10"
+                    complement: "Apt 3B"
+                    city: "Cityville"
+                    state: "CA"
+                    postalCode: "12345"
+                  payment_method: "CREDIT_CARD"
+                  subtotal_value: 100.0
+                  discount: 10.0
+                  total_value: 90.0
+                  create_date: "2023-10-14T07:30:00"
+                  status: "CANCELED"
+                  cancel_reason: "Out of stock"
+                  cancel_date: "2023-10-15T06:00:00"
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderModel'
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+    post:
+      summary: Create a new order
+      description: Create a new order with a JSON payload of products and order details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product_id:
+                        type: integer
+                        description: The ID of the product.
+                      quantity:
+                        type: integer
+                        description: The quantity of the product.
+                address:
+                  type: object
+                  properties:
+                    street:
+                      type: string
+                      description: Street name.
+                    number:
+                      type: string
+                      description: House or building number.
+                    postal_code:
+                      type: string
+                      description: Postal code.
+                payment_method:
+                  type: string
+                  description: Payment method.
+      responses:
+        201:
+          description: Successfully created order
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        product_id:
+                          type: integer
+                        quantity:
+                          type: integer
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                      number:
+                        type: integer
+                      complement:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      postalCode:
+                        type: string
+                  payment_method:
+                    type: string
+                  subtotal_value:
+                    type: number
+                  discount:
+                    type: number
+                  total_value:
+                    type: number
+                  created_date:
+                    type: string
+                    format: date-time
+                  status:
+                    type: string
+        400:
+          description: Invalid order data or request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
         500:
-          description: internal server error
+          description: Internal server error
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/ErrorModel'
   /orders/{id}/cancel:
     post:
       summary: Cancel an order by ID
