@@ -48,6 +48,47 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFound'
   /feedbacks/{id}:
+    get:
+      summary: Get a feedback by ID
+      description: Retrieves a feedback by its unique ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Feedback ID to get.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackModel'
+              example:
+                id: 1
+                scale: SATISFIED
+                comment: this so good
+                order_id: 1
+        '404':
+          description: Feedback not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  status:
+                    type: string
+                  message:
+                    type: string
+                example:
+                  code: 404
+                  status: "404 NOT_FOUND"
+                  message: "Feedback with ID {id} not found."
+
     delete:
       summary: Delete feedback
       description: Deletes an existing feedback.
@@ -60,7 +101,7 @@ paths:
             type: integer
       responses:
         '200':
-          description: Feedback deleted successfully.
+          description: Feedback deleted successfully
           content:
             application/json:
               schema:

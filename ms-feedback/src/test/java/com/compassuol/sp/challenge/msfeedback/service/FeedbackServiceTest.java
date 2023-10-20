@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msfeedback.service;
 
+import com.compassuol.sp.challenge.msfeedback.controller.exception.ResponseErrorTemplate;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.FeedbackNotFoundException;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackRequestDTO;
@@ -17,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,5 +157,29 @@ public class FeedbackServiceTest {
         assertThat(responseDTO.getScale()).isEqualTo(ScaleEnum.SATISFIED);
         assertThat(responseDTO.getComment()).isEqualTo("Comment here");
         assertThat(responseDTO.getOrder_id()).isEqualTo(1L);
+    }
+
+    @Test
+    void testGetFeedbackByIdFound() {
+        long feedbackId = 1;
+        FeedbackModel feedbackModel = new FeedbackModel();
+        feedbackModel.setId(feedbackId);
+        when(feedbackRepository.findById(feedbackId)).thenReturn(Optional.of(feedbackModel));
+
+        ResponseEntity<Object> response = feedbackService.getFeedbackById(feedbackId);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(feedbackModel, response.getBody());
+    }
+    @Test
+    void testGetFeedbackByIdNotFound() {
+        long feedbackId = 1;
+        when(feedbackRepository.findById(feedbackId)).thenReturn(Optional.empty());
+
+        ResponseEntity<Object> response = feedbackService.getFeedbackById(feedbackId);
+
+        assertEquals(404, response.getStatusCodeValue());
+        ResponseErrorTemplate errorResponse = (ResponseErrorTemplate) response.getBody();
+        assertEquals("Feedback com o ID 1 não encontrado.", errorResponse.getMessage());
     }
 }
