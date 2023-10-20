@@ -6,30 +6,6 @@ info:
 servers:
   - url: http://localhost:8100
 paths:
-  /feedbacks/{id}:
-    get:
-      summary: Get an feedback by ID
-      description: Retrieves an feedback by its unique ID.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-          description: Feedback ID to get.
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-        '404':
-          description: Feedback not found
-          content:
-            application/json:
-              schema:
-                type: object
   /feedbacks:
     get:
       summary: Retrieve all feedbacks
@@ -67,30 +43,6 @@ paths:
                 type: object
         '404':
           description: Order_id doesn't exist in the database
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFound'
-  /feedbacks/{id}:
-    delete:
-      summary: Delete feedback
-      description: Deletes an existing feedback.
-      parameters:
-        - name: id
-          in: path
-          description: ID of the feedback to be deleted.
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Feedback deleted successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FeedbackResponseDTO'
-        '404':
-          description: Feedback not found
           content:
             application/json:
               schema:
@@ -140,3 +92,68 @@ components:
           type: string
         message:
           type: string
+        /feedbacks/{id}:
+          get:
+            summary: Get a feedback by ID
+            description: Retrieves a feedback by its unique ID.
+           parameters:
+              - in: path
+               name: id
+               required: true
+               schema:
+                type: integer
+               description: Feedback ID to get.
+           responses:
+             '200':
+               description: Success
+               content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackModel'
+              example:
+                id: 1
+                scale: SATISFIED
+                comment: this so good
+                order_id: 1
+        '404':
+          description: Feedback not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  status:
+                    type: string
+                  message:
+                    type: string
+                example:
+                  code: 404
+                  status: "404 NOT_FOUND"
+                  message: "Feedback with ID {id} not found."
+
+    delete:
+      summary: Delete feedback
+      description: Deletes an existing feedback.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the feedback to be deleted.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Feedback deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponseDTO'
+        '404':
+          description: Feedback not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
