@@ -1,5 +1,6 @@
 package com.compassuol.sp.challenge.msfeedback.service;
 
+import com.compassuol.sp.challenge.msfeedback.controller.exception.ResponseErrorTemplate;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msfeedback.controller.exception.errorTypes.ProductNotFoundException;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackRequestDTO;
@@ -14,8 +15,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -86,5 +91,28 @@ public class FeedbackServiceTests {
 
         assertThatThrownBy(() -> feedbackService.createFeedbackService(feedbackRequestDTO))
                 .isInstanceOf(BusinessErrorException.class);
+    }
+    @Test
+    void testGetFeedbackByIdFound() {
+        int feedbackId = 1;
+        FeedbackModel feedbackModel = new FeedbackModel();
+        feedbackModel.setId((long) feedbackId);
+        when(feedbackRepository.findById(feedbackId)).thenReturn(Optional.of(feedbackModel));
+
+        ResponseEntity<Object> response = feedbackService.getFeedbackById(feedbackId);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(feedbackModel, response.getBody());
+    }
+    @Test
+    void testGetFeedbackByIdNotFound() {
+        int feedbackId = 1;
+        when(feedbackRepository.findById(feedbackId)).thenReturn(Optional.empty());
+
+        ResponseEntity<Object> response = feedbackService.getFeedbackById(feedbackId);
+
+        assertEquals(404, response.getStatusCodeValue());
+        ResponseErrorTemplate errorResponse = (ResponseErrorTemplate) response.getBody();
+        assertEquals("Feedback com o ID 1 não encontrado.", errorResponse.getMessage());
     }
 }
