@@ -89,7 +89,7 @@ public class OrderService {
         ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
         OrderModel updateOrder = setOrderUpdates(order,request,cep);
         updateOrder.setStatus(StatusOrderEnum.SENT);
-        return updateOrder;
+        return orderRepository.save(updateOrder);
     }
 
     private AddressModel getAddressModel(RequestOrderDTO request, ViaCepAddressDTO cep) {

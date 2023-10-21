@@ -184,9 +184,10 @@ public class OrderServiceTest {
 
     @Test
     public void UpdateOrder_withValidData_ReturnsOrder() {
-        //var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
+        var orderModelCaptor = ArgumentCaptor.forClass(OrderModel.class);
         when(orderRepository.findById(anyLong())).thenReturn(Optional.of(ORDER_RESPONSE));
         when(viaCepProxy.getViaCepAddress(anyString())).thenReturn(VIA_CEP_ADDRESS_DTO);
+        when(orderRepository.save(orderModelCaptor.capture())).thenReturn(ORDER_RESPONSE);
 
         OrderModel response = orderService.updateOrderService(2L, REQUEST_ORDER_DTO);
         assertNotNull(response);
