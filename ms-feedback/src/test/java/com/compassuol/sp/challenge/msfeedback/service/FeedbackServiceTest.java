@@ -182,4 +182,33 @@ public class FeedbackServiceTest {
         ResponseErrorTemplate errorResponse = (ResponseErrorTemplate) response.getBody();
         assertEquals("Feedback com o ID 1 não encontrado.", errorResponse.getMessage());
     }
+
+    @Test
+    public void updateFeedbacks_withValidData_ReturnsFeedback() {
+        var feedbackModelCaptor = ArgumentCaptor.forClass(FeedbackModel.class);
+        when(feedbackRepository.findById(anyLong())).thenReturn(Optional.of(feedbackModel));
+        when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
+        when(feedbackRepository.save(feedbackModelCaptor.capture())).thenReturn(feedbackModel);
+
+        FeedbackModel response = feedbackService.updateFeedbackService(1L, feedbackRequestDTO);
+        assertNotNull(response);
+    }
+
+    @Test
+    public void updateFeedbacks_withInValidId_ReturnsException() {
+        when(feedbackRepository.findById(1L)).thenThrow(FeedbackNotFoundException.class);
+        assertThatThrownBy(() -> feedbackService.updateFeedbackService(1L, feedbackRequestDTO))
+                .isInstanceOf(FeedbackNotFoundException.class);
+    }
+
+    @Test
+    public void updateFeedbacks_withInValidOrderId_ReturnsException() {
+        FeedbackRequestDTO request = feedbackRequestDTO;
+        request.setOrder_id(3L);
+        when(feedbackRepository.findById(anyLong())).thenReturn(Optional.of(feedbackModel));
+        when(proxy.getOrderById(3L)).thenThrow(FeedbackNotFoundException.class);
+
+        assertThatThrownBy(() -> feedbackService.updateFeedbackService(1L, request))
+                .isInstanceOf(FeedbackNotFoundException.class);
+    }
 }

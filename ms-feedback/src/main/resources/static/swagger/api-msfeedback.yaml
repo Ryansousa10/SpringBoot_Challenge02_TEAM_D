@@ -112,6 +112,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+    put:
+      summary: Update feedbacks
+      description: update feedbacks by id
+      parameters:
+        - name: id
+          in: path
+          description: ID that will be find feedback for up in database
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: json with fields that will be updatable
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackRequestDTO'
+      responses:
+        '200':
+          description: ok if feedback is successfully updated
+        '404':
+          description: if provides IDs doesn't exists
+        '500':
+          description: if occurred an unexpected error
 
 components:
   schemas:
