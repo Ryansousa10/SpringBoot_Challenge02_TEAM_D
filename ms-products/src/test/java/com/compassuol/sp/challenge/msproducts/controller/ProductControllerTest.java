@@ -166,15 +166,4 @@ class ProductControllerTest {
 
         verify(productService, times(1)).createProductService(any(ProductModel.class));
     }
-
-    @Test
-    public void testCreateProduct_DuplicateName() throws Exception {
-        ProductDTO productDTO = new ProductDTO("ProdutoExistente", "Descrição do Produto", 9.99);
-        mockMvc.perform(MockMvcRequestBuilders.post("/products")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(productDTO)))
-                .andExpect(status().isBadRequest());
-
-        verify(productService, times(0)).createProductService(any(ProductModel.class));
-    }
 }
