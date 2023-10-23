@@ -39,6 +39,7 @@ public class FeedbackServiceTest {
     public static FeedbackRequestDTO feedbackRequestDTO;
     public static OrderResponseDTO orderResponseDTO;
     public static FeedbackModel feedbackModel;
+    public static FeedbackResponseDTO feedbackResponseDTO;
 
     @InjectMocks
     FeedbackService feedbackService;
@@ -48,6 +49,9 @@ public class FeedbackServiceTest {
 
     @Mock
     OrdersProxy proxy;
+
+    @Mock
+    ParseToDTO parseToDTO;
 
     @BeforeEach
     public void setUp() {
@@ -64,8 +68,12 @@ public class FeedbackServiceTest {
         feedbackModel.setOrder_id(1L);
         feedbackModel.setComment("comment");
         feedbackModel.setId(12L);
-        feedbackRepository = Mockito.mock(FeedbackRepository.class);
-        feedbackService = new FeedbackService(feedbackRepository, proxy);
+
+        feedbackResponseDTO = new FeedbackResponseDTO();
+        feedbackResponseDTO.setId(1L);
+        feedbackResponseDTO.setOrder_id(1L);
+        feedbackResponseDTO.setComment("very good my boy");
+        feedbackResponseDTO.setScale(ScaleEnum.SATISFIED);
     }
 
     @Test
@@ -90,14 +98,15 @@ public class FeedbackServiceTest {
     }
 
     @Test
-    public void CreateFeedback_withValidData_returnsFeedback() {
+    public void CreateFeedback_withValidData_returnsFeedbackDTO() {
         var feedbackModelCaptor = ArgumentCaptor.forClass(FeedbackModel.class);
 
+        when(parseToDTO.toDTO(feedbackModelCaptor.capture())).thenReturn(feedbackResponseDTO);
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
         when(feedbackRepository.save(feedbackModelCaptor.capture()))
                 .thenReturn(feedbackModel);
 
-        FeedbackModel feedbackResponse = feedbackService.createFeedbackService(feedbackRequestDTO);
+        FeedbackResponseDTO feedbackResponse = feedbackService.createFeedbackService(feedbackRequestDTO);
         assertNotNull(feedbackResponse);
     }
 
@@ -186,11 +195,12 @@ public class FeedbackServiceTest {
     @Test
     public void updateFeedbacks_withValidData_ReturnsFeedback() {
         var feedbackModelCaptor = ArgumentCaptor.forClass(FeedbackModel.class);
+        when(parseToDTO.toDTO(feedbackModelCaptor.capture())).thenReturn(feedbackResponseDTO);
         when(feedbackRepository.findById(anyLong())).thenReturn(Optional.of(feedbackModel));
         when(proxy.getOrderById(anyLong())).thenReturn(orderResponseDTO);
         when(feedbackRepository.save(feedbackModelCaptor.capture())).thenReturn(feedbackModel);
 
-        FeedbackModel response = feedbackService.updateFeedbackService(1L, feedbackRequestDTO);
+        FeedbackResponseDTO response = feedbackService.updateFeedbackService(1L, feedbackRequestDTO);
         assertNotNull(response);
     }
 

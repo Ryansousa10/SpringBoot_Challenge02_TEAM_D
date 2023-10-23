@@ -4,10 +4,7 @@ import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.BusinessErrorException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
-import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
-import com.compassuol.sp.challenge.msorders.dto.ProductModelDTO;
-import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
-import com.compassuol.sp.challenge.msorders.dto.ViaCepAddressDTO;
+import com.compassuol.sp.challenge.msorders.dto.*;
 import com.compassuol.sp.challenge.msorders.model.AddressModel;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.model.OrderProductsModel;
@@ -31,6 +28,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final ProductsProxy proxy;
     private final ViaCepProxy viaCepProxy;
+    private final ParseToDTO parseToDTO;
 
     public List<OrderModel> getOrdersByStatusSortedByDate(StatusOrderEnum status) {
         if (status == null) {
@@ -43,7 +41,7 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-    public OrderModel createOrderService(RequestOrderDTO request) throws ParseException {
+    public CreateOrderResponseDTO createOrderService(RequestOrderDTO request) {
         double subtotalValue = 0.0;
         for (OrderProductsModel productsModel : request.getProducts()) {
             try {
@@ -54,11 +52,15 @@ public class OrderService {
                         " products microservice is falling");
             }
         }
-
-        ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
-        AddressModel address = getAddressModel(request, cep);
-        OrderModel order = getOrderModel(request, address, subtotalValue);
-        return orderRepository.save(order);
+        try {
+            ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
+            AddressModel address = getAddressModel(request, cep);
+            OrderModel order = getOrderModel(request, address, subtotalValue);
+            OrderModel model = orderRepository.save(order);
+            return new CreateOrderResponseDTO(model);
+        } catch (ParseException ex) {
+            throw new RuntimeException();
+        }
     }
 
     public OrderModel cancelOrderByIdService(Long id, CancelOrderRequestDTO cancelOrderRequest) {
