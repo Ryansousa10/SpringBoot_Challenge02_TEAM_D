@@ -1,0 +1,62 @@
+services:
+  mysql_container:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - my-docker-networks
+
+  ms-orders-app:
+    image: rianbar/ms-orders:v1.1
+    ports:
+      - "8000:8000"
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql_container:3306/db_ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&enabledTLSProtocols=TLSv1.2
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: root
+      SPRING.FLYWAY.URL: jdbc:mysql://mysql_container:3306/db_ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&enabledTLSProtocols=TLSv1.2
+      SPRING.FLYWAY.USER: root
+      SPRING.FLYWAY.PASSWORD: root
+    depends_on:
+      - mysql_container
+    networks:
+      - my-docker-networks
+
+  ms-products-app:
+    image: rianbar/ms-products:v1.2
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql_container:3306/db_products?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&enabledTLSProtocols=TLSv1.2
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: root
+      SPRING.FLYWAY.URL: jdbc:mysql://mysql_container:3306/db_products?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&enabledTLSProtocols=TLSv1.2
+      SPRING.FLYWAY.USER: root
+      SPRING.FLYWAY.PASSWORD: root
+    depends_on:
+      - mysql_container
+      - ms-orders-app
+    networks:
+      - my-docker-networks
+
+  ms-feedbacks-app:
+    image: rianbar/ms-feedbacks:v1.1
+    ports:
+      - "8100:8100"
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql_container:3306/db_ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&enabledTLSProtocols=TLSv1.2
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: root
+    depends_on:
+      - mysql_container
+      - ms-products-app
+    networks:
+      - my-docker-networks
+
+networks:
+  my-docker-networks:
+    driver: bridge
