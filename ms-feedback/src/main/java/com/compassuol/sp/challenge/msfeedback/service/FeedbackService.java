@@ -24,6 +24,7 @@ public class FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final OrdersProxy proxy;
+    private final ParseToDTO parseToDTO;
 
     public List<FeedbackModel> getAllFeedbacksService() {
         try {
@@ -47,7 +48,7 @@ public class FeedbackService {
         }
     }
 
-    public FeedbackModel createFeedbackService(FeedbackRequestDTO request) {
+    public FeedbackResponseDTO createFeedbackService(FeedbackRequestDTO request) {
         try {
             OrderResponseDTO feedbackResponse = proxy.getOrderById(request.getOrder_id());
             if (feedbackResponse.getStatus().equalsIgnoreCase("canceled"))
@@ -55,10 +56,11 @@ public class FeedbackService {
         } catch (FeignException ex) {
             throw new FeedbackNotFoundException("order_id not found in database");
         }
-        return feedbackRepository.save(getFeedback(request));
+        FeedbackModel model = feedbackRepository.save(getFeedback(request));
+        return parseToDTO.toDTO(model);
     }
 
-    public FeedbackModel updateFeedbackService(Long id, FeedbackRequestDTO dto) {
+    public FeedbackResponseDTO updateFeedbackService(Long id, FeedbackRequestDTO dto) {
         FeedbackModel model = feedbackRepository.findById(id)
                 .orElseThrow(() -> new FeedbackNotFoundException("feedback not found"));
         try {
@@ -68,7 +70,8 @@ public class FeedbackService {
         }
 
         FeedbackModel updatedFeedback = updateFeedbackModel(model, dto);
-        return feedbackRepository.save(updatedFeedback);
+        FeedbackModel response = feedbackRepository.save(updatedFeedback);
+        return parseToDTO.toDTO(response);
     }
 
     public FeedbackResponseDTO deleteFeedbackService(Long id) {

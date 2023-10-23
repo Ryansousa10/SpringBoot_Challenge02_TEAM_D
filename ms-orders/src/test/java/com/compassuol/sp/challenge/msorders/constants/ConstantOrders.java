@@ -3,10 +3,7 @@ package com.compassuol.sp.challenge.msorders.constants;
 
 import com.compassuol.sp.challenge.msorders.constant.PaymentTypeEnum;
 import com.compassuol.sp.challenge.msorders.constant.StatusOrderEnum;
-import com.compassuol.sp.challenge.msorders.dto.AddressRequestDTO;
-import com.compassuol.sp.challenge.msorders.dto.ProductModelDTO;
-import com.compassuol.sp.challenge.msorders.dto.RequestOrderDTO;
-import com.compassuol.sp.challenge.msorders.dto.ViaCepAddressDTO;
+import com.compassuol.sp.challenge.msorders.dto.*;
 import com.compassuol.sp.challenge.msorders.model.AddressModel;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.model.OrderProductsModel;
@@ -30,4 +27,5 @@ public class ConstantOrders {
     public static final OrderModel ORDER_RESPONSE = new OrderModel(1L, orderProductsModel, ADDRESS_MODEL,
             PaymentTypeEnum.CREDIT_CARD, 20.50, 0.0, 20.50, LocalDateTime.now(),
             StatusOrderEnum.CONFIRMED, "", null);
+    public static final CreateOrderResponseDTO CREATE_ORDER_RESPONSE_DTO = new CreateOrderResponseDTO(ORDER_RESPONSE);
 }

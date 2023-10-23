@@ -61,7 +61,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public ProductModel createProduct(@RequestBody @Valid ProductDTO productDTO) {
         productService.checkIfProductExistsByName(productDTO.getName());
-        ProductModel newProduct = new ProductModel(productDTO.getName(), productDTO.getDescription(), productDTO.getValue());
+        var newProduct = new ProductModel(productDTO.getName(), productDTO.getDescription(), productDTO.getValue());
         return productService.createProductService(newProduct);
     }
 }
