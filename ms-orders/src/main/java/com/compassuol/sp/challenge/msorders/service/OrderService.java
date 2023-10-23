@@ -14,6 +14,7 @@ import com.compassuol.sp.challenge.msorders.model.OrderProductsModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.proxy.ViaCepProxy;
 import com.compassuol.sp.challenge.msorders.repository.OrderRepository;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,13 @@ public class OrderService {
     public OrderModel createOrderService(RequestOrderDTO request) throws ParseException {
         double subtotalValue = 0.0;
         for (OrderProductsModel productsModel : request.getProducts()) {
-            ProductModelDTO product = proxy.getProductById(productsModel.getProduct_id());
-            subtotalValue += productsModel.getQuantity() * product.getValue();
+            try {
+                ProductModelDTO product = proxy.getProductById(productsModel.getProduct_id());
+                subtotalValue += productsModel.getQuantity() * product.getValue();
+            } catch (FeignException ex) {
+                throw new BusinessErrorException("cannot find product id or your connection with" +
+                        " products microservice is falling");
+            }
         }
 
         ViaCepAddressDTO cep = viaCepProxy.getViaCepAddress(request.getAddress().getPostalCode());
