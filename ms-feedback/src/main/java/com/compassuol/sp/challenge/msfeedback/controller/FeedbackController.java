@@ -4,7 +4,6 @@ import com.compassuol.sp.challenge.msfeedback.model.FeedbackModel;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackRequestDTO;
 import com.compassuol.sp.challenge.msfeedback.dto.FeedbackResponseDTO;
 import com.compassuol.sp.challenge.msfeedback.service.FeedbackService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,25 +32,19 @@ public class FeedbackController {
 
     @PostMapping
     public ResponseEntity<Object> createFeedback(@RequestBody @Valid FeedbackRequestDTO request) {
-        FeedbackResponseDTO feedback = ParseModelToDTO(feedbackService.createFeedbackService(request));
-        return ResponseEntity.status(HttpStatus.CREATED).body(feedback);
+        var response = feedbackService.createFeedbackService(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateFeedback(@PathVariable("id") Long id, @RequestBody @Valid FeedbackRequestDTO requestDTO) {
         var response = feedbackService.updateFeedbackService(id, requestDTO);
-        var responseDTO = new FeedbackResponseDTO(response);
-        return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<FeedbackResponseDTO> deleteFeedback(@PathVariable Long id) {
-        FeedbackResponseDTO responseDTO = feedbackService.deleteFeedbackService(id);
+        var responseDTO = feedbackService.deleteFeedbackService(id);
         return ResponseEntity.ok(responseDTO);
-    }
-
-    private FeedbackResponseDTO ParseModelToDTO(FeedbackModel feedbackModel) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.convertValue(feedbackModel, FeedbackResponseDTO.class);
     }
 }

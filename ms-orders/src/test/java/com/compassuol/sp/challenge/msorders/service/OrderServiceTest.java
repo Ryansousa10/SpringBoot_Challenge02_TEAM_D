@@ -5,6 +5,7 @@ import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.Busi
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderCancellationNotAllowedException;
 import com.compassuol.sp.challenge.msorders.controller.exception.errorTypes.OrderNotFoundException;
 import com.compassuol.sp.challenge.msorders.dto.CancelOrderRequestDTO;
+import com.compassuol.sp.challenge.msorders.dto.CreateOrderResponseDTO;
 import com.compassuol.sp.challenge.msorders.model.OrderModel;
 import com.compassuol.sp.challenge.msorders.proxy.ProductsProxy;
 import com.compassuol.sp.challenge.msorders.proxy.ViaCepProxy;
@@ -92,7 +93,7 @@ public class OrderServiceTest {
 
         when(orderRepository.save(orderModelCaptor.capture())).thenReturn(ORDER_RESPONSE);
 
-        OrderModel order = orderService.createOrderService(REQUEST_ORDER_DTO);
+        CreateOrderResponseDTO order = orderService.createOrderService(REQUEST_ORDER_DTO);
         assertNotNull(order);
     }
 

@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,9 +46,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createOrder(@RequestBody @Valid RequestOrderDTO request) throws ParseException {
-        OrderModel order = orderService.createOrderService(request);
-        CreateOrderResponseDTO response = new CreateOrderResponseDTO(order);
+    public ResponseEntity<Object> createOrder(@RequestBody @Valid RequestOrderDTO request) {
+        var response = orderService.createOrderService(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -61,7 +59,7 @@ public class OrderController {
 
     @PostMapping("/{id}/cancel")
     public ResponseEntity<OrderModel> cancelOrderById(@PathVariable Long id, @RequestBody CancelOrderRequestDTO cancelOrderRequest) {
-        OrderModel canceledOrder = orderService.cancelOrderByIdService(id, cancelOrderRequest);
+        var canceledOrder = orderService.cancelOrderByIdService(id, cancelOrderRequest);
         return ResponseEntity.ok(canceledOrder);
     }
 }
